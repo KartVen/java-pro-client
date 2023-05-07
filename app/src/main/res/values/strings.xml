@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">JavaProApp</string>
+    <string name="app_name_short">JavaPro</string>
+    <string name="next">Następne</string>
+    <string name="previous">Poprzednie</string>
+    <!--  AUTH ACTIVITY  -->
+    <string name="form_email_field">Email</string>
+    <string name="form_password_field">Hasło</string>
+    <string name="form_login">Logowanie</string>
+    <string name="form_registration">Rejestracja</string>
+    <string name="log_in_btn">Zaloguj się</string>
+    <string name="dont_have_an_account">Nie masz konta?</string>
+    <string name="register_btn">Zarejestruj się</string>
+    <string name="form_nickname_field">Nazwa użytkownika</string>
+    <!--   MAIN ACTIVITY -->
+    <string name="section_lectures">Wykłady</string>
+    <string name="section_laboratories">Laboratoria</string>
+    <string name="section_tests">Testy</string>
+    <string name="section_help_links">Pomoce</string>
+    <string name="select_section">Wybierz pozycje</string>
+    <string name="last_added">Ostatnio dodane</string>
+    <string name="menu_settings_label">Ustawienia</string>
+    <string name="example_text_1">Przykładowy tekst</string>
+    <string name="example_text_2">Przykładowy tekst 2</string>
+    <string name="java_logo_content_description">Java</string>
+    <!-- Error Messages -->
+    <string name="login_succesfully">Zalogowano pomyślnie</string>
+    <string name="register_succesfully">Zarejstrowano pomyślnie</string>
+    <string name="required">Wymagane</string>
+    <string name="must_contain">Pole musi zawierać %s</string>
+    <string name="error_bad_format">Niewłaściwy format</string>
+    <string name="error_minimum_size">Minimum %d znaków</string>
+    <string name="add_range">Add</string>
+    <string name="select_range">Wybierz zakres</string>
+    <string name="error_field_empty">Pole wymagane</string>
+    <string name="error_form">Błąd formularza</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
