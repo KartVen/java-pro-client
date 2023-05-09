@@ -1,4 +1,4 @@
-package pl.kartven.javaproapp.util;
+package pl.kartven.javaproapp.util.adapter;
 
 import android.text.Editable;
 import android.text.TextWatcher;

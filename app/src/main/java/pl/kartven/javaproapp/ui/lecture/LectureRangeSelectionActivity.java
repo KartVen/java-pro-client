@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collections;
 import java.util.List;
@@ -22,10 +21,10 @@ import pl.kartven.javaproapp.ui.lecture.adapter.LectureRangeSelectionAdapter;
 import pl.kartven.javaproapp.ui.model.LectureListItemDetails;
 import pl.kartven.javaproapp.util.Extra;
 import pl.kartven.javaproapp.util.Resource;
-import pl.kartven.javaproapp.util.Utility;
+import pl.kartven.javaproapp.util.ActivityUtility;
 
 @AndroidEntryPoint
-public class LectureRangeSelectionActivity extends AppCompatActivity implements Utility, RangeSelectionAdapter.Builder<LectureListItemDetails> {
+public class LectureRangeSelectionActivity extends AppCompatActivity implements ActivityUtility, RangeSelectionAdapter.Builder<LectureListItemDetails> {
 
     protected ActivityRangeSelectionBinding binding;
     protected LectureRangeSelectionViewModel viewModel;

@@ -20,7 +20,7 @@ public class LectureSlideViewViewModel extends ViewModel {
         this.lectureRespository = lectureRespository;
     }
 
-    public Resource<List<SlideApi>> getLectureSlide(Integer id) {
-        return lectureRespository.getLectureSlideList().getValue();
+    public Resource<List<SlideApi>> getLectureSlide(Long id) {
+        return lectureRespository.getLectureSlideList(id).getValue();
     }
 }

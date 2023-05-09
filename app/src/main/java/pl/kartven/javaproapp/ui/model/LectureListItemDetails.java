@@ -3,7 +3,7 @@ package pl.kartven.javaproapp.ui.model;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import pl.kartven.javaproapp.data.model.RangeApiDetails;
+import pl.kartven.javaproapp.data.model.SingleRangeApiDetails;
 
 public class LectureListItemDetails {
     private Long id;
@@ -28,15 +28,15 @@ public class LectureListItemDetails {
         return description;
     }
 
-    public static List<LectureListItemDetails> map(List<RangeApiDetails> rangeApiDetailsList) {
-        return rangeApiDetailsList.stream().map(LectureListItemDetails::map).collect(Collectors.toList());
+    public static List<LectureListItemDetails> map(List<SingleRangeApiDetails> singleRangeApiDetailsList) {
+        return singleRangeApiDetailsList.stream().map(LectureListItemDetails::map).collect(Collectors.toList());
     }
 
-    private static LectureListItemDetails map(RangeApiDetails rangeApiDetails) {
+    private static LectureListItemDetails map(SingleRangeApiDetails singleRangeApiDetails) {
         return new LectureListItemDetails(
-                rangeApiDetails.getId(),
-                rangeApiDetails.getTopic(),
-                rangeApiDetails.getDescription()
+                singleRangeApiDetails.getId(),
+                singleRangeApiDetails.getTopic(),
+                singleRangeApiDetails.getDescription()
         );
     }
 }

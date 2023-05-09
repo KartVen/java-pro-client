@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pl.kartven.javaproapp.data.model.AuthApi;
-import pl.kartven.javaproapp.data.model.RangeApiDetails;
+import pl.kartven.javaproapp.data.model.SingleRangeApiDetails;
 import pl.kartven.javaproapp.data.model.SlideApi;
 
 public class Mock {
@@ -17,21 +17,21 @@ public class Mock {
             "refreshMock"
     );
 
-    public static List<RangeApiDetails> lectureRangeApiDetailsList = new ArrayList<>();
+    public static List<SingleRangeApiDetails> lectureSingleRangeApiDetailsList = new ArrayList<>();
 
     static {
         for (long i = 1; i <= 10; i++) {
-            lectureRangeApiDetailsList.add(new RangeApiDetails(
+            lectureSingleRangeApiDetailsList.add(new SingleRangeApiDetails(
                     i, "Wykład " + i, "Opis " + i
             ));
         }
     }
 
-    public static List<RangeApiDetails> laboratoryRangeApiDetailsList = new ArrayList<>();
+    public static List<SingleRangeApiDetails> laboratorySingleRangeApiDetailsList = new ArrayList<>();
 
     static {
         for (long i = 1; i <= 5; i++) {
-            laboratoryRangeApiDetailsList.add(new RangeApiDetails(
+            laboratorySingleRangeApiDetailsList.add(new SingleRangeApiDetails(
                     i, "Wykład " + i, "Opis " + i
             ));
         }

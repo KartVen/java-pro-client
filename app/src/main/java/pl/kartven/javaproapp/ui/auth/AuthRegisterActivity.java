@@ -2,7 +2,6 @@ package pl.kartven.javaproapp.ui.auth;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -11,19 +10,16 @@ import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import pl.kartven.javaproapp.MainActivity;
 import pl.kartven.javaproapp.R;
-import pl.kartven.javaproapp.databinding.ActivityAuthLoginBinding;
 import pl.kartven.javaproapp.databinding.ActivityAuthRegisterBinding;
-import pl.kartven.javaproapp.ui.model.FieldState;
-import pl.kartven.javaproapp.util.TextWatcherCustomAdapter;
-import pl.kartven.javaproapp.util.Utility;
+import pl.kartven.javaproapp.util.adapter.TextWatcherCustomAdapter;
+import pl.kartven.javaproapp.util.ActivityUtility;
 
 @AndroidEntryPoint
-public class AuthRegisterActivity extends AppCompatActivity implements Utility {
+public class AuthRegisterActivity extends AppCompatActivity implements ActivityUtility {
 
     private ActivityAuthRegisterBinding binding;
     private AuthRegisterViewModel viewModel;

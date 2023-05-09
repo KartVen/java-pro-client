@@ -15,15 +15,13 @@ import androidx.lifecycle.ViewModelProvider;
 import dagger.hilt.android.AndroidEntryPoint;
 import pl.kartven.javaproapp.MainActivity;
 import pl.kartven.javaproapp.R;
-import pl.kartven.javaproapp.data.model.AuthApi;
 import pl.kartven.javaproapp.databinding.ActivityAuthLoginBinding;
 import pl.kartven.javaproapp.ui.model.FieldState;
-import pl.kartven.javaproapp.util.Resource;
-import pl.kartven.javaproapp.util.TextWatcherCustomAdapter;
-import pl.kartven.javaproapp.util.Utility;
+import pl.kartven.javaproapp.util.adapter.TextWatcherCustomAdapter;
+import pl.kartven.javaproapp.util.ActivityUtility;
 
 @AndroidEntryPoint
-public class AuthLoginActivity extends AppCompatActivity implements Utility {
+public class AuthLoginActivity extends AppCompatActivity implements ActivityUtility {
 
     private ActivityAuthLoginBinding binding;
     private AuthLoginViewModel viewModel;

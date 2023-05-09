@@ -35,6 +35,10 @@ public abstract class Resource<T> {
             super(data, message);
         }
 
+        public Error(String message) {
+            super(null, message);
+        }
+
         @Override
         public boolean isSuccess() {
             return false;

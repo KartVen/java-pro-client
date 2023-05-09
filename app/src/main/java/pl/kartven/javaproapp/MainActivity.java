@@ -1,6 +1,7 @@
 package pl.kartven.javaproapp;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,10 +19,10 @@ import pl.kartven.javaproapp.ui.laboratory.LaboratoryRangeSelectionActivity;
 import pl.kartven.javaproapp.ui.lecture.LectureRangeSelectionActivity;
 import pl.kartven.javaproapp.ui.quiz.QuizRangeSelectionActivity;
 import pl.kartven.javaproapp.util.SessionManager;
-import pl.kartven.javaproapp.util.Utility;
+import pl.kartven.javaproapp.util.ActivityUtility;
 
 @AndroidEntryPoint
-public class MainActivity extends AppCompatActivity implements Utility {
+public class MainActivity extends AppCompatActivity implements ActivityUtility {
 
     private ActivityMainBinding binding;
     @Inject
@@ -33,9 +34,9 @@ public class MainActivity extends AppCompatActivity implements Utility {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        /*StrictMode.setThreadPolicy(
+        StrictMode.setThreadPolicy(
                 new StrictMode.ThreadPolicy.Builder().permitAll().build()
-        );*/
+        );
 
         if (!sessionManager.isLoggedIn()) {
             goToActivity(this, AuthLoginActivity.class);

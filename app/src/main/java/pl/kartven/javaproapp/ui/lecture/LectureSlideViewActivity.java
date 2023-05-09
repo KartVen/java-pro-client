@@ -14,20 +14,19 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import io.vavr.control.Option;
-import pl.kartven.javaproapp.MainActivity;
 import pl.kartven.javaproapp.data.model.SlideApi;
 import pl.kartven.javaproapp.databinding.ActivityLectureSlideViewBinding;
 import pl.kartven.javaproapp.ui.lecture.adapter.LectureSlideViewAdapter;
 import pl.kartven.javaproapp.util.Extra;
 import pl.kartven.javaproapp.util.Resource;
-import pl.kartven.javaproapp.util.Utility;
+import pl.kartven.javaproapp.util.ActivityUtility;
 
 @AndroidEntryPoint
-public class LectureSlideViewActivity extends AppCompatActivity implements Utility {
+public class LectureSlideViewActivity extends AppCompatActivity implements ActivityUtility {
 
     private ActivityLectureSlideViewBinding binding;
     private LectureSlideViewViewModel viewModel;
-    private Integer id;
+    private Long id;
     private String topic;
 
     @Inject
@@ -43,13 +42,13 @@ public class LectureSlideViewActivity extends AppCompatActivity implements Utili
 
         Option.of(savedInstanceState)
                 .map(bundle -> {
-                    id = bundle.getInt(Extra.LECTURE_ID);
+                    id = bundle.getLong(Extra.LECTURE_ID);
                     topic = bundle.getString(Extra.LECTURE_NAME);
                     return true;
                 })
                 .getOrElse(Option.of(getIntent().getExtras())
                         .map(bundle -> {
-                            id = bundle.getInt(Extra.LECTURE_ID);
+                            id = bundle.getLong(Extra.LECTURE_ID);
                             topic = bundle.getString(Extra.LECTURE_NAME);
                             return true;
                         })

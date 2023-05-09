@@ -2,7 +2,7 @@ package pl.kartven.javaproapp;
 
 public final class Constants {
 
-    public static final String BACKEND_API_URL = Api.TP.url;
+    public static final String BACKEND_API_URL = Api.CO.url;
 
     private enum Api {
         AK("http://192.168.0.108:8444"),

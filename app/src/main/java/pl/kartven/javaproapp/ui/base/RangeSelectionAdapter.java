@@ -72,25 +72,29 @@ public abstract class RangeSelectionAdapter<ITEM> extends RecyclerView.Adapter<R
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            topic = itemView.findViewById(R.id.lecture_item_topic);
-            description = itemView.findViewById(R.id.lecture_item_desc);
+            topic = itemView.findViewById(R.id.range_selection_item_topic);
+            description = itemView.findViewById(R.id.range_selection_item_desc);
         }
 
         public void setTopic(String value) {
-            topic.setText(value);
+            topic.setText(value != null ? value : "---");
+
         }
 
         public void setDescription(String value) {
+            if (value == null) description.setVisibility(View.GONE);
             description.setText(value);
         }
 
     }
 
     public interface Builder<ITEM> {
-        default void initRecyclerView(){
+        default void initRecyclerView() {
             initRecyclerView(null);
         }
+
         <T> void initRecyclerView(Class<T> targetActivityClass);
+
         RangeSelectionAdapter<ITEM> initAdapterWithData();
     }
 }

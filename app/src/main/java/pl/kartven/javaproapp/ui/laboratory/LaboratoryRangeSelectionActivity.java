@@ -1,6 +1,5 @@
 package pl.kartven.javaproapp.ui.laboratory;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collections;
 import java.util.List;
@@ -20,14 +18,13 @@ import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.databinding.ActivityRangeSelectionBinding;
 import pl.kartven.javaproapp.ui.base.RangeSelectionAdapter;
 import pl.kartven.javaproapp.ui.laboratory.adapter.LaboratoryRangeSelectionAdapter;
-import pl.kartven.javaproapp.ui.lecture.LectureSlideViewActivity;
 import pl.kartven.javaproapp.ui.model.LectureListItemDetails;
 import pl.kartven.javaproapp.util.Extra;
 import pl.kartven.javaproapp.util.Resource;
-import pl.kartven.javaproapp.util.Utility;
+import pl.kartven.javaproapp.util.ActivityUtility;
 
 @AndroidEntryPoint
-public class LaboratoryRangeSelectionActivity extends AppCompatActivity implements Utility, RangeSelectionAdapter.Builder<LectureListItemDetails> {
+public class LaboratoryRangeSelectionActivity extends AppCompatActivity implements ActivityUtility, RangeSelectionAdapter.Builder<LectureListItemDetails> {
 
     protected ActivityRangeSelectionBinding binding;
     protected LaboratoryRangeSelectionViewModel viewModel;

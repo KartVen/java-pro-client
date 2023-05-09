@@ -7,7 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public interface Utility {
+public interface ActivityUtility {
 
     default void goToActivity(@NonNull Context context, @NonNull Class<? extends AppCompatActivity> activityClass){
         context.startActivity(new Intent(context, activityClass));
