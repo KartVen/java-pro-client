@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:paddingHorizontal="@dimen/padding_menu_horizontal"
+        android:paddingHorizontal="@dimen/padding_slide_view_horizontal"
         android:theme="@style/Theme.JavaProClientApp.AppBarOverlay"
         app:elevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"

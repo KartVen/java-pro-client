@@ -40,8 +40,8 @@ public class Mock {
     public static List<SlideApi> lectureSlideApiList = new ArrayList<>();
 
     static {
-        for (long i = 1; i <= 5; i++) {
+        /*for (long i = 1; i <= 5; i++) {
             lectureSlideApiList.add(new SlideApi(i, new byte[0]));
-        }
+        }*/
     }
 }

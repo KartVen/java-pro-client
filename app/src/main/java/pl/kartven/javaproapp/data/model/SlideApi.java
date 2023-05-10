@@ -1,11 +1,13 @@
 
 package pl.kartven.javaproapp.data.model;
 
+import android.util.Base64;
+
 public class SlideApi {
     private Long id;
-    private byte[] content;
+    private String content;
 
-    public SlideApi(Long id, byte[] content) {
+    public SlideApi(Long id, String content) {
         this.id = id;
         this.content = content;
     }
@@ -15,6 +17,6 @@ public class SlideApi {
     }
 
     public byte[] getContent() {
-        return content;
+        return Base64.decode(content, Base64.DEFAULT);
     }
 }
