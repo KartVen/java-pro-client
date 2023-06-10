@@ -15,11 +15,8 @@ import dagger.hilt.components.SingletonComponent;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import pl.kartven.javaproapp.BuildConfig;
-import pl.kartven.javaproapp.Constants;
-import pl.kartven.javaproapp.data.remote.BackendApi;
-import pl.kartven.javaproapp.data.repository.AuthRepository;
-import pl.kartven.javaproapp.data.repository.LectureRespository;
-import pl.kartven.javaproapp.data.repository.RangeRepository;
+import pl.kartven.javaproapp.data.BackendApi;
+import pl.kartven.javaproapp.data.MainRepository;
 import pl.kartven.javaproapp.util.validator.LoginFormValidator;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -29,7 +26,7 @@ public class BeanModule {
 
     @Provides
     @Singleton
-    public BackendApi provideBackendApi(){
+    public BackendApi backendApi() {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
         if (BuildConfig.DEBUG) {
@@ -49,49 +46,37 @@ public class BeanModule {
 
     @Provides
     @Singleton
-    public AuthRepository provideAuthRepository(BackendApi api, SessionManager sessionManager){
-        return new AuthRepository(api, sessionManager);
-    }
-
-    @Provides
-    @Singleton
-    public SessionManager provideSessionManager(Context context, Gson gson) {
+    public SessionManager sessionManager(Context context, Gson gson) {
         return new SessionManager(context, gson);
     }
 
     @Provides
     @Singleton
-    public Gson provideGson() {
+    public Gson gson() {
         return new Gson();
     }
 
     @Provides
     @Singleton
-    public Context provideApplicationContext(Application application) {
+    public Context context(Application application) {
         return application.getApplicationContext();
     }
 
     @Provides
     @Singleton
-    public Resources provideResources(Context context) {
+    public Resources resources(Context context) {
         return context.getResources();
     }
 
     @Provides
     @Singleton
-    public LoginFormValidator provideEmailValidator(Resources resources){
+    public LoginFormValidator loginFormValidator(Resources resources) {
         return new LoginFormValidator(resources);
     }
 
     @Provides
     @Singleton
-    public RangeRepository provideRangeRepository(BackendApi api, SessionManager sessionManager){
-        return new RangeRepository(api, sessionManager);
-    }
-
-    @Provides
-    @Singleton
-    public LectureRespository provideLectureRepository(BackendApi api, SessionManager sessionManager){
-        return new LectureRespository(api, sessionManager);
+    public MainRepository mainRepository(BackendApi backendApi, SessionManager sessionManager) {
+        return new MainRepository(backendApi, sessionManager);
     }
 }

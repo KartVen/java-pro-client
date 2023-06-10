@@ -12,47 +12,19 @@
         android:icon="@drawable/tests"
         android:label="@string/app_name_short"
         android:supportsRtl="true"
-        android:theme="@style/Theme.JavaProApp.NoActionBar"
+        android:theme="@style/Theme.JavaProApp"
         android:usesCleartextTraffic="true"
         tools:replace="android:label"
         tools:targetApi="31">
-        <!-- quiz -->
         <activity
-            android:name=".ui.quiz.QuizRangeSelectionActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" /> <!-- laboratory -->
+            android:name=".ui.SettingsActivity"
+            android:exported="false" />
         <activity
-            android:name=".ui.laboratory.LaboratoryRangeSelectionActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" /> <!-- lecture -->
+            android:name=".ui.ProfileActivity"
+            android:parentActivityName=".ui.MainActivity"
+            android:exported="false" />
         <activity
-            android:name=".ui.lecture.LectureSlideViewActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.lecture.LectureRangeSelectionActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity
-            android:name=".ui.lecture.LectureRangeSelectionActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" /> <!-- auth -->
-        <activity
-            android:name=".ui.auth.AuthLoginActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".ui.auth.AuthRegisterActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" /> <!-- main -->
-        <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">

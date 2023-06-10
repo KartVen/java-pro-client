@@ -36,4 +36,14 @@
     <string name="error_form">Błąd formularza</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hi_example">Witaj, Example</string>
+    <string name="search_topic">Szukaj tematu</string>
+    <string name="topics">Tematy</string>
+    <string name="view_more">Zobacz wszystkie</string>
+    <string name="profile">Profil</string>
+    <string name="settings">Ustawienia</string>
+    <string name="home">Home</string>
+    <string name="nickname">Nickname</string>
+    <string name="email_example">email@example.com</string>
+    <string name="logout">Wyloguj się</string>
 </resources>

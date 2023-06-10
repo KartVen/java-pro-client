@@ -2,13 +2,10 @@ package pl.kartven.javaproapp.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.security.keystore.UserNotAuthenticatedException;
 
 import com.google.gson.Gson;
 
 import javax.inject.Inject;
-
-import pl.kartven.javaproapp.data.model.AuthApi;
 
 public class SessionManager {
     private static final String PREF_NAME = "auth_s_pref";
@@ -64,10 +61,6 @@ public class SessionManager {
             this.nickname = nickname;
             this.bearerToken = bearerToken;
             this.refreshToken = refreshToken;
-        }
-
-        public static User map(AuthApi authApi) {
-            return new User(authApi.getNickname(), authApi.getBearerToken(), authApi.getRefreshToken());
         }
     }
 }

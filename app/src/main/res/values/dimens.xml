@@ -7,6 +7,15 @@
     <dimen name="fragment_horizontal_margin">16dp</dimen>
     <dimen name="fragment_vertical_margin">16dp</dimen>
     <!-- -->
+    <dimen name="text_size">14sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_xlarge">18sp</dimen>
+    <dimen name="text_size_xxlarge">20sp</dimen>
+    <dimen name="text_size_x2">28sp</dimen>
+    <dimen name="text_size_large_x2">32sp</dimen>
+    <dimen name="text_size_xlarge_x2">36sp</dimen>
+    <dimen name="text_size_xxlarge_x2">40sp</dimen>
+    <!-- -->
     <dimen name="fab_margin">24dp</dimen>
     <dimen name="java_logo_size">200dp</dimen>
     <dimen name="padding_horizontal">20dp</dimen>
@@ -15,11 +24,10 @@
     <dimen name="slide_padding_h">8dp</dimen>
     <dimen name="slide_padding_v">12dp</dimen>
     <dimen name="slide_ans_text_size">5dp</dimen>
-    <dimen name="default_text_size_large">16sp</dimen>
-    <dimen name="default_text_size">14sp</dimen>
-    <dimen name="default_text_size_x2">28sp</dimen>
     <dimen name="range_list_margin_bottom">16dp</dimen>
     <dimen name="padding_slide_view_horizontal">5dp</dimen>
     <dimen name="height_main_section_icon">70dp</dimen>
     <dimen name="margin_main_section_card">5dp</dimen>
+    <dimen name="back_button_margin">32dp</dimen>
+    <dimen name="back_button_size">64dp</dimen>
 </resources>
