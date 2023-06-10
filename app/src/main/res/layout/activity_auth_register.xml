@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@color/dark_blue"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/padding_horizontal"
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/teal_green"
+                android:backgroundTint="?attr/colorSecondary"
                 android:text="@string/register_btn"
                 android:textSize="@dimen/default_text_size" />
 
@@ -136,7 +136,7 @@
                     android:padding="5dp"
                     android:text="@string/log_in_btn"
                     android:textAllCaps="false"
-                    android:textColor="@color/teal_green"
+                    android:textColor="?attr/colorSecondary"
                     android:textSize="@dimen/default_text_size"
                     android:textStyle="bold" />
 

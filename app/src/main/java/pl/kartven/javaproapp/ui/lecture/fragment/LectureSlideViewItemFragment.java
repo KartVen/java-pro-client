@@ -64,7 +64,7 @@ public class LectureSlideViewItemFragment extends Fragment {
         String position = Option.of(getArguments())
                 .map(args -> args.getString("label"))
                 .getOrElse("");
-        binding.lectureSlideViewLabel.setText(position);
+        //binding.lectureSlideViewLabel.setText(position);
     }
 
     @Override

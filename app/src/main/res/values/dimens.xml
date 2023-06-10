@@ -20,4 +20,6 @@
     <dimen name="default_text_size_x2">28sp</dimen>
     <dimen name="range_list_margin_bottom">16dp</dimen>
     <dimen name="padding_slide_view_horizontal">5dp</dimen>
+    <dimen name="height_main_section_icon">70dp</dimen>
+    <dimen name="margin_main_section_card">5dp</dimen>
 </resources>

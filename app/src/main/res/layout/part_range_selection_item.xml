@@ -38,7 +38,7 @@
                 android:contentDescription="@null"
                 android:paddingVertical="1dp"
                 android:text="@string/example_text_1"
-                android:textColor="@color/teal_green"
+                android:textColor="?attr/colorSecondary"
                 android:textSize="@dimen/default_text_size"
                 android:textStyle="bold" />
 
@@ -51,7 +51,7 @@
                 android:layout_weight="1"
                 android:paddingVertical="1dp"
                 android:text="@string/example_text_2"
-                android:textColor="@color/teal_green"
+                android:textColor="?attr/colorSecondary"
                 android:textSize="@dimen/default_text_size" />
 
         </LinearLayout>

@@ -8,12 +8,13 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import pl.kartven.javaproapp.data.repository.RangeRepository;
+import pl.kartven.javaproapp.ui.base.RangeUtility;
 import pl.kartven.javaproapp.ui.model.LectureListItemDetails;
 import pl.kartven.javaproapp.ui.model.Range;
 import pl.kartven.javaproapp.util.Resource;
 
 @HiltViewModel
-public class LaboratoryRangeSelectionViewModel extends ViewModel {
+public class LaboratoryRangeSelectionViewModel extends ViewModel implements RangeUtility<LectureListItemDetails> {
 
     private RangeRepository rangeRepository;
 
@@ -22,6 +23,7 @@ public class LaboratoryRangeSelectionViewModel extends ViewModel {
         this.rangeRepository = rangeRepository;
     }
 
+    @Override
     public Resource<List<LectureListItemDetails>> getRangeData() {
         return rangeRepository.getLaboratoryRangeList().getValue();
     }

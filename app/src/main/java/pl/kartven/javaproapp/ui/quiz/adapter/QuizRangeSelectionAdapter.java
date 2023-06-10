@@ -1,4 +1,4 @@
-package pl.kartven.javaproapp.ui.laboratory.adapter;
+package pl.kartven.javaproapp.ui.quiz.adapter;
 
 import androidx.annotation.NonNull;
 
@@ -7,9 +7,9 @@ import java.util.List;
 import pl.kartven.javaproapp.ui.base.RangeSelectionAdapter;
 import pl.kartven.javaproapp.ui.model.LectureListItemDetails;
 
-public class LaboratoryRangeSelectionAdapter extends RangeSelectionAdapter<LectureListItemDetails> {
+public class QuizRangeSelectionAdapter extends RangeSelectionAdapter<LectureListItemDetails> {
 
-    public LaboratoryRangeSelectionAdapter(List<LectureListItemDetails> data) {
+    public QuizRangeSelectionAdapter(List<LectureListItemDetails> data) {
         super(data);
     }
 

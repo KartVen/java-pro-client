@@ -89,4 +89,5 @@ public class LectureSlideViewActivity extends AppCompatActivity implements Activ
         }
     }
 
+    
 }

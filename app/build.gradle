@@ -66,5 +66,6 @@ dependencies {
     annotationProcessor 'com.google.dagger:hilt-compiler:2.44'
     annotationProcessor 'com.google.dagger:hilt-android-compiler:2.44'
 
-
+    //image
+    implementation 'com.github.MikeOrtiz:TouchImageView:1.4.1'
 }

@@ -1,4 +1,4 @@
-package pl.kartven.javaproapp.ui.lecture;
+package pl.kartven.javaproapp.ui.quiz;
 
 import androidx.lifecycle.ViewModel;
 
@@ -10,21 +10,20 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 import pl.kartven.javaproapp.data.repository.RangeRepository;
 import pl.kartven.javaproapp.ui.base.RangeUtility;
 import pl.kartven.javaproapp.ui.model.LectureListItemDetails;
-import pl.kartven.javaproapp.ui.model.Range;
 import pl.kartven.javaproapp.util.Resource;
 
 @HiltViewModel
-public class LectureRangeSelectionViewModel extends ViewModel implements RangeUtility<LectureListItemDetails> {
+public class QuizRangeSelectionViewModel extends ViewModel implements RangeUtility<LectureListItemDetails> {
 
-    private RangeRepository rangeRepository;
+    private final RangeRepository rangeRepository;
 
     @Inject
-    public LectureRangeSelectionViewModel(RangeRepository rangeRepository){
+    public QuizRangeSelectionViewModel(RangeRepository rangeRepository) {
         this.rangeRepository = rangeRepository;
     }
 
     @Override
     public Resource<List<LectureListItemDetails>> getRangeData() {
-        return rangeRepository.getLectureRangeList().getValue();
+        return rangeRepository.getQuizRangeList().getValue();
     }
 }

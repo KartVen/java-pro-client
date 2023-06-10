@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@color/dark_blue"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -46,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/padding_horizontal"
         android:layout_marginTop="20dp"
+        android:paddingHorizontal="10dp"
         android:text="@string/select_section"
         android:textColor="@color/white"
         android:textSize="@dimen/default_text_size"
@@ -53,185 +54,198 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_java_logo_im" />
 
-    <HorizontalScrollView
-        android:id="@+id/main_section_list"
+    <LinearLayout
+        android:id="@+id/main_section_list_0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:paddingHorizontal="@dimen/padding_horizontal"
+        android:layout_marginTop="10dp"
+        android:weightSum="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_select_section_tv">
 
-        <LinearLayout
-            android:id="@+id/main_section_list_inner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/section_0_card"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
+            android:layout_margin="@dimen/margin_main_section_card"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:padding="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/section_0_card"
-                android:layout_width="110dp"
-                android:layout_height="140dp"
-                android:layout_marginVertical="20dp"
-                android:background="@color/white"
-                android:clickable="true"
-                android:foreground="?selectableItemBackground"
-                android:padding="10dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="10dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_main_section_icon"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:src="@drawable/tests" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/section_lectures"
+                    android:textColor="?attr/colorSecondary"
+                    android:textSize="@dimen/default_text_size_large"
+                    android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:contentDescription="@null"
-                        android:src="@drawable/tests" />
+            </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/section_lectures"
-                        android:textColor="@color/teal_green"
-                        android:textSize="@dimen/default_text_size_large"
-                        android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
 
-                </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/section_1_card"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
+            android:layout_margin="@dimen/margin_main_section_card"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:padding="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
 
-            </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/section_1_card"
-                android:layout_width="110dp"
-                android:layout_height="140dp"
-                android:layout_marginVertical="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@color/white"
-                android:clickable="true"
-                android:foreground="?selectableItemBackground"
-                android:padding="10dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="10dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_main_section_icon"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:src="@drawable/tests" />
 
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/section_laboratories"
+                    android:textColor="?attr/colorSecondary"
+                    android:textSize="@dimen/default_text_size_large"
+                    android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:contentDescription="@null"
-                        android:src="@drawable/tests" />
+            </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/section_laboratories"
-                        android:textColor="@color/teal_green"
-                        android:textSize="@dimen/default_text_size_large"
-                        android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
 
-                </LinearLayout>
+    </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:id="@+id/main_section_list_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/padding_horizontal"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_section_list_0">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/section_2_card"
-                android:layout_width="110dp"
-                android:layout_height="140dp"
-                android:layout_marginVertical="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@color/white"
-                android:clickable="true"
-                android:foreground="?selectableItemBackground"
-                android:padding="10dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="10dp">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/section_2_card"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
+            android:layout_margin="@dimen/margin_main_section_card"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:padding="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
 
-                <LinearLayout
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_main_section_icon"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:src="@drawable/tests" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/section_tests"
+                    android:textColor="?attr/colorSecondary"
+                    android:textSize="@dimen/default_text_size_large"
+                    android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:contentDescription="@null"
-                        android:src="@drawable/tests" />
+            </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/section_tests"
-                        android:textColor="@color/teal_green"
-                        android:textSize="@dimen/default_text_size_large"
-                        android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
 
-                </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/section_3_card"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
+            android:layout_margin="@dimen/margin_main_section_card"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:padding="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
 
-            </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/section_3_card"
-                android:layout_width="110dp"
-                android:layout_height="140dp"
-                android:layout_marginVertical="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@color/white"
-                android:clickable="true"
-                android:foreground="?selectableItemBackground"
-                android:padding="10dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="10dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_main_section_icon"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:src="@drawable/tests" />
 
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/section_help_links"
+                    android:textColor="?attr/colorSecondary"
+                    android:textSize="@dimen/default_text_size_large"
+                    android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:contentDescription="@null"
-                        android:src="@drawable/tests" />
+            </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/section_help_links"
-                        android:textColor="@color/teal_green"
-                        android:textSize="@dimen/default_text_size_large"
-                        android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
 
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-    </HorizontalScrollView>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

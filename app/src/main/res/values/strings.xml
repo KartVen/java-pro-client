@@ -13,10 +13,10 @@
     <string name="register_btn">Zarejestruj się</string>
     <string name="form_nickname_field">Nazwa użytkownika</string>
     <!--   MAIN ACTIVITY -->
-    <string name="section_lectures">Wykłady</string>
-    <string name="section_laboratories">Laboratoria</string>
-    <string name="section_tests">Testy</string>
-    <string name="section_help_links">Pomoce</string>
+    <string name="section_lectures">Wykład</string>
+    <string name="section_laboratories">Laboratorium</string>
+    <string name="section_tests">Test</string>
+    <string name="section_help_links">Linki</string>
     <string name="select_section">Wybierz pozycje</string>
     <string name="last_added">Ostatnio dodane</string>
     <string name="menu_settings_label">Ustawienia</string>
