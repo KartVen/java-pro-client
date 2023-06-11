@@ -30,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity implements ActivityUtilit
         binding.profileImageView1.setOnClickListener(v -> onBackPressed());
         binding.profileCardView1.setOnClickListener(v -> {
             viewModel.logout();
-            goToActivity(this, MainActivity.class);
+            goToActivity(this, LoginActivity.class);
         });
     }
 }

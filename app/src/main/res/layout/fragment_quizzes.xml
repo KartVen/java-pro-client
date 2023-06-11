@@ -20,7 +20,7 @@
             android:weightSum="2">
 
             <TextView
-                android:id="@+id/fragment_codes_text_view_3"
+                android:id="@+id/fragment_quizzes_text_view_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -30,7 +30,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/fragment_codes_text_view_4"
+                android:id="@+id/fragment_quizzes_text_view_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -43,7 +43,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragment_codes_recycler_view_1"
+            android:id="@+id/fragment_quizzes_recycler_view_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"

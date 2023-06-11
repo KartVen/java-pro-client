@@ -80,10 +80,11 @@ public class MainActivity extends AppCompatActivity implements ActivityUtility {
 //        bottomNavigationView.setOnApplyWindowInsetsListener(null);
 //        bottomNavigationView.setPadding(0,0,0,0);
 
-        fab.setOnClickListener(v -> {});
+        fab.setOnClickListener(v -> {
+        });
 
         imageView2.setOnClickListener(l -> {
-            if (isHidden){
+            if (isHidden) {
                 textView2.setVisibility(View.VISIBLE);
                 searchView1.setVisibility(View.VISIBLE);
                 imageView2.setImageResource(R.drawable.baseline_keyboard_arrow_up_24);
@@ -117,6 +118,9 @@ public class MainActivity extends AppCompatActivity implements ActivityUtility {
     }
 
     private List<TopicDomain> getList(Resource<List<TopicDomain>> topics) {
-        return topics.isSuccess() ? topics.getData() : Collections.emptyList();
+        if (topics == null) return Collections.emptyList();
+        if (topics.isSuccess()) return topics.getData();
+        showToast(this, topics.getMessage());
+        return Collections.emptyList();
     }
 }

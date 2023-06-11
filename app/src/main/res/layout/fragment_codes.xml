@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/sections"
+                android:text="@string/codes"
                 android:textColor="@color/dark_blue"
                 android:textSize="@dimen/text_size_xxlarge"
                 android:textStyle="bold" />

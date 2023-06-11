@@ -20,17 +20,17 @@
             android:weightSum="2">
 
             <TextView
-                android:id="@+id/fragment_codes_text_view_3"
+                android:id="@+id/fragment_links_text_view_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/sections"
+                android:text="@string/external_links"
                 android:textColor="@color/dark_blue"
                 android:textSize="@dimen/text_size_xxlarge"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/fragment_codes_text_view_4"
+                android:id="@+id/fragment_links_text_view_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -43,7 +43,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragment_codes_recycler_view_1"
+            android:id="@+id/fragment_links_recycler_view_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
