@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ProfileActivity">
+    tools:context=".ui.TopicDetailsActivity">
 
     <LinearLayout
-        android:id="@+id/profile_linear_1"
+        android:id="@+id/topic_details_linear_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/dark_blue"
@@ -17,12 +17,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/profile_constraint_1"
+            android:id="@+id/topic_details_constraint_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/profile_constraint_1_1"
+                android:id="@+id/topic_details_constraint_1_1"
                 android:layout_width="@dimen/back_button_size"
                 android:layout_height="@dimen/back_button_size"
                 android:layout_marginStart="@dimen/back_button_margin"
@@ -34,7 +34,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/profile_image_view_1"
+                    android:id="@+id/topic_details_image_view_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="@dimen/back_button_padding"
@@ -47,17 +47,17 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/main_text_view_1"
+                android:id="@+id/topic_details_text_view_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/profile"
+                android:text="@string/topic_details"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_xxlarge"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/profile_constraint_1_1"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/profile_constraint_1_1" />
+                app:layout_constraintTop_toTopOf="@+id/topic_details_constraint_1_1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -69,104 +69,83 @@
             android:orientation="vertical"
             android:paddingVertical="15dp">
 
-            <ImageView
-                android:id="@+id/profile_image_view_2"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/java_logo"
+            <TextView
+                android:id="@+id/topic_details_text_view_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/example_text_1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_xxlarge"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/profile_text_view_1"
+                android:id="@+id/topic_details_text_view_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/nickname"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_x2"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_image_view_2" />
-
-            <TextView
-                android:id="@+id/profile_text_view_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/email_example"
+                android:text="@string/example_text_2"
                 android:textAlignment="center"
                 android:textColor="@color/darker_grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_text_view_1" />
+                app:layout_constraintTop_toBottomOf="@id/topic_details_text_view_2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/profile_linear_2"
+    <FrameLayout
+        android:id="@+id/topic_details_fragment_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/bottom_nav_view_height"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_linear_1">
+        app:layout_constraintTop_toBottomOf="@id/topic_details_linear_1" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/profile_card_view_1"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/topic_details_coordinator_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/topic_details_bottom_app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:layout_marginVertical="16dp"
-            app:cardElevation="4dp">
+            android:layout_gravity="bottom"
+            app:fabCradleMargin="8dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="8dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/profile_constraint_3"
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/topic_details_bottom_nav_view_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="2dp"
-                android:layout_marginVertical="4dp">
+                android:layout_height="@dimen/bottom_nav_view_height"
+                android:layout_marginEnd="16dp"
+                android:background="@android:color/transparent"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/type_menu" />
 
-                <ImageView
-                    android:id="@+id/profile_image_view_3"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/tests"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+        </com.google.android.material.bottomappbar.BottomAppBar>
 
-                <TextView
-                    android:id="@+id/profile_text_view_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="@string/logout"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="@dimen/text_size_xlarge"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/profile_image_view_3"
-                    app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/topic_details_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/dark_blue"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/baseline_add_24"
+            android:tint="@color/white"
+            app:layout_anchor="@id/topic_details_bottom_app_bar" />
 
-                <ImageView
-                    android:id="@+id/profile_image_view_4"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/baseline_keyboard_arrow_right_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

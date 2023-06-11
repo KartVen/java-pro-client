@@ -3,6 +3,7 @@ package pl.kartven.javaproapp.util;
 public final class Constants {
 
     public static final String BACKEND_API_URL = Api.URL_5.url;
+    public static final String TOPIC_MODEL_NAME = "topic_model";
 
     private enum Api {
         URL_1("http://192.168.0.108:8444"),

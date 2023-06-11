@@ -23,10 +23,10 @@ public class ProfileActivity extends AppCompatActivity implements ActivityUtilit
 
         viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
 
-        initButtonAction();
+        initActions();
     }
 
-    private void initButtonAction() {
+    private void initActions() {
         binding.profileImageView1.setOnClickListener(v -> onBackPressed());
         binding.profileCardView1.setOnClickListener(v -> {
             viewModel.logout();

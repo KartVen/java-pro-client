@@ -30,4 +30,6 @@
     <dimen name="margin_main_section_card">5dp</dimen>
     <dimen name="back_button_margin">32dp</dimen>
     <dimen name="back_button_size">64dp</dimen>
+    <dimen name="back_button_padding">12dp</dimen>
+    <dimen name="bottom_nav_view_height">56dp</dimen>
 </resources>

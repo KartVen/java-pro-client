@@ -1,11 +1,12 @@
 package pl.kartven.javaproapp.data.model.domain;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import pl.kartven.javaproapp.data.model.api.TopicApi;
 
-public class TopicDomain {
+public class TopicDomain implements Serializable {
     private Long id;
     private String name;
     private String description;

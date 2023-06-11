@@ -17,16 +17,21 @@
         tools:replace="android:label"
         tools:targetApi="31">
         <activity
+            android:name=".ui.TopicDetailsActivity"
+            android:parentActivityName=".ui.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.ProfileActivity"
-            android:parentActivityName=".ui.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
