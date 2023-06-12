@@ -3,6 +3,7 @@ package pl.kartven.javaproapp.data;
 import java.util.List;
 import java.util.concurrent.Executor;
 
+import pl.kartven.javaproapp.data.model.api.CodeApi;
 import pl.kartven.javaproapp.data.model.api.QuizApi;
 import pl.kartven.javaproapp.data.model.api.SectionApi;
 import pl.kartven.javaproapp.data.model.api.TopicApi;
@@ -21,6 +22,11 @@ public interface BackendApi {
 
     @GET("api/topics/{id}/quizzes")
     Call<List<QuizApi>> getQuizzesOfTopic(
+            @Path("id") Long id
+    );
+
+    @GET("api/sections/{id}/codes")
+    Call<List<CodeApi>> getCodesOfSection(
             @Path("id") Long id
     );
 }

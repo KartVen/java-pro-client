@@ -52,4 +52,6 @@
     <string name="external_links">Linki</string>
     <string name="topic_details">Szczegóły tematu</string>
     <string name="sections">Sekcje</string>
+    <string name="topic_codes">Kody tematu</string>
+    <string name="back">Wróć</string>
 </resources>

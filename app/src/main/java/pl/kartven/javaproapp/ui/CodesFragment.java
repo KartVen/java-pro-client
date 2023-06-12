@@ -1,5 +1,6 @@
 package pl.kartven.javaproapp.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,10 +74,11 @@ public class CodesFragment extends Fragment implements ActivityUtility {
 
         SectionListAdapter adapter = new SectionListAdapter(getList(data));
         adapter.setItemClicked((model, position) -> {
-            //Intent intent = new Intent(getContext(), CodesDetailsActivity.class);
-            showToast(getContext(), "Go to `section` " + model.getId());
-            //intent.putExtra(Constants.TOPIC_MODEL_NAME, model);
-            //startActivity(intent);
+            Intent intent = new Intent(getContext(), SectionCodesDetailsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra(Constants.TOPIC_MODEL_NAME, topic);
+            intent.putExtra(Constants.SECTION_MODEL_NAME, model);
+            startActivity(intent);
         });
 
         recyclerView.setAdapter(adapter);

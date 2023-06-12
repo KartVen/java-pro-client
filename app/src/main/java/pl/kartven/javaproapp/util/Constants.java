@@ -4,6 +4,7 @@ public final class Constants {
 
     public static final String BACKEND_API_URL = Api.URL_6.url;
     public static final String TOPIC_MODEL_NAME = "topic_model";
+    public static final String SECTION_MODEL_NAME = "section_model";
 
     private enum Api {
         URL_1("http://192.168.0.108:8444"),

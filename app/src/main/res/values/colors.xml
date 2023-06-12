@@ -11,4 +11,5 @@
     <color name="teal_green">#018876</color>
     <color name="dark_blue">#036</color>
     <color name="darker_grey">#FAAA</color>
+    <color name="light_gray">#F2F2F2</color>
 </resources>
