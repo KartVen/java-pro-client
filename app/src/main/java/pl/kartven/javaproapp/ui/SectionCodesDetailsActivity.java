@@ -123,4 +123,18 @@ public class SectionCodesDetailsActivity extends AppCompatActivity implements Ac
         if (data.isSuccess()) return data.getData();
         return Collections.emptyList();
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(Constants.TOPIC_MODEL_NAME, topic);
+        outState.putSerializable(Constants.SECTION_MODEL_NAME, section);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        topic = (TopicDomain) savedInstanceState.getSerializable(Constants.TOPIC_MODEL_NAME);
+        section = (SectionDomain) savedInstanceState.getSerializable(Constants.SECTION_MODEL_NAME);
+    }
 }

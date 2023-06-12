@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -122,5 +123,17 @@ public class MainActivity extends AppCompatActivity implements ActivityUtility {
         if (topics.isSuccess()) return topics.getData();
         showToast(this, topics.getMessage());
         return Collections.emptyList();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(Constants.MAIN_HIDDEN_STATE, isHidden);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        isHidden = savedInstanceState.getBoolean(Constants.MAIN_HIDDEN_STATE);
     }
 }

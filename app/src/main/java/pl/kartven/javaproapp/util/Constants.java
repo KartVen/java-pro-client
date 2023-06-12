@@ -2,9 +2,11 @@ package pl.kartven.javaproapp.util;
 
 public final class Constants {
 
-    public static final String BACKEND_API_URL = Api.URL_6.url;
+    public static final String BACKEND_API_URL = Api.URL_5.url;
     public static final String TOPIC_MODEL_NAME = "topic_model";
     public static final String SECTION_MODEL_NAME = "section_model";
+    public static final String MAIN_HIDDEN_STATE = "main_hidden_state";
+    public static final String TOPIC_DETAILS_ACTIVE_FRAGMENT_STATE = "topic_details_active_fragment";
 
     private enum Api {
         URL_1("http://192.168.0.108:8444"),
