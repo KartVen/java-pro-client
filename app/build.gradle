@@ -66,10 +66,10 @@ dependencies {
     annotationProcessor 'com.google.dagger:hilt-compiler:2.44'
     annotationProcessor 'com.google.dagger:hilt-android-compiler:2.44'
 
-    //image
-    implementation 'com.github.MikeOrtiz:TouchImageView:1.4.1'
-
-    //codes
-    //implementation 'com.github.kbiakov:CodeView-Android:1.3.2'
-
+    // content
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
+
+//tasks.withType(JavaCompile) {
+//    options.compilerArgs += ['-Xlint:deprecation']
+//}

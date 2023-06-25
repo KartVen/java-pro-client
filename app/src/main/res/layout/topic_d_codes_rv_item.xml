@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="2dp"
+    android:layout_marginVertical="4dp"
+    android:clickable="true"
+    android:foreground="?selectableItemBackground"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topic_d_codes_rv_constraint_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/main_rv_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/topic_d_codes_rv_image_view"
+                android:layout_width="@dimen/main_rv_item_ico_size"
+                android:layout_height="@dimen/main_rv_item_ico_size"
+                android:background="@color/light_gray"
+                android:contentDescription="@string/code"
+                android:padding="2dp"
+                android:src="@drawable/topic_code_src"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/topic_d_codes_rv_expandable_arrow"
+                app:layout_constraintStart_toEndOf="@id/topic_d_codes_rv_image_view"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/topic_d_codes_rv_tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/example_name"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/topic_d_codes_rv_expandable_arrow"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/code"
+                android:src="@drawable/common_expand_more_src"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/topic_d_codes_rv_expandable_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/content_padding"
+            android:paddingBottom="@dimen/content_padding"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/topic_d_codes_rv_constraint_wrapper">
+
+            <LinearLayout
+                android:id="@+id/topic_d_codes_rv_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="WebViewLayout" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <item
-        android:id="@+id/home"
-        android:icon="@drawable/baseline_home_24"
+        android:id="@+id/main_menu_home"
+        android:icon="@drawable/main_appbar_home_src"
         android:title="@string/home" />
 
     <item
-        android:id="@+id/placeholder"
-        android:title="" />
+        android:id="@+id/main_menu_profile"
+        android:icon="@drawable/main_appbar_person_src"
+        android:title="@string/profile" />
 
     <item
-        android:id="@+id/profile"
-        android:icon="@drawable/baseline_person_24"
-        android:title="@string/profile" />
+        android:id="@+id/main_menu_placeholder"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/main_menu_stats"
+        android:icon="@drawable/main_appbar_stats_src"
+        android:title="@string/stats" />
+
+    <item
+        android:id="@+id/main_menu_settings"
+        android:icon="@drawable/main_appbar_settings_src"
+        android:title="@string/settings" />
 
 </menu>

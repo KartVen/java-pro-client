@@ -3,53 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.QuizzesFragment">
+    tools:context=".ui.topic.fragment.QuizzesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/bottom_nav_view_height">
+        android:paddingBottom="@dimen/bottom_nav_height">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="32dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/content_padding">
 
             <TextView
-                android:id="@+id/fragment_quizzes_text_view_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/quizzes"
+                android:text="@string/tests"
                 android:textColor="@color/dark_blue"
-                android:textSize="@dimen/text_size_xxlarge"
+                android:textSize="@dimen/content_h1"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/fragment_quizzes_text_view_4"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_quizzes_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/view_more"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/darker_grey"
-                android:textStyle="bold"
-                android:visibility="invisible" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/content_padding" />
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragment_quizzes_recycler_view_1"
+        <LinearLayout
+            android:id="@+id/fragment_quizzes_new_quiz_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:clipToPadding="false"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp" />
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/content_padding">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/last_added_by_you"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/content_h1"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_quizzes_new_quiz_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/content_padding" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

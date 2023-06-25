@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.topic.link.LinkViewActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/link_view_layout_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_blue"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/header_nav_padding">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/link_view_header_back_btn_iv"
+                    android:layout_width="@dimen/header_nav_btn_size"
+                    android:layout_height="@dimen/header_nav_btn_size"
+                    android:layout_marginStart="@dimen/header_nav_btn_margin"
+                    android:layout_marginTop="@dimen/header_nav_btn_margin"
+                    android:clickable="true"
+                    android:contentDescription="@string/back"
+                    android:foreground="?selectableItemBackground"
+                    android:src="@drawable/common_back_arrow_src"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/link_view_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="@string/link_preview"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/header_nav_label_textSize"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/link_view_header_back_btn_iv"
+                    app:layout_constraintTop_toTopOf="@id/link_view_header_back_btn_iv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/header_nav_padding"
+                android:paddingHorizontal="@dimen/content_padding"
+                android:paddingBottom="@dimen/content_padding">
+
+                <TextView
+                    android:id="@+id/link_view_tv_header_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:text="@string/example_name"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/content_h2"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/link_view_tv_header_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/example_name"
+                    android:textAlignment="center"
+                    android:textColor="@color/darker_grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/link_view_tv_header_name" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/link_view_web_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/light_gray"
+            android:paddingVertical="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/link_view_layout_header" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

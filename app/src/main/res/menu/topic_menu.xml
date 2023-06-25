@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/topic_menu_slide"
+        android:icon="@drawable/topic_appbar_tv_src"
+        android:title="@string/slides" />
+
+    <item
+        android:id="@+id/topic_menu_lab"
+        android:icon="@drawable/topic_appbar_computer_src"
+        android:title="@string/laboratories" />
+
+    <item
+        android:id="@+id/topic_menu_placeholder"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/topic_menu_quiz"
+        android:icon="@drawable/topic_appbar_quiz_src"
+        android:title="@string/tests" />
+
+    <item
+        android:id="@+id/topic_menu_links"
+        android:icon="@drawable/topic_appbar_help_src"
+        android:title="@string/links" />
+
+</menu>
