@@ -2,8 +2,6 @@ package pl.kartven.javaproapp.data;
 
 import androidx.lifecycle.LiveData;
 
-import org.checkerframework.checker.units.qual.A;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +12,8 @@ import pl.kartven.javaproapp.data.model.domain.QuizDetailsDomain;
 import pl.kartven.javaproapp.data.model.domain.QuizDomain;
 import pl.kartven.javaproapp.data.model.domain.SectionDomain;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
-import pl.kartven.javaproapp.utils.resource.Resource;
-import pl.kartven.javaproapp.utils.resource.Resource.Success;
+import pl.kartven.javaproapp.utils.utility.Resource;
+import pl.kartven.javaproapp.utils.utility.Resource.Success;
 
 public class MainRepositoryMock extends MainRepository {
     @Override

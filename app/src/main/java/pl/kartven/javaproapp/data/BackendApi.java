@@ -15,8 +15,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface BackendApi {
-    Api API = Api.DORMITORY;
-
     @GET("api/topics")
     Call<List<TopicApi>> getTopics();
 
@@ -50,20 +48,8 @@ public interface BackendApi {
             @Path("id") Long id
     );
 
-    enum Api {
-        DORMITORY("http://192.168.10.106:8444"),
-        COMPANY("http://19.16.13.171:8444"),
-        PHONE("http://192.168.43.239:8444"),
-        ALWAYSDATA("http://krystianus.alwaysdata.net");
-
-        private final String url;
-
-        Api(String url){
-            this.url = url;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-    }
+    @GET("api/topics/{id}/slides")
+    Call<List<LinkApi>> getSlidesOfTopic(
+            @Path("id") Long id
+    );
 }

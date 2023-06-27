@@ -11,17 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.LinkDomain;
-import pl.kartven.javaproapp.data.model.domain.TopicDomain;
-import pl.kartven.javaproapp.utils.listener.RVItemClick;
+import pl.kartven.javaproapp.utils.listener.RVItemClickListener;
 
 public class SectionLinksNestedListAdapter extends RecyclerView.Adapter<SectionLinksNestedListAdapter.ViewHolder> {
 
     private List<LinkDomain> data;
-    protected RVItemClick<LinkDomain> rvItemClick;
+    protected RVItemClickListener<LinkDomain> rvItemClickListener;
 
     public SectionLinksNestedListAdapter(List<LinkDomain> data) {
         this.data = data;
@@ -42,8 +40,8 @@ public class SectionLinksNestedListAdapter extends RecyclerView.Adapter<SectionL
         holder.setId(item.getId());
         holder.setTitle(item.getName());
         holder.itemView.setOnClickListener(view -> {
-            if (rvItemClick != null) {
-                rvItemClick.onClick(item, position);
+            if (rvItemClickListener != null) {
+                rvItemClickListener.onClick(item, position);
             }
         });
     }
@@ -60,8 +58,8 @@ public class SectionLinksNestedListAdapter extends RecyclerView.Adapter<SectionL
         notifyDataSetChanged();
     }
 
-    public void setItemClicked(RVItemClick<LinkDomain> rvItemClick) {
-        this.rvItemClick = rvItemClick;
+    public void setItemClicked(RVItemClickListener<LinkDomain> rvItemClickListener) {
+        this.rvItemClickListener = rvItemClickListener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

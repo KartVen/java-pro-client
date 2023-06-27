@@ -2,7 +2,7 @@
 <resources>
     <dimen name="default_size">16dp</dimen>
     <dimen name="top_bar_min_height">64dp</dimen>
-    <dimen name="content_padding">16dp</dimen>
+    <dimen name="common__space_size">16dp</dimen>
     <dimen name="main_button_size">80dp</dimen>
     <dimen name="main_button_icon_size">48dp</dimen>
     <dimen name="main_button_radius">40dp</dimen>
@@ -13,16 +13,27 @@
     <dimen name="header_nav_btn_size">64dp</dimen>
     <dimen name="header_nav_btn_margin">16dp</dimen>
     <dimen name="header_nav_padding">16dp</dimen>
-    <dimen name="header_nav_label_textSize">@dimen/content_h1</dimen>
+    <dimen name="header_nav_label_textSize">@dimen/common__text_h2</dimen>
     <dimen name="header_content_padding_bottom">16dp</dimen>
     <dimen name="header_content_specific_textSize">25sp</dimen>
     <dimen name="main_search_height">55dp</dimen>
     <dimen name="main_search_loupe_size">32dp</dimen>
-    <dimen name="content_h1">20sp</dimen>
-    <dimen name="content_h2">18sp</dimen>
+    <dimen name="common__text_h1">22sp</dimen>
+    <dimen name="common__text_h2">20sp</dimen>
+    <dimen name="common__text_h3">18sp</dimen>
+    <dimen name="common__text_h4">16sp</dimen>
+    <dimen name="auth_et_drawable_padding">5dp</dimen>
+    <dimen name="auth_input_padding">12dp</dimen>
+    <dimen name="auth_input_margin_top">8dp</dimen>
+    <dimen name="auth__space_size">16dp</dimen>
+    <dimen name="auth_linear_margin_top">16dp</dimen>
     <dimen name="bottom_nav_height">100dp</dimen>
     <dimen name="main_rv_padding">8dp</dimen>
-    <dimen name="main_menu_test_size">13sp</dimen>
     <dimen name="header_nav_back_arrow_size">@dimen/default_size</dimen>
     <dimen name="main_rv_item_ico_size">40dp</dimen>
+    <dimen name="profile_avatar_size">144dp</dimen>
+    <dimen name="auth_tv_info_text">@dimen/common__text_h4</dimen>
+    <dimen name="main__space_size">16dp</dimen>
+    <dimen name="common_tv_section_margin_bottom">16dp</dimen>
+    <dimen name="fragment__space_size">16dp</dimen>
 </resources>

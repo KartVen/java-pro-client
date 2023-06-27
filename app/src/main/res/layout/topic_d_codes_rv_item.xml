@@ -75,8 +75,8 @@
             android:id="@+id/topic_d_codes_rv_expandable_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/content_padding"
-            android:paddingBottom="@dimen/content_padding"
+            android:paddingHorizontal="@dimen/common__space_size"
+            android:paddingBottom="@dimen/common__space_size"
             android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/topic_d_codes_rv_constraint_wrapper">
 

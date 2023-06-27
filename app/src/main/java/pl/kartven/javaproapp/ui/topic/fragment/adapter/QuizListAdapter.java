@@ -15,12 +15,12 @@ import java.util.List;
 
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.QuizDomain;
-import pl.kartven.javaproapp.utils.listener.RVItemClick;
+import pl.kartven.javaproapp.utils.listener.RVItemClickListener;
 
 public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.ViewHolder> {
 
     private List<QuizDomain> data;
-    protected RVItemClick<QuizDomain> rvItemClick;
+    protected RVItemClickListener<QuizDomain> rvItemClickListener;
     private Context context;
 
     public QuizListAdapter(List<QuizDomain> data) {
@@ -44,8 +44,8 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.ViewHo
         holder.setTitle(item.getName());
         holder.setDescription(item.getDescription());
         holder.itemView.setOnClickListener(view -> {
-            if (rvItemClick != null) {
-                rvItemClick.onClick(item, position);
+            if (rvItemClickListener != null) {
+                rvItemClickListener.onClick(item, position);
             }
         });
     }
@@ -62,8 +62,8 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.ViewHo
         notifyDataSetChanged();
     }
 
-    public void setItemClicked(RVItemClick<QuizDomain> rvItemClick) {
-        this.rvItemClick = rvItemClick;
+    public void setItemClicked(RVItemClickListener<QuizDomain> rvItemClickListener) {
+        this.rvItemClickListener = rvItemClickListener;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

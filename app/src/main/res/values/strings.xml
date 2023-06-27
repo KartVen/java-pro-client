@@ -9,7 +9,7 @@
     <string name="dont_have_account_que">Nie masz konta?</string>
     <string name="registration">Rejestracja</string>
     <string name="next">Dalej</string>
-    <string name="welcome_user">Witaj, uzytkownik</string>
+    <string name="welcome_xx">Witaj, %s</string>
     <string name="find_specific_topic">Szukaj konkretny temat!</string>
     <string name="topic">temat</string>
     <string name="search_dot_dot_dot">Szukaj…</string>
@@ -44,4 +44,16 @@
     <string name="nickname">Nazwa użytkownika</string>
     <string name="https_example_com">https://example.com</string>
     <string name="link_preview">Podgląd linku</string>
+    <string name="app_name_short">JavaPro</string>
+    <string name="username">Nazwa użytkownika</string>
+    <string name="test_details">Szczegóły testu</string>
+    <string name="que_amount">Ilość pytań</string>
+    <string name="start_quiz">Rozpocznij quiz</string>
+    <string name="log_out">Wyloguj się</string>
+    <string name="wizard">Kreator</string>
+    <string name="save">Zapisz</string>
+    <string name="lecture_no">Numer wykładu</string>
+    <string name="field_is_required">Pole jest wymagane</string>
+    <string name="bad_email_format">Zły format email</string>
+    <string name="bad_password_format"><![CDATA[Użyj [az][AZ][0-9][@#$%^&+=]]]></string>
 </resources>

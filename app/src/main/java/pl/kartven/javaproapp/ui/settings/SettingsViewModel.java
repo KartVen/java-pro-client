@@ -9,6 +9,7 @@ import pl.kartven.javaproapp.utils.utility.SessionManager;
 
 @HiltViewModel
 public class SettingsViewModel extends ViewModel {
+
     private final SessionManager sessionManager;
 
     @Inject

@@ -11,9 +11,10 @@
         android:id="@+id/main_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/content_padding"
+        android:layout_marginHorizontal="@dimen/common__space_size"
         android:layout_marginTop="@dimen/top_bar_min_height"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name_short"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,14 +24,13 @@
         android:id="@+id/main_btn"
         android:layout_width="@dimen/main_button_size"
         android:layout_height="@dimen/main_button_size"
-        android:contentDescription="@string/next"
         android:background="@drawable/main_button_bg"
+        android:contentDescription="@string/next"
+        android:src="@drawable/main_button_src"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/main_button_src"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_image_view" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

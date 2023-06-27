@@ -7,9 +7,6 @@ import androidx.annotation.NonNull;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.function.BiConsumer;
-
-import pl.kartven.javaproapp.utils.resource.Resource;
 
 public class ListUtils {
     private ListUtils() {

@@ -9,10 +9,11 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import pl.kartven.javaproapp.data.MainRepository;
 import pl.kartven.javaproapp.data.model.domain.QuizDomain;
-import pl.kartven.javaproapp.utils.resource.Resource;
+import pl.kartven.javaproapp.utils.utility.Resource;
 
 @HiltViewModel
 public class QuizzesFragmentViewModel extends ViewModel {
+
     private MainRepository mainRepository;
 
     @Inject

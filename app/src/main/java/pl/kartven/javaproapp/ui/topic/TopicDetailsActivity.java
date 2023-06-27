@@ -10,7 +10,6 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import dagger.hilt.android.AndroidEntryPoint;
 import io.vavr.control.Option;
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
@@ -20,12 +19,11 @@ import pl.kartven.javaproapp.ui.topic.fragment.CodesFragment;
 import pl.kartven.javaproapp.ui.topic.fragment.LinksFragment;
 import pl.kartven.javaproapp.ui.topic.fragment.QuizzesFragment;
 import pl.kartven.javaproapp.ui.topic.fragment.SlidesFragment;
-import pl.kartven.javaproapp.utils.base.BaseActivity;
+import pl.kartven.javaproapp.utils.utility.BaseActivity;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.Constant;
 import pl.kartven.javaproapp.utils.utility.State;
 
-@AndroidEntryPoint
 public class TopicDetailsActivity extends BaseActivity {
 
     private ActivityTopicDetailsBinding binding;

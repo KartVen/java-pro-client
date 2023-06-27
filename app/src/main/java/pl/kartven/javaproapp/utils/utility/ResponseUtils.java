@@ -3,7 +3,6 @@ package pl.kartven.javaproapp.utils.utility;
 import androidx.lifecycle.MutableLiveData;
 
 import io.vavr.control.Either;
-import pl.kartven.javaproapp.utils.resource.Resource;
 import retrofit2.Response;
 
 public class ResponseUtils {

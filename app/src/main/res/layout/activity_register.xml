@@ -10,146 +10,201 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/common__space_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/register_tv_headline"
-            android:layout_width="wrap_content"
+            android:id="@+id/register_tv"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:paddingBottom="@dimen/auth__space_size"
             android:text="@string/sign_up"
-            android:textColor="@color/white"
-            android:textSize="50sp"
+            android:textAlignment="center"
+            android:textColor="?colorOnPrimary"
+            android:textSize="45sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/register_tv_nickname"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/register_linear_nickname_wrapper"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/nickname"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/register_tv_headline"
-            app:layout_constraintTop_toBottomOf="@id/register_tv_headline" />
+            android:layout_marginHorizontal="@dimen/auth__space_size"
+            android:layout_marginTop="@dimen/auth_linear_margin_top"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@id/register_tv"
+            app:layout_constraintTop_toBottomOf="@id/register_tv">
 
-        <EditText
-            android:id="@+id/register_et_nickname"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16sp"
-            android:layout_marginEnd="32dp"
-            android:autofillHints="emailAddress"
-            android:background="@drawable/login_edittext_bg"
-            android:ems="10"
-            android:hint="@string/nickname"
-            android:inputType="textEmailAddress"
-            android:labelFor="@id/register_tv_email"
-            android:padding="8dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/light_gray"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/register_tv_nickname"
-            app:layout_constraintTop_toBottomOf="@id/register_tv_nickname" />
+            <TextView
+                android:id="@+id/register_tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nickname"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common__text_h3"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/register_tv_email"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/register_et_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/auth_input_margin_top"
+                android:autofillHints="name"
+                android:background="@drawable/auth_input_bg"
+                android:drawableStart="@drawable/auth_person_src"
+                android:drawablePadding="@dimen/auth_et_drawable_padding"
+                android:ems="10"
+                android:hint="@string/nickname"
+                android:inputType="text"
+                android:labelFor="@id/register_tv_email"
+                android:padding="@dimen/auth_input_padding"
+                android:textColor="?colorOnPrimary"
+                android:textColorHint="@color/light_gray"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/register_tv_nickname_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/field_is_required"
+                android:textColor="@color/red"
+                android:textSize="@dimen/auth_tv_info_text"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/register_linear_email_wrapper"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/email"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/register_et_nickname"
-            app:layout_constraintTop_toBottomOf="@id/register_et_nickname" />
+            android:layout_marginHorizontal="@dimen/auth__space_size"
+            android:layout_marginTop="@dimen/auth_linear_margin_top"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@id/register_tv"
+            app:layout_constraintTop_toBottomOf="@id/register_linear_nickname_wrapper">
 
-        <EditText
-            android:id="@+id/register_et_email"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16sp"
-            android:layout_marginEnd="32dp"
-            android:autofillHints="emailAddress"
-            android:background="@drawable/login_edittext_bg"
-            android:ems="10"
-            android:hint="@string/email_example_com"
-            android:inputType="textEmailAddress"
-            android:labelFor="@id/register_tv_email"
-            android:padding="8dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/light_gray"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/register_tv_email"
-            app:layout_constraintTop_toBottomOf="@id/register_tv_email" />
+            <TextView
+                android:id="@+id/register_tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common__text_h3"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/register_tv_password"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/register_et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/auth_input_margin_top"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/auth_input_bg"
+                android:drawableStart="@drawable/auth_alternate_email_src"
+                android:drawablePadding="@dimen/auth_et_drawable_padding"
+                android:ems="10"
+                android:hint="@string/email_example_com"
+                android:inputType="textEmailAddress"
+                android:labelFor="@id/register_tv_email"
+                android:padding="@dimen/auth_input_padding"
+                android:textColor="?colorOnPrimary"
+                android:textColorHint="@color/light_gray"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/register_tv_email_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/field_is_required"
+                android:textColor="@color/red"
+                android:textSize="@dimen/auth_tv_info_text"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/register_linear_password_wrapper"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/password"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/register_tv_headline"
-            app:layout_constraintTop_toBottomOf="@+id/register_et_email" />
+            android:layout_marginHorizontal="@dimen/auth__space_size"
+            android:layout_marginTop="@dimen/auth_linear_margin_top"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@id/register_tv"
+            app:layout_constraintTop_toBottomOf="@+id/register_linear_email_wrapper">
 
-        <EditText
-            android:id="@+id/register_et_password"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16sp"
-            android:layout_marginEnd="32dp"
-            android:autofillHints="password"
-            android:background="@drawable/login_edittext_bg"
-            android:ems="10"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:labelFor="@id/register_tv_password"
-            android:padding="8dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/light_gray"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/register_tv_password"
-            app:layout_constraintTop_toBottomOf="@id/register_tv_password" />
+            <TextView
+                android:id="@+id/register_tv_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/password"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common__text_h3"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/register_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/auth_input_margin_top"
+                android:autofillHints="password"
+                android:background="@drawable/auth_input_bg"
+                android:drawableStart="@drawable/auth_lock_src"
+                android:drawablePadding="@dimen/auth_et_drawable_padding"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:labelFor="@id/register_tv_password"
+                android:padding="@dimen/auth_input_padding"
+                android:textColor="?colorOnPrimary"
+                android:textColorHint="@color/light_gray"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/register_tv_password_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/field_is_required"
+                android:textColor="@color/red"
+                android:textSize="@dimen/auth_tv_info_text"
+                android:visibility="gone" />
+
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/confirm_btn"
             style="Widget.Button"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/auth__space_size"
             android:layout_marginTop="48dp"
             android:background="@color/white"
             android:foreground="?selectableItemBackground"
+            android:padding="@dimen/auth_input_padding"
             android:text="@string/sign_up"
             android:textColor="@color/dark_blue"
-            android:textSize="20sp"
+            android:textSize="@dimen/common__text_h3"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/register_et_password"
-            app:layout_constraintStart_toStartOf="@id/register_et_password"
-            app:layout_constraintTop_toBottomOf="@id/register_et_password" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/register_linear_password_wrapper" />
 
         <TextView
             android:id="@+id/register_tv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
             android:text="@string/back"
             android:textColor="@color/white"
-            android:layout_marginTop="32dp"
-            android:textSize="16sp"
+            android:textSize="@dimen/common__text_h4"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/register_et_password"
-            app:layout_constraintStart_toStartOf="@id/register_et_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/confirm_btn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

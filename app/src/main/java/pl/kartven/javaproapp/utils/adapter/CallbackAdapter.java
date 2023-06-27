@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import io.vavr.control.Either;
-import pl.kartven.javaproapp.utils.resource.Resource;
+import pl.kartven.javaproapp.utils.utility.Resource;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

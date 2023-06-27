@@ -20,7 +20,8 @@ import pl.kartven.javaproapp.data.model.domain.QuizDomain;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.FragmentQuizzesBinding;
 import pl.kartven.javaproapp.ui.topic.fragment.adapter.QuizListAdapter;
-import pl.kartven.javaproapp.utils.resource.Resource;
+import pl.kartven.javaproapp.ui.topic.quiz.QuizDetailsActivity;
+import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.Constant;
 import pl.kartven.javaproapp.utils.utility.ListUtils;
@@ -76,7 +77,7 @@ public class QuizzesFragment extends Fragment {
     private void setAdapter(RecyclerView recyclerView, Resource<List<QuizDomain>> data) {
         QuizListAdapter adapter = new QuizListAdapter(ListUtils.extractList(data, requireContext()));
         adapter.setItemClicked((model, position) ->
-                ActivityUtils.goToActivity(requireContext(), null, intent -> {
+                ActivityUtils.goToActivity(requireContext(), QuizDetailsActivity.class, intent -> {
                     //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra(Constant.Extra.QUIZ_MODEL, model);
                 }));

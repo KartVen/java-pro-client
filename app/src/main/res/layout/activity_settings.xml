@@ -63,7 +63,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="@dimen/content_padding"
+            android:paddingHorizontal="@dimen/common__space_size"
+            android:paddingVertical="@dimen/common__space_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/settings_layout_header">
@@ -72,7 +73,8 @@
                 android:id="@+id/settings_card_view_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/content_padding"
+                android:layout_marginHorizontal="@dimen/common__space_size"
+                android:layout_marginBottom="8dp"
                 android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 app:cardCornerRadius="5dp"
@@ -88,54 +90,35 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="@color/light_gray"
-                        android:contentDescription="@string/lecture"
+                        android:contentDescription="@string/log_out"
                         android:padding="2dp"
-                        android:src="@drawable/topic_appbar_quiz_src"
+                        android:src="@drawable/settings_logout_src"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/topic_d_quizzes_rv_tv_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:orientation="vertical"
+                        android:layout_marginTop="2sp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/log_out"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/topic_d_quizzes_rv_right_arrow"
                         app:layout_constraintStart_toEndOf="@id/topic_d_quizzes_rv_image_view"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/topic_d_quizzes_rv_tv_title"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2sp"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="@string/title"
-                            android:textColor="@color/dark_blue"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/topic_d_quizzes_rv_tv_desc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2sp"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="@string/description"
-                            android:textColor="@color/dark_blue"
-                            android:textSize="14sp" />
-
-                    </LinearLayout>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/topic_d_quizzes_rv_right_arrow"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:contentDescription="@string/quiz"
-                        android:foreground="?selectableItemBackground"
                         android:padding="2dp"
                         android:src="@drawable/main_rv_arrow_src"
                         app:layout_constraintBottom_toBottomOf="parent"

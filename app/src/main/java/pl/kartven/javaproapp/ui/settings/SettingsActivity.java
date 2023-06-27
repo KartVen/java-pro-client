@@ -1,20 +1,15 @@
 package pl.kartven.javaproapp.ui.settings;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import pl.kartven.javaproapp.databinding.ActivityProfileBinding;
 import pl.kartven.javaproapp.databinding.ActivitySettingsBinding;
 import pl.kartven.javaproapp.ui.auth.LoginActivity;
-import pl.kartven.javaproapp.ui.profile.ProfileViewModel;
-import pl.kartven.javaproapp.utils.base.BaseActivity;
+import pl.kartven.javaproapp.utils.utility.BaseActivity;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 
 public class SettingsActivity extends BaseActivity {
 
     private ActivitySettingsBinding binding;
-
     private SettingsViewModel viewModel;
 
     @Override

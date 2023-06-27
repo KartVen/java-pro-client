@@ -62,8 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/header_nav_padding"
-                android:paddingHorizontal="@dimen/content_padding"
-                android:paddingBottom="@dimen/content_padding">
+                android:paddingHorizontal="@dimen/common__space_size"
+                android:paddingBottom="@dimen/common__space_size">
 
                 <TextView
                     android:id="@+id/link_view_tv_header_name"
@@ -74,7 +74,7 @@
                     android:text="@string/example_name"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/content_h2"
+                    android:textSize="@dimen/common__text_h3"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

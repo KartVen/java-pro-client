@@ -1,9 +1,205 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.topic.quiz.QuizDetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/quiz_d_layout_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_blue"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/header_nav_padding">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/quiz_d_header_back_btn_iv"
+                    android:layout_width="@dimen/header_nav_btn_size"
+                    android:layout_height="@dimen/header_nav_btn_size"
+                    android:layout_marginStart="@dimen/header_nav_btn_margin"
+                    android:layout_marginTop="@dimen/header_nav_btn_margin"
+                    android:clickable="true"
+                    android:contentDescription="@string/back"
+                    android:foreground="?selectableItemBackground"
+                    android:src="@drawable/common_back_arrow_src"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/quiz_d_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="@string/test_details"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/header_nav_label_textSize"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/quiz_d_header_back_btn_iv"
+                    app:layout_constraintTop_toTopOf="@id/quiz_d_header_back_btn_iv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/header_nav_padding"
+                android:padding="@dimen/common__space_size">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/quiz_d_image_view_2"
+                    android:layout_width="144dp"
+                    android:layout_height="144dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/tests"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/quiz_d_linear_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common__space_size"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quiz_d_image_view_2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title"
+                        android:textAlignment="center"
+                        android:textColor="@color/darker_grey"
+                        android:textSize="@dimen/common__text_h3" />
+
+                    <TextView
+                        android:id="@+id/quiz_d_tv_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/example_name"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:textSize="@dimen/common__text_h2"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/quiz_d_linear_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common__space_size"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quiz_d_linear_title">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/description"
+                        android:textAlignment="center"
+                        android:textColor="@color/darker_grey"
+                        android:textSize="@dimen/common__text_h3" />
+
+                    <TextView
+                        android:id="@+id/quiz_d_tv_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/example_desc"
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common__text_h2"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/quiz_d_linear_que"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common__space_size"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quiz_d_linear_desc">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/que_amount"
+                        android:textAlignment="center"
+                        android:textColor="@color/darker_grey"
+                        android:textSize="@dimen/common__text_h3" />
+
+                    <TextView
+                        android:id="@+id/quiz_d_tv_que"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="none"
+                        android:maxLines="1"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/XX"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common__text_h2"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:padding="@dimen/common__space_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/quiz_d_btn_start_quiz"
+                    style="Widget.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:foreground="?selectableItemBackground"
+                    android:text="@string/start_quiz"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

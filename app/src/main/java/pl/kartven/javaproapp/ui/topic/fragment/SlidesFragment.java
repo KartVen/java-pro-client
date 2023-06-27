@@ -10,10 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.databinding.FragmentSlidesBinding;
 import pl.kartven.javaproapp.ui.topic.fragment.adapter.SlideListViewPagerAdapter;
 
+@AndroidEntryPoint
 public class SlidesFragment extends Fragment {
 
     private FragmentSlidesBinding binding;
@@ -21,6 +25,7 @@ public class SlidesFragment extends Fragment {
             R.drawable.java_logo, R.drawable.java_logo, R.drawable.java_logo, R.drawable.java_logo, R.drawable.java_logo, R.drawable.java_logo, R.drawable.java_logo, R.drawable.java_logo
     };
 
+    @Inject
     public SlidesFragment() {
         // Required empty public constructor
     }
@@ -33,7 +38,7 @@ public class SlidesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentSlidesBinding.inflate(inflater, container, false);
 
-        ViewPager viewPager = binding.slidesFragmentViewPager;
+        ViewPager viewPager = binding.fragmentSlidesVp;
         viewPager.setAdapter(
                 new SlideListViewPagerAdapter(requireActivity(), images)
         );

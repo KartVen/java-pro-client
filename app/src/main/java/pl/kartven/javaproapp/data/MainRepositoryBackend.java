@@ -14,7 +14,7 @@ import pl.kartven.javaproapp.data.model.domain.QuizDetailsDomain;
 import pl.kartven.javaproapp.data.model.domain.QuizDomain;
 import pl.kartven.javaproapp.data.model.domain.SectionDomain;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
-import pl.kartven.javaproapp.utils.resource.Resource;
+import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ResponseUtils;
 import pl.kartven.javaproapp.utils.utility.SessionManager;
 

@@ -13,8 +13,8 @@ public class SessionManager {
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
     private static final String AUTH_BEARER_PREFIX = "Bearer ";
 
-    private SharedPreferences sharedPreferences;
-    private Gson gson;
+    private final SharedPreferences sharedPreferences;
+    private final Gson gson;
 
     @Inject
     public SessionManager(Context context, Gson gson) {
@@ -24,17 +24,17 @@ public class SessionManager {
 
     public void saveUser(User user) {
         String json = gson.toJson(user);
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor
+        sharedPreferences.edit()
                 .putString(KEY_USER, json)
                 .putBoolean(KEY_IS_LOGGED_IN, true)
                 .apply();
     }
 
-    public User getUser() {
+    public Resource<User> getUser() {
         String json = sharedPreferences.getString(KEY_USER, null);
-        return gson.fromJson(json, User.class);
+        return isLoggedIn() ?
+                new Resource.Success<>(gson.fromJson(json, User.class)) :
+                new Resource.Error<>("");
     }
 
     public void clear() {
@@ -48,19 +48,33 @@ public class SessionManager {
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
     }
 
-    public String createAuthHeader() {
-        return isLoggedIn() ? AUTH_BEARER_PREFIX + getUser().bearerToken : "";
-    }
-
     public static class User {
         private final String nickname;
+        private final String email;
         private final String bearerToken;
         private final String refreshToken;
 
-        public User(String nickname, String bearerToken, String refreshToken) {
+        public User(String nickname, String email, String bearerToken, String refreshToken) {
             this.nickname = nickname;
+            this.email = email;
             this.bearerToken = bearerToken;
             this.refreshToken = refreshToken;
+        }
+
+        public String getNickname() {
+            return nickname;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public String getBearerToken() {
+            return bearerToken;
+        }
+
+        public String getRefreshToken() {
+            return refreshToken;
         }
     }
 }

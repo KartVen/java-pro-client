@@ -21,12 +21,12 @@ import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.CodeDomain;
 import pl.kartven.javaproapp.data.model.domain.SectionDomain;
 import pl.kartven.javaproapp.utils.creator.UIElementCreator;
-import pl.kartven.javaproapp.utils.listener.RVItemExpand;
+import pl.kartven.javaproapp.utils.listener.RVItemExpandListener;
 
 public class SectionCodesListAdapter extends RecyclerView.Adapter<SectionCodesListAdapter.ViewHolder> {
 
     private List<SectionDomainExpandable> data;
-    protected RVItemExpand<SectionDomain, List<CodeDomain>> rvItemExpand;
+    protected RVItemExpandListener<SectionDomain, List<CodeDomain>> rvItemExpandListener;
     private Context context;
 
     public SectionCodesListAdapter(List<SectionDomain> data) {
@@ -58,12 +58,12 @@ public class SectionCodesListAdapter extends RecyclerView.Adapter<SectionCodesLi
         holder.setId(item.getId());
         holder.setName(item.getName());
         holder.itemView.setOnClickListener(view -> {
-            if (rvItemExpand == null) return;
+            if (rvItemExpandListener == null) return;
             if (item.isExpandable) {
                 holder.expandableArrowImageView.setImageResource(R.drawable.common_expand_more_src);
                 holder.expandableLayout.setVisibility(View.GONE);
             } else {
-                List<CodeDomain> codeDomains = rvItemExpand.onExpand(item, position);
+                List<CodeDomain> codeDomains = rvItemExpandListener.onExpand(item, position);
                 if (item.codesList == null || item.codesList.size() != codeDomains.size()) {
                     item.setCodesList(codeDomains);
                     createCodesElements(holder.expandableLinear, item);
@@ -95,8 +95,8 @@ public class SectionCodesListAdapter extends RecyclerView.Adapter<SectionCodesLi
         notifyDataSetChanged();
     }
 
-    public void setItemExpandEvent(RVItemExpand<SectionDomain, List<CodeDomain>> rvItemExpand) {
-        this.rvItemExpand = rvItemExpand;
+    public void setItemExpandEvent(RVItemExpandListener<SectionDomain, List<CodeDomain>> rvItemExpandListener) {
+        this.rvItemExpandListener = rvItemExpandListener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

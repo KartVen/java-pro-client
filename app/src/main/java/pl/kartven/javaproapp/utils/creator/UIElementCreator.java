@@ -27,11 +27,11 @@ public class UIElementCreator {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
-        layoutParams.setMargins(0, resources.getDimensionPixelSize(R.dimen.content_padding), 0, 0);
+        layoutParams.setMargins(0, resources.getDimensionPixelSize(R.dimen.common__space_size), 0, 0);
         textView.setLayoutParams(layoutParams);
         textView.setText(text);
         textView.setTextColor(resources.getColor(R.color.dark_blue, context.getTheme()));
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, convertSpToPixels(resources.getDimension(R.dimen.content_h2)));
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, convertSpToPixels(resources.getDimension(R.dimen.common__text_h3)));
         textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
         return textView;
     }
@@ -43,10 +43,10 @@ public class UIElementCreator {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
-        layoutParams.setMargins(0, resources.getDimensionPixelSize(R.dimen.content_padding), 0, 0);
+        layoutParams.setMargins(0, resources.getDimensionPixelSize(R.dimen.common__space_size), 0, 0);
         webView.setLayoutParams(layoutParams);
         webView.setBackgroundColor(resources.getColor(R.color.light_gray, context.getTheme()));
-        webView.setPadding(0, resources.getDimensionPixelSize(R.dimen.content_padding), 0, context.getResources().getDimensionPixelSize(R.dimen.content_padding));
+        webView.setPadding(0, resources.getDimensionPixelSize(R.dimen.common__space_size), 0, context.getResources().getDimensionPixelSize(R.dimen.common__space_size));
         webView.loadDataWithBaseURL(
                 null,
                 "<html><body style=\"font-size: 14px;\">" + text + "<br></body></html>",

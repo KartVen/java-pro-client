@@ -10,11 +10,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 import pl.kartven.javaproapp.data.MainRepository;
 import pl.kartven.javaproapp.data.model.domain.LinkDomain;
 import pl.kartven.javaproapp.data.model.domain.SectionDomain;
-import pl.kartven.javaproapp.utils.resource.Resource;
+import pl.kartven.javaproapp.utils.utility.Resource;
 
 @HiltViewModel
 public class LinksFragmentViewModel extends ViewModel {
-    private MainRepository mainRepository;
+    private final MainRepository mainRepository;
 
     @Inject
     public LinksFragmentViewModel(MainRepository mainRepository) {

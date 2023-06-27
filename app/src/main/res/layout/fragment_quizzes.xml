@@ -1,61 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.topic.fragment.QuizzesFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/bottom_nav_height">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/content_padding">
+            android:paddingBottom="@dimen/bottom_nav_height">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tests"
-                android:textColor="@color/dark_blue"
-                android:textSize="@dimen/content_h1"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/common__space_size">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment_quizzes_rv"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tests"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/common__text_h2"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_quizzes_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/common__space_size" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_quizzes_new_quiz_linear"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/content_padding" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/common__space_size">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/last_added_by_you"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/common__text_h2"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_quizzes_new_quiz_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/common__space_size" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/fragment_quizzes_new_quiz_linear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/content_padding">
+    </ScrollView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/last_added_by_you"
-                android:textColor="@color/dark_blue"
-                android:textSize="@dimen/content_h1"
-                android:textStyle="bold" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment_quizzes_new_quiz_rv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/content_padding" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</FrameLayout>
+</ScrollView>

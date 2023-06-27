@@ -1,7 +1,6 @@
 package pl.kartven.javaproapp.ui.topic.fragment.adapter;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,16 +23,15 @@ import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.LinkDomain;
 import pl.kartven.javaproapp.data.model.domain.SectionDomain;
 import pl.kartven.javaproapp.utils.creator.UIElementCreator;
-import pl.kartven.javaproapp.utils.listener.RVItemClick;
-import pl.kartven.javaproapp.utils.listener.RVItemExpand;
-import pl.kartven.javaproapp.utils.utility.ActivityUtils;
+import pl.kartven.javaproapp.utils.listener.RVItemClickListener;
+import pl.kartven.javaproapp.utils.listener.RVItemExpandListener;
 
 public class SectionLinksListAdapter extends RecyclerView.Adapter<SectionLinksListAdapter.ViewHolder> {
 
     private List<SectionDomainExpandable> data;
-    protected RVItemExpand<SectionDomain, List<LinkDomain>> rvItemExpand;
+    protected RVItemExpandListener<SectionDomain, List<LinkDomain>> rvItemExpandListener;
     private Context context;
-    protected RVItemClick<LinkDomain> rvNestedItemClick;
+    protected RVItemClickListener<LinkDomain> rvNestedItemClick;
     protected SectionLinksNestedListAdapter nestedAdapter;
 
     public SectionLinksListAdapter(List<SectionDomain> data) {
@@ -68,12 +66,12 @@ public class SectionLinksListAdapter extends RecyclerView.Adapter<SectionLinksLi
         holder.nestedRecyclerView.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext()));
         holder.nestedRecyclerView.setHasFixedSize(true);
         holder.itemView.setOnClickListener(view -> {
-            if (rvItemExpand == null) return;
+            if (rvItemExpandListener == null) return;
             if (item.isExpandable) {
                 holder.expandableArrowImageView.setImageResource(R.drawable.common_expand_more_src);
                 holder.expandableLayout.setVisibility(View.GONE);
             } else {
-                List<LinkDomain> linkDomains = rvItemExpand.onExpand(item, position);
+                List<LinkDomain> linkDomains = rvItemExpandListener.onExpand(item, position);
                 if (item.linksList == null || item.linksList.size() != linkDomains.size()) {
                     item.setLinksList(linkDomains);
                     nestedAdapter.updateList(linkDomains);
@@ -106,12 +104,12 @@ public class SectionLinksListAdapter extends RecyclerView.Adapter<SectionLinksLi
         notifyDataSetChanged();
     }
 
-    public void setItemExpandEvent(RVItemExpand<SectionDomain, List<LinkDomain>> rvItemExpand) {
-        this.rvItemExpand = rvItemExpand;
+    public void setItemExpandEvent(RVItemExpandListener<SectionDomain, List<LinkDomain>> rvItemExpandListener) {
+        this.rvItemExpandListener = rvItemExpandListener;
     }
 
-    public void setNestedItemClickEvent(RVItemClick<LinkDomain> rvItemClick) {
-        nestedAdapter.setItemClicked(rvItemClick);
+    public void setNestedItemClickEvent(RVItemClickListener<LinkDomain> rvItemClickListener) {
+        nestedAdapter.setItemClicked(rvItemClickListener);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

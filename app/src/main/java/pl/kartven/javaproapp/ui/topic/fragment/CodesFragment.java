@@ -19,9 +19,9 @@ import pl.kartven.javaproapp.data.model.domain.SectionDomain;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.FragmentCodesBinding;
 import pl.kartven.javaproapp.ui.topic.fragment.adapter.SectionCodesListAdapter;
-import pl.kartven.javaproapp.utils.base.BaseActivity;
-import pl.kartven.javaproapp.utils.resource.Resource;
+import pl.kartven.javaproapp.utils.utility.BaseActivity;
 import pl.kartven.javaproapp.utils.utility.ListUtils;
+import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.State;
 
 @AndroidEntryPoint

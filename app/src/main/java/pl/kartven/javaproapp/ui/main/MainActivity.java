@@ -1,11 +1,9 @@
 package pl.kartven.javaproapp.ui.main;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.StrictMode;
 
@@ -17,28 +15,29 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import dagger.hilt.android.AndroidEntryPoint;
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.ActivityMainBinding;
+import pl.kartven.javaproapp.ui.auth.LoginActivity;
 import pl.kartven.javaproapp.ui.main.adapter.TopicListAdapter;
 import pl.kartven.javaproapp.ui.profile.ProfileActivity;
 import pl.kartven.javaproapp.ui.settings.SettingsActivity;
 import pl.kartven.javaproapp.ui.topic.TopicDetailsActivity;
-import pl.kartven.javaproapp.utils.resource.Resource;
+import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
-import pl.kartven.javaproapp.utils.base.BaseActivity;
+import pl.kartven.javaproapp.utils.utility.BaseActivity;
 import pl.kartven.javaproapp.utils.utility.Constant;
 import pl.kartven.javaproapp.utils.utility.ListUtils;
 import pl.kartven.javaproapp.utils.utility.SessionManager;
 
-@AndroidEntryPoint
 public class MainActivity extends BaseActivity {
 
-    private MainViewModel viewModel;
-    @Inject
-    SessionManager sessionManager;
     private ActivityMainBinding binding;
+    private MainViewModel viewModel;
+
+    @Inject
+    public MainActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +51,19 @@ public class MainActivity extends BaseActivity {
 
         viewModel = initViewModel(MainViewModel.class);
 
-        initContent();
         initActions();
+        initContent();
     }
 
     @Override
     protected void initContent() {
         super.initContent();
+        SessionManager.User user = viewModel.getUser().onError(s ->
+                handleError(false, () -> ActivityUtils.goToActivity(this, LoginActivity.class))
+        ).getData();
+        binding.mainLabel.setText(
+                String.format(binding.mainLabel.getText().toString(), user.getNickname())
+        );
         initRecyclerView();
     }
 
@@ -75,7 +80,7 @@ public class MainActivity extends BaseActivity {
         bottomNavView.getMenu().getItem(2).setEnabled(false);
         bottomNavView.setBackground(null);
         bottomNavView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.main_menu_profile:
                     ActivityUtils.goToActivity(this, ProfileActivity.class);
                     break;

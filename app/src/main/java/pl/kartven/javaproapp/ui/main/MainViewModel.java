@@ -9,15 +9,18 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import pl.kartven.javaproapp.data.MainRepository;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
-import pl.kartven.javaproapp.utils.resource.Resource;
+import pl.kartven.javaproapp.utils.utility.Resource;
+import pl.kartven.javaproapp.utils.utility.SessionManager;
 
 @HiltViewModel
 public class MainViewModel extends ViewModel {
     private final MainRepository mainRepository;
+    private final SessionManager sessionManager;
 
     @Inject
-    public MainViewModel(MainRepository mainRepository) {
+    public MainViewModel(MainRepository mainRepository, SessionManager sessionManager) {
         this.mainRepository = mainRepository;
+        this.sessionManager = sessionManager;
     }
 
     public Resource<List<TopicDomain>> getTopics() {
@@ -26,6 +29,10 @@ public class MainViewModel extends ViewModel {
 
     public Resource<List<TopicDomain>> getMyTopics() {
         return mainRepository.getMyTopics().getValue();
+    }
+
+    public Resource<SessionManager.User> getUser() {
+        return sessionManager.getUser();
     }
 }
 

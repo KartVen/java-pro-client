@@ -18,11 +18,10 @@ import dagger.hilt.android.AndroidEntryPoint;
 import pl.kartven.javaproapp.data.model.domain.SectionDomain;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.FragmentLinksBinding;
-import pl.kartven.javaproapp.ui.topic.fragment.adapter.SectionCodesListAdapter;
 import pl.kartven.javaproapp.ui.topic.fragment.adapter.SectionLinksListAdapter;
 import pl.kartven.javaproapp.ui.topic.link.LinkViewActivity;
-import pl.kartven.javaproapp.utils.base.BaseActivity;
-import pl.kartven.javaproapp.utils.resource.Resource;
+import pl.kartven.javaproapp.utils.utility.BaseActivity;
+import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.Constant;
 import pl.kartven.javaproapp.utils.utility.ListUtils;
@@ -47,7 +46,7 @@ public class LinksFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = BaseActivity.initViewModel(this, LinksFragmentViewModel.class);
+        viewModel = BaseActivity.initViewModel(requireActivity(), LinksFragmentViewModel.class);
     }
 
     @Override

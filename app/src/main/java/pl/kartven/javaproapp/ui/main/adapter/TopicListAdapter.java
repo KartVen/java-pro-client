@@ -15,12 +15,12 @@ import java.util.Locale;
 
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
-import pl.kartven.javaproapp.utils.listener.RVItemClick;
+import pl.kartven.javaproapp.utils.listener.RVItemClickListener;
 
 public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.ViewHolder> {
 
     private List<TopicDomain> data;
-    protected RVItemClick<TopicDomain> rvItemClick;
+    protected RVItemClickListener<TopicDomain> rvItemClickListener;
 
     public TopicListAdapter(List<TopicDomain> data) {
         this.data = data;
@@ -43,8 +43,8 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.View
         holder.setTitle(item.getName());
         holder.setDescription(item.getDescription());
         holder.itemView.setOnClickListener(view -> {
-            if (rvItemClick != null) {
-                rvItemClick.onClick(item, position);
+            if (rvItemClickListener != null) {
+                rvItemClickListener.onClick(item, position);
             }
         });
     }
@@ -61,8 +61,8 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.View
         notifyDataSetChanged();
     }
 
-    public void setItemClicked(RVItemClick<TopicDomain> rvItemClick) {
-        this.rvItemClick = rvItemClick;
+    public void setItemClicked(RVItemClickListener<TopicDomain> rvItemClickListener) {
+        this.rvItemClickListener = rvItemClickListener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

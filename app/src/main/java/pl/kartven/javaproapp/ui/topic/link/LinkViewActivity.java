@@ -1,21 +1,15 @@
 package pl.kartven.javaproapp.ui.topic.link;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import dagger.hilt.android.AndroidEntryPoint;
 import io.vavr.control.Option;
-import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.LinkDomain;
-import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.ActivityLinkViewBinding;
-import pl.kartven.javaproapp.utils.base.BaseActivity;
+import pl.kartven.javaproapp.utils.utility.BaseActivity;
 import pl.kartven.javaproapp.utils.utility.Constant;
 
-@AndroidEntryPoint
 public class LinkViewActivity extends BaseActivity {
 
     private ActivityLinkViewBinding binding;

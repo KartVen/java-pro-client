@@ -2,15 +2,12 @@ package pl.kartven.javaproapp.ui;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import dagger.hilt.android.AndroidEntryPoint;
 import pl.kartven.javaproapp.databinding.ActivityIntroBinding;
 import pl.kartven.javaproapp.ui.auth.LoginActivity;
+import pl.kartven.javaproapp.utils.utility.BaseActivity;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 
-@AndroidEntryPoint
-public class IntroActivity extends AppCompatActivity {
+public class IntroActivity extends BaseActivity {
 
     private ActivityIntroBinding binding;
 
@@ -22,7 +19,9 @@ public class IntroActivity extends AppCompatActivity {
         initActions();
     }
 
-    private void initActions() {
+    @Override
+    protected void initActions() {
+        super.initActions();
         binding.mainBtn.setOnClickListener(v -> ActivityUtils.goToActivity(this, LoginActivity.class));
     }
 }

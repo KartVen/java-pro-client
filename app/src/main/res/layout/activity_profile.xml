@@ -17,7 +17,7 @@
         <LinearLayout
             android:id="@+id/profile_layout_header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/dark_blue"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,43 +61,79 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/header_nav_padding"
-                android:paddingHorizontal="@dimen/content_padding"
-                android:paddingBottom="@dimen/content_padding">
+                android:padding="@dimen/common__space_size">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_image_view_2"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
+                    android:layout_width="@dimen/profile_avatar_size"
+                    android:layout_height="@dimen/profile_avatar_size"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/warlock"
+                    android:src="@drawable/computer"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/profile_text_view_1"
+                <LinearLayout
+                    android:id="@+id/profile_linear_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/example_name"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/content_h2"
-                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/common__space_size"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/profile_image_view_2" />
+                    app:layout_constraintTop_toBottomOf="@id/profile_image_view_2">
 
-                <TextView
-                    android:id="@+id/profile_text_view_2"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/username"
+                        android:textAlignment="center"
+                        android:textColor="@color/darker_grey"
+                        android:textSize="@dimen/common__text_h3" />
+
+                    <TextView
+                        android:id="@+id/profile_tv_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/example_name"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common__text_h2"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/profile_linear_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/email_example_com"
-                    android:textAlignment="center"
-                    android:textColor="@color/darker_grey"
+                    android:layout_marginTop="@dimen/common__space_size"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/profile_text_view_1" />
+                    app:layout_constraintTop_toBottomOf="@id/profile_linear_name">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email"
+                        android:textAlignment="center"
+                        android:textColor="@color/darker_grey"
+                        android:textSize="@dimen/common__text_h3" />
+
+                    <TextView
+                        android:id="@+id/profile_tv_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/email_example_com"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common__text_h2"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

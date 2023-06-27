@@ -2,36 +2,41 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.topic.fragment.LinksFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/bottom_nav_height">
+            android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/links"
-                android:textColor="@color/dark_blue"
-                android:textSize="@dimen/content_h1"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/bottom_nav_height">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment_links_rv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/content_padding" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/common_tv_section_margin_bottom"
+                    android:text="@string/links"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/common__text_h2"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragment_links_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
-
+    </ScrollView>
 </FrameLayout>

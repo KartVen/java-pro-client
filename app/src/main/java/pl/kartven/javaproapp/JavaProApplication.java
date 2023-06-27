@@ -17,7 +17,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import pl.kartven.javaproapp.data.BackendApi;
 import pl.kartven.javaproapp.data.MainRepository;
-import pl.kartven.javaproapp.data.MainRepositoryBackend;
 import pl.kartven.javaproapp.data.MainRepositoryMock;
 import pl.kartven.javaproapp.utils.utility.SessionManager;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -25,6 +24,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @SuppressWarnings("deprecated")
 @HiltAndroidApp
 public class JavaProApplication extends Application {
+    private final static ApiUrlType API_URL_TYPE = ApiUrlType.DORMITORY;
+
+    private enum ApiUrlType {
+        DORMITORY("http://192.168.10.104:8444"),
+        COMPANY("http://19.16.13.171:8444"),
+        PHONE("http://192.168.43.239:8444"),
+        ALWAYSDATA("http://krystianus.alwaysdata.net");
+
+        private final String url;
+
+        ApiUrlType(String url) {
+            this.url = url;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+    }
 
     @Module
     @InstallIn(SingletonComponent.class)
@@ -42,7 +59,7 @@ public class JavaProApplication extends Application {
             }
 
             return new retrofit2.Retrofit.Builder()
-                    .baseUrl(BackendApi.API.getUrl())
+                    .baseUrl(API_URL_TYPE.url)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build()
