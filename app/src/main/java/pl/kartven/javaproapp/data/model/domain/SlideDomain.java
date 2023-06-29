@@ -1,6 +1,10 @@
 package pl.kartven.javaproapp.data.model.domain;
 
+import android.util.Base64;
+
 import java.io.Serializable;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import pl.kartven.javaproapp.data.model.api.SlideApi;
 
@@ -39,7 +43,15 @@ public class SlideDomain implements Serializable {
         this.imageBytes = imageBytes;
     }
 
+    public static List<SlideDomain> map(List<SlideApi> slideApis) {
+        return slideApis.stream().map(SlideDomain::map).collect(Collectors.toList());
+    }
+
     public static SlideDomain map(SlideApi slideApi) {
-        return new SlideDomain(slideApi.getId(), slideApi.getTitle(), slideApi.getContent());
+        return new SlideDomain(
+                slideApi.getId(),
+                slideApi.getTitle(),
+                Base64.decode(slideApi.getContent(), Base64.DEFAULT)
+        );
     }
 }

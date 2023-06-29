@@ -9,6 +9,7 @@ import io.vavr.control.Try;
 import pl.kartven.javaproapp.data.model.domain.QuizDetailsDomain;
 import pl.kartven.javaproapp.data.model.domain.QuizDomain;
 import pl.kartven.javaproapp.databinding.ActivityQuizDetailsBinding;
+import pl.kartven.javaproapp.ui.topic.quiz.answer.AnswerActivity;
 import pl.kartven.javaproapp.utils.utility.BaseActivity;
 import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
@@ -53,7 +54,7 @@ public class QuizDetailsActivity extends BaseActivity {
         super.initActions();
         binding.quizDHeaderBackBtnIv.setOnClickListener(v -> onBackPressed());
         binding.quizDBtnStartQuiz.setOnClickListener(v ->
-                ActivityUtils.goToActivity(this, null, intent -> {
+                ActivityUtils.goToActivity(this, AnswerActivity.class, intent -> {
 
                 })
         );

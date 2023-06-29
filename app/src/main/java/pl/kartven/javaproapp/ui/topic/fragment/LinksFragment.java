@@ -32,7 +32,6 @@ public class LinksFragment extends Fragment {
 
     private FragmentLinksBinding binding;
     private LinksFragmentViewModel viewModel;
-    private TopicDomain topic;
 
     @Inject
     public LinksFragment() {

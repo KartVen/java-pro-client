@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class SlideApi implements Serializable {
     private Long id;
     private String title;
-    private byte[] content;
+    private String content;
 
-    public SlideApi(Long id, String title, byte[] content) {
+    public SlideApi(Long id, String title, String content) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -29,11 +29,11 @@ public class SlideApi implements Serializable {
         this.title = title;
     }
 
-    public byte[] getContent() {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(byte[] content) {
+    public void setContent(String content) {
         this.content = content;
     }
 }

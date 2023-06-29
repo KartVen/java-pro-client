@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.topic.quiz.answer.AnswerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.stats.StatsActivity"
             android:exported="false" />
         <activity

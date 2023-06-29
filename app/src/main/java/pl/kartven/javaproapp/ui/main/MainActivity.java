@@ -24,6 +24,7 @@ import pl.kartven.javaproapp.ui.profile.ProfileActivity;
 import pl.kartven.javaproapp.ui.settings.SettingsActivity;
 import pl.kartven.javaproapp.ui.stats.StatsActivity;
 import pl.kartven.javaproapp.ui.topic.TopicDetailsActivity;
+import pl.kartven.javaproapp.utils.listener.RVItemClickListener;
 import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseActivity;
@@ -114,9 +115,11 @@ public class MainActivity extends BaseActivity {
 
     private void setAdapter(RecyclerView recyclerView, Resource<List<TopicDomain>> topics) {
         TopicListAdapter adapter = new TopicListAdapter(ListUtils.extractList(topics, this));
-        adapter.setItemClicked((model, position) ->
-                ActivityUtils.goToActivity(this, TopicDetailsActivity.class, intent -> intent.putExtra(Constant.Extra.TOPIC_MODEL, model))
-        );
+        adapter.setItemClicked((model, position) -> ActivityUtils.goToActivity(
+                MainActivity.this,
+                TopicDetailsActivity.class,
+                intent -> intent.putExtra(Constant.Extra.TOPIC_MODEL, model)
+        ));
         recyclerView.setAdapter(adapter);
     }
 }

@@ -21,6 +21,7 @@ import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.FragmentQuizzesBinding;
 import pl.kartven.javaproapp.ui.topic.fragment.adapter.QuizListAdapter;
 import pl.kartven.javaproapp.ui.topic.quiz.QuizDetailsActivity;
+import pl.kartven.javaproapp.utils.utility.BaseActivity;
 import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.Constant;
@@ -32,7 +33,6 @@ public class QuizzesFragment extends Fragment {
 
     private FragmentQuizzesBinding binding;
     private QuizzesFragmentViewModel viewModel;
-    private TopicDomain topic;
 
     @Inject
     public QuizzesFragment() {
@@ -46,7 +46,7 @@ public class QuizzesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = new ViewModelProvider(this).get(QuizzesFragmentViewModel.class);
+        viewModel = BaseActivity.initViewModel(this, QuizzesFragmentViewModel.class);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class QuizzesFragment extends Fragment {
         );
         setAdapter(recyclerView, viewModel.getQuizzesOfTopic(topicId));
 
-        RecyclerView recyclerViewNewQuiz = binding.fragmentQuizzesNewQuizRv;
+        RecyclerView recyclerViewNewQuiz = binding.fragmentQuizzesRvNew;
         recyclerViewNewQuiz.setLayoutManager(
                 new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false)
         );

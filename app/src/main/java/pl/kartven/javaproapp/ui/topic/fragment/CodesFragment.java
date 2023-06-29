@@ -56,7 +56,7 @@ public class CodesFragment extends Fragment {
     }
 
     private void initRecyclerView() {
-        RecyclerView recyclerViewSection = binding.fragmentCodesSectionRv;
+        RecyclerView recyclerViewSection = binding.fragmentCodesRv;
 
         recyclerViewSection.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         Resource<List<SectionDomain>> data = viewModel.getSectionsOfTopic(

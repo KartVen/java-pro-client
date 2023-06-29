@@ -15,14 +15,14 @@ public class LoginActivity extends FormTypeActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
         viewModel = initViewModel(LoginViewModel.class);
 
         if (viewModel.isUserLogged()) handleError(false,
                 () -> ActivityUtils.goToActivity(this, MainActivity.class)
         );
+
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         initActions();
     }
@@ -57,7 +57,10 @@ public class LoginActivity extends FormTypeActivity {
     }
 
     private void handleAuth() {
-        viewModel.login(binding.loginEtEmail.getText().toString());
+        viewModel.login(
+                binding.loginEtEmail.getText().toString(),
+                binding.loginEtPassword.getText().toString()
+        );
         ActivityUtils.goToActivity(this, MainActivity.class);
     }
 }

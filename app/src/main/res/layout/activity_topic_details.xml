@@ -111,12 +111,13 @@
         <FrameLayout
             android:id="@+id/topic_details_frame"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:paddingHorizontal="@dimen/common__space_size"
             android:paddingTop="@dimen/common__space_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/topic_details_layout_header" />
+            app:layout_constraintTop_toBottomOf="@id/topic_details_layout_header"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

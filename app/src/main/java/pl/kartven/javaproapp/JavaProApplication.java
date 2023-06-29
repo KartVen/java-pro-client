@@ -17,8 +17,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import pl.kartven.javaproapp.data.BackendApi;
 import pl.kartven.javaproapp.data.MainRepository;
-import pl.kartven.javaproapp.data.MainRepositoryMock;
+import pl.kartven.javaproapp.data.MainRepositoryBackend;
 import pl.kartven.javaproapp.utils.utility.SessionManager;
+import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @SuppressWarnings("deprecated")
@@ -46,30 +47,29 @@ public class JavaProApplication extends Application {
     @Module
     @InstallIn(SingletonComponent.class)
     public static class Bean {
+
         @Provides
         @Singleton
-        public BackendApi backendApi() {
+        public BackendApi backendApi(Context context) {
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
             if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-                logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-
+                logging.setLevel(HttpLoggingInterceptor.Level.BASIC);
                 httpClient.addInterceptor(logging);
             }
 
-            return new retrofit2.Retrofit.Builder()
+            /*int cacheSize = 10; //MB
+            Cache cache = new Cache(context.getCacheDir(), cacheSize * (1024 * 1024));
+            CacheInterceptor cacheInterceptor = new CacheInterceptor(cache);
+            httpClient.cache(cache).addInterceptor(cacheInterceptor);*/
+
+            return new Retrofit.Builder()
                     .baseUrl(API_URL_TYPE.url)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
                     .build()
                     .create(BackendApi.class);
-        }
-
-        @Provides
-        @Singleton
-        public SessionManager sessionManager(Context context, Gson gson) {
-            return new SessionManager(context, gson);
         }
 
         @Provides
@@ -92,8 +92,15 @@ public class JavaProApplication extends Application {
 
         @Provides
         @Singleton
+        public SessionManager sessionManager(Context context, Gson gson) {
+            return new SessionManager(context, gson);
+        }
+
+        @Provides
+        @Singleton
         public MainRepository mainRepository(BackendApi backendApi, SessionManager sessionManager) {
-            return new MainRepositoryMock();
+            //return new MainRepositoryMock();
+            return new MainRepositoryBackend(backendApi, sessionManager);
         }
     }
 }

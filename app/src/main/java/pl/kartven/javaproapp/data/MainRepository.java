@@ -5,16 +5,20 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
+import pl.kartven.javaproapp.data.model.api.AuthDto;
+import pl.kartven.javaproapp.data.model.api.request.LoginDto;
 import pl.kartven.javaproapp.data.model.domain.CodeDomain;
 import pl.kartven.javaproapp.data.model.domain.LinkDomain;
 import pl.kartven.javaproapp.data.model.domain.QuestionDomain;
 import pl.kartven.javaproapp.data.model.domain.QuizDetailsDomain;
 import pl.kartven.javaproapp.data.model.domain.QuizDomain;
 import pl.kartven.javaproapp.data.model.domain.SectionDomain;
+import pl.kartven.javaproapp.data.model.domain.SlideDomain;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.utils.utility.Resource;
 
 public abstract class MainRepository {
+    protected final MutableLiveData<Resource<AuthDto>> authData = new MutableLiveData<>(new Resource.Error<>(""));
     protected final MutableLiveData<Resource<List<TopicDomain>>> topics = new MutableLiveData<>(new Resource.Error<>(""));
     protected final MutableLiveData<Resource<List<TopicDomain>>> myTopics = new MutableLiveData<>(new Resource.Error<>(""));
     protected final MutableLiveData<Resource<List<SectionDomain>>> sectionsOfTopics = new MutableLiveData<>(new Resource.Error<>(""));
@@ -23,6 +27,9 @@ public abstract class MainRepository {
     protected final MutableLiveData<Resource<List<QuestionDomain>>> questionsOfQuiz = new MutableLiveData<>(new Resource.Error<>(""));
     protected final MutableLiveData<Resource<QuizDetailsDomain>> quizDetails = new MutableLiveData<>(new Resource.Error<>(""));
     protected final MutableLiveData<Resource<List<LinkDomain>>> linksOfSection = new MutableLiveData<>(new Resource.Error<>(""));
+    protected Resource<List<SlideDomain>> slidesOfTopic = new Resource.Error<>("");
+
+    public abstract LiveData<Resource<AuthDto>> getAuthData(LoginDto loginDto);
 
     public abstract LiveData<Resource<List<TopicDomain>>> getTopics();
 
@@ -39,4 +46,6 @@ public abstract class MainRepository {
     public abstract LiveData<Resource<QuizDetailsDomain>> getQuizDetails(Long id);
 
     public abstract LiveData<Resource<List<LinkDomain>>> getLinksOfSection(Long id);
+
+    public abstract Resource<List<SlideDomain>> getSlidesOfTopic(Long topicId, Integer page, Integer size);
 }

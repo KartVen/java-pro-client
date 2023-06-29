@@ -5,12 +5,15 @@ import androidx.lifecycle.LiveData;
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.kartven.javaproapp.data.model.api.AuthDto;
+import pl.kartven.javaproapp.data.model.api.request.LoginDto;
 import pl.kartven.javaproapp.data.model.domain.CodeDomain;
 import pl.kartven.javaproapp.data.model.domain.LinkDomain;
 import pl.kartven.javaproapp.data.model.domain.QuestionDomain;
 import pl.kartven.javaproapp.data.model.domain.QuizDetailsDomain;
 import pl.kartven.javaproapp.data.model.domain.QuizDomain;
 import pl.kartven.javaproapp.data.model.domain.SectionDomain;
+import pl.kartven.javaproapp.data.model.domain.SlideDomain;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.Resource.Success;
@@ -33,6 +36,17 @@ public class MainRepositoryMock extends MainRepository {
 
         topics.setValue(new Success<>(mock));
         return topics;
+    }
+
+    @Override
+    public LiveData<Resource<AuthDto>> getAuthData(LoginDto loginDto) {
+        authData.postValue(new Resource.Success<>(new AuthDto(
+                "kartven",
+                "krystian.kielbasa@hotmail.com",
+                "",
+                ""
+        )));
+        return authData;
     }
 
     @Override
@@ -125,5 +139,10 @@ public class MainRepositoryMock extends MainRepository {
 
         linksOfSection.setValue(new Success<>(mock));
         return linksOfSection;
+    }
+
+    @Override
+    public Resource<List<SlideDomain>> getSlidesOfTopic(Long topicId, Integer page, Integer size) {
+        return slidesOfTopic;
     }
 }

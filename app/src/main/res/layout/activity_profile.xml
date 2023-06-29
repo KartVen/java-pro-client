@@ -111,6 +111,7 @@
                     android:id="@+id/profile_tv_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="4dp"
                     android:text="@string/example_name"
                     android:textAlignment="center"
                     android:textSize="@dimen/common__text_h2" />
@@ -134,6 +135,7 @@
                     android:id="@+id/profile_tv_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="4dp"
                     android:text="@string/email_example_com"
                     android:textAlignment="center"
                     android:textSize="@dimen/common__text_h2" />

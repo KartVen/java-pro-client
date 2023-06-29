@@ -9,10 +9,12 @@ import pl.kartven.javaproapp.data.model.api.QuestionApi;
 import pl.kartven.javaproapp.data.model.api.QuizApi;
 import pl.kartven.javaproapp.data.model.api.QuizDetailsApi;
 import pl.kartven.javaproapp.data.model.api.SectionApi;
+import pl.kartven.javaproapp.data.model.api.SlideApi;
 import pl.kartven.javaproapp.data.model.api.TopicApi;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface BackendApi {
     @GET("api/topics")
@@ -49,7 +51,9 @@ public interface BackendApi {
     );
 
     @GET("api/topics/{id}/slides")
-    Call<List<LinkApi>> getSlidesOfTopic(
-            @Path("id") Long id
+    Call<List<SlideApi>> getSlidesOfTopic(
+            @Path("id") Long id,
+            @Query("page") Integer page,
+            @Query("size") Integer size
     );
 }
