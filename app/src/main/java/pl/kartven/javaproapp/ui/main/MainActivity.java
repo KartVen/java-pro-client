@@ -22,6 +22,7 @@ import pl.kartven.javaproapp.ui.auth.LoginActivity;
 import pl.kartven.javaproapp.ui.main.adapter.TopicListAdapter;
 import pl.kartven.javaproapp.ui.profile.ProfileActivity;
 import pl.kartven.javaproapp.ui.settings.SettingsActivity;
+import pl.kartven.javaproapp.ui.stats.StatsActivity;
 import pl.kartven.javaproapp.ui.topic.TopicDetailsActivity;
 import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
@@ -58,9 +59,11 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initContent() {
         super.initContent();
-        SessionManager.User user = viewModel.getUser().onError(s ->
-                handleError(false, () -> ActivityUtils.goToActivity(this, LoginActivity.class))
-        ).getData();
+        Resource<SessionManager.User> userResource = viewModel.getUser();
+        if (!userResource.isSuccess()) {
+            handleError(false, () -> ActivityUtils.goToActivity(this, LoginActivity.class));
+        }
+        SessionManager.User user = userResource.getData();
         binding.mainLabel.setText(
                 String.format(binding.mainLabel.getText().toString(), user.getNickname())
         );
@@ -85,6 +88,7 @@ public class MainActivity extends BaseActivity {
                     ActivityUtils.goToActivity(this, ProfileActivity.class);
                     break;
                 case R.id.main_menu_stats:
+                    ActivityUtils.goToActivity(this, StatsActivity.class);
                     break;
                 case R.id.main_menu_settings:
                     ActivityUtils.goToActivity(this, SettingsActivity.class);

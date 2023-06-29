@@ -3,6 +3,7 @@ package pl.kartven.javaproapp.ui.topic;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -35,12 +36,20 @@ public class TopicDetailsActivity extends BaseActivity {
     private LinksFragment linksFragment;
 
     @Override
-    @SuppressWarnings("deprecation")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityTopicDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        initBundle(savedInstanceState);
+        initContent();
+        initActions();
+        initFragments();
+    }
+
+    @Override
+    protected void initBundle(@Nullable Bundle savedInstanceState) {
+        super.initBundle(savedInstanceState);
         topicDomainState.setData(Option.of(savedInstanceState)
                 .map(bundle -> (TopicDomain) bundle.getSerializable(Constant.Extra.TOPIC_MODEL))
                 .getOrElse(
@@ -51,13 +60,8 @@ public class TopicDetailsActivity extends BaseActivity {
         );
 
         if (!topicDomainState.isExists()) {
-            ActivityUtils.goToActivity(this, MainActivity.class);
-            ActivityUtils.showToast(this, "Internal Error");
+            handleError(() -> ActivityUtils.goToActivity(this, MainActivity.class));
         }
-
-        initContent();
-        initActions();
-        initFragments();
     }
 
     @Override

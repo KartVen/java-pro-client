@@ -1,38 +1,36 @@
 package pl.kartven.javaproapp.utils.utility;
 
+import androidx.annotation.Nullable;
+
 import java.util.Objects;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public abstract class Resource<T> {
+    @Nullable
     private final T data;
+    @Nullable
     private final String message;
 
-    private Resource(T data, String message) {
+    private Resource(@Nullable T data, @Nullable String message) {
         this.data = data;
         this.message = message;
     }
 
+    @Nullable
     public T getData() {
         return data;
     }
 
+    @Nullable
     public String getMessage() {
         return message;
     }
 
     public abstract boolean isSuccess();
-
-    public Resource<T> onError(Consumer<String> action) {
-        Objects.requireNonNull(action, "action non null");
-        if (this instanceof Error) action.accept(getMessage());
-        return this;
-    }
-
-    public Resource<T> onSuccess(Consumer<T> action) {
-        Objects.requireNonNull(action, "action non null");
-        if (this instanceof Success) action.accept(getData());
-        return this;
-    }
 
     public static class Success<T> extends Resource<T> {
         public Success(T data) {

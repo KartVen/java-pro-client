@@ -11,7 +11,7 @@
     <dimen name="top_bar_padding">16dp</dimen>
     <dimen name="top_bar_btn_margin">16dp</dimen>
     <dimen name="header_nav_btn_size">64dp</dimen>
-    <dimen name="header_nav_btn_margin">16dp</dimen>
+    <dimen name="header_nav_btn_margin_horizontal">16dp</dimen>
     <dimen name="header_nav_padding">16dp</dimen>
     <dimen name="header_nav_label_textSize">@dimen/common__text_h2</dimen>
     <dimen name="header_content_padding_bottom">16dp</dimen>
@@ -36,4 +36,8 @@
     <dimen name="main__space_size">16dp</dimen>
     <dimen name="common_tv_section_margin_bottom">16dp</dimen>
     <dimen name="fragment__space_size">16dp</dimen>
+    <dimen name="header_nav_edit_size">16dp</dimen>
+    <dimen name="header_nav_btn_margin_top">8dp</dimen>
+    <dimen name="settings_layout_height">55dp</dimen>
+    <dimen name="settings_cv_padding">8dp</dimen>
 </resources>
