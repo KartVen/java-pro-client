@@ -40,7 +40,7 @@ public class MainRepositoryMock extends MainRepository {
 
     @Override
     public LiveData<Resource<AuthDto>> getAuthData(LoginDto loginDto) {
-        authData.postValue(new Resource.Success<>(new AuthDto(
+        authData.postValue(new Success<>(new AuthDto(
                 "kartven",
                 "krystian.kielbasa@hotmail.com",
                 "",

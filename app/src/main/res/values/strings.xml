@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">JavaProApp</string>
     <string name="sign_in">Zaloguj się</string>
-    <string name="email">Email</string>
-    <string name="email_example_com">email@example.com</string>
+    <string name="label_email">Email</string>
+    <string name="example_email">email@example.com</string>
     <string name="password_signs">********</string>
     <string name="password">Hasło</string>
     <string name="forget_your_pass_que">Zapomniałeś hasła?</string>
@@ -13,34 +13,34 @@
     <string name="find_specific_topic">Szukaj konkretny temat!</string>
     <string name="topic">temat</string>
     <string name="search_dot_dot_dot">Szukaj…</string>
-    <string name="topics">Tematy</string>
-    <string name="last_added_by_you">Dodane przez Ciebie</string>
+    <string name="label_topics">Tematy</string>
+    <string name="label_last_added_by_you">Dodane przez Ciebie</string>
     <string name="XX">XX</string>
     <string name="title">Tytuł</string>
     <string name="description">Opis</string>
     <string name="lec_XX">Wyk XX</string>
     <string name="lecture">Wykład</string>
-    <string name="home">Dom</string>
-    <string name="profile">Profil</string>
-    <string name="settings">Ustawienia</string>
-    <string name="stats">Statystyki</string>
+    <string name="menu_home">Dom</string>
+    <string name="menu_profile">Profil</string>
+    <string name="menu_settings">Ustawienia</string>
+    <string name="menu_stats">Statystyki</string>
     <string name="add_topic">Dodaj temat</string>
     <string name="example_name">Przykładowa nazwa</string>
     <string name="example_desc">Przykładowy opis</string>
     <string name="topic_details">Temat</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="back">Wróć</string>
-    <string name="slides">Slajdy</string>
+    <string name="label_slides">Slajdy</string>
     <string name="laboratories">Laboratoria</string>
-    <string name="tests">Testy</string>
-    <string name="links">Linki zew.</string>
+    <string name="label_tests">Testy</string>
+    <string name="label_links">Linki zew.</string>
     <string name="process_error">Bład przetwarzania</string>
-    <string name="codes">Kody</string>
+    <string name="label_codes">Kody</string>
     <string name="quiz">Test</string>
     <string name="code">Kod</string>
     <string name="slide">Slajd</string>
     <string name="sign_up">Zarejestruj się</string>
-    <string name="nickname">Nazwa użytkownika</string>
+    <string name="label_nickname">Nazwa użytkownika</string>
     <string name="https_example_com">https://example.com</string>
     <string name="link_preview">Link</string>
     <string name="app_name_short">JavaPro</string>
@@ -48,7 +48,7 @@
     <string name="test_details">Test</string>
     <string name="que_amount">Ilość pytań</string>
     <string name="start_quiz">Rozpocznij quiz</string>
-    <string name="log_out">Wyloguj się</string>
+    <string name="menu_logout">Wyloguj się</string>
     <string name="wizard">Kreator</string>
     <string name="save">Zapisz</string>
     <string name="lecture_no">Numer wykładu</string>
@@ -59,4 +59,36 @@
     <string name="appearance">Wygląd</string>
     <string name="dark_theme">Tryb ciemny</string>
     <string name="dark_theme_no_work">Tryb ciemny (w implementacji)</string>
+    <string name="avatar">Avatar</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="label_nav_header">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="title_activity_bottom">BottomActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="label_add">Dodawanie</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_topic">TopicActivity</string>
 </resources>

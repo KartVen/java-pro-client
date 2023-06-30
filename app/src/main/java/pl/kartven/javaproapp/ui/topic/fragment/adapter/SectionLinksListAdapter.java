@@ -54,7 +54,7 @@ public class SectionLinksListAdapter extends RecyclerView.Adapter<SectionLinksLi
         context = parent.getContext();
         View inflate = LayoutInflater
                 .from(context)
-                .inflate(R.layout.topic_d_links_rv_item, parent, false);
+                .inflate(R.layout.fragment_links_rv_item, parent, false);
         return new ViewHolder(inflate);
     }
 

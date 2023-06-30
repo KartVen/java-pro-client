@@ -4,7 +4,6 @@ import static pl.kartven.javaproapp.utils.utility.FieldUtils.EmailValidator;
 import static pl.kartven.javaproapp.utils.utility.FieldUtils.NicknameValidator;
 import static pl.kartven.javaproapp.utils.utility.FieldUtils.PasswordValidator;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import javax.inject.Inject;

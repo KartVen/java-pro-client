@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import pl.kartven.javaproapp.data.model.api.CodeApi;
 import pl.kartven.javaproapp.data.model.api.LinkApi;
 
 public class LinkDomain implements Serializable {

@@ -32,7 +32,7 @@ public class QuizListAdapter extends RecyclerView.Adapter<QuizListAdapter.ViewHo
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflate = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.topic_d_quizzes_rv_item, parent, false);
+                .inflate(R.layout.fragment_quizzes_rv_item, parent, false);
         context = parent.getContext();
         return new ViewHolder(inflate);
     }

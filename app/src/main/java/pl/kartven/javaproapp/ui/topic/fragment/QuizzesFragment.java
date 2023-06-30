@@ -6,8 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,67 +19,65 @@ import pl.kartven.javaproapp.data.model.domain.QuizDomain;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.FragmentQuizzesBinding;
 import pl.kartven.javaproapp.ui.topic.fragment.adapter.QuizListAdapter;
-import pl.kartven.javaproapp.ui.topic.quiz.QuizDetailsActivity;
-import pl.kartven.javaproapp.utils.utility.BaseActivity;
-import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
+import pl.kartven.javaproapp.utils.utility.BaseFragment;
 import pl.kartven.javaproapp.utils.utility.Constant;
 import pl.kartven.javaproapp.utils.utility.ListUtils;
+import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.State;
 
 @AndroidEntryPoint
-public class QuizzesFragment extends Fragment {
+public class QuizzesFragment extends BaseFragment {
 
     private FragmentQuizzesBinding binding;
-    private QuizzesFragmentViewModel viewModel;
+    private QuizzesViewModel viewModel;
 
     @Inject
     public QuizzesFragment() {
-        // Required empty public constructor
-    }
-
-    public static QuizzesFragment newInstance() {
-        return new QuizzesFragment();
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel = BaseActivity.initViewModel(this, QuizzesFragmentViewModel.class);
+        viewModel = initViewModel(QuizzesViewModel.class);
     }
 
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentQuizzesBinding.inflate(inflater, container, false);
-
         initRecyclerView();
-
         return binding.getRoot();
     }
 
     private void initRecyclerView() {
         Long topicId = State.<TopicDomain>getState().getData().getId();
 
-        RecyclerView recyclerView = binding.fragmentQuizzesRv;
-        recyclerView.setLayoutManager(
+        RecyclerView rvBase = binding.fQuizzesRvBase;
+        rvBase.setLayoutManager(
                 new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false)
         );
-        setAdapter(recyclerView, viewModel.getQuizzesOfTopic(topicId));
+        setAdapter(rvBase, viewModel.getQuizzesOfTopic(topicId));
 
-        RecyclerView recyclerViewNewQuiz = binding.fragmentQuizzesRvNew;
-        recyclerViewNewQuiz.setLayoutManager(
+        RecyclerView rvByYou = binding.fQuizzesRvByYou;
+        rvByYou.setLayoutManager(
                 new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false)
         );
-        setAdapter(recyclerViewNewQuiz, viewModel.getQuizzesOfTopic(topicId));
+        setAdapter(rvByYou, viewModel.getQuizzesOfTopic(topicId));
     }
 
     private void setAdapter(RecyclerView recyclerView, Resource<List<QuizDomain>> data) {
         QuizListAdapter adapter = new QuizListAdapter(ListUtils.extractList(data, requireContext()));
         adapter.setItemClicked((model, position) ->
-                ActivityUtils.goToActivity(requireContext(), QuizDetailsActivity.class, intent -> {
+                ActivityUtils.goToActivity(requireContext(), null, intent -> {
                     //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra(Constant.Extra.QUIZ_MODEL, model);
                 }));
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

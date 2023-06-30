@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/topic_nav_slides"
+        android:icon="@drawable/topic_bottom_tv_src"
+        android:title="@string/label_slides" />
+
+    <item
+        android:id="@+id/topic_nav_codes"
+        android:icon="@drawable/topic_bottom_computer_src"
+        android:title="@string/label_codes" />
+
+    <item
+        android:id="@+id/topic_nav_quizzes"
+        android:icon="@drawable/topic_bottom_quiz_src"
+        android:title="@string/label_tests" />
+
+    <item
+        android:id="@+id/topic_nav_links"
+        android:icon="@drawable/topic_bottom_help_src"
+        android:title="@string/label_links" />
+</menu>

@@ -48,7 +48,7 @@ public class SectionCodesListAdapter extends RecyclerView.Adapter<SectionCodesLi
         context = parent.getContext();
         View inflate = LayoutInflater
                 .from(context)
-                .inflate(R.layout.topic_d_codes_rv_item, parent, false);
+                .inflate(R.layout.fragment_codes_rv_item, parent, false);
         return new ViewHolder(inflate);
     }
 

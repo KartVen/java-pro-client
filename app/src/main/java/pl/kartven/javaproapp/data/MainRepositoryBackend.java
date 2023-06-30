@@ -3,6 +3,8 @@ package pl.kartven.javaproapp.data;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
 
@@ -23,12 +25,14 @@ import pl.kartven.javaproapp.utils.utility.SessionManager;
 
 public class MainRepositoryBackend extends MainRepository {
     private final BackendApi backendApi;
+    private final Executor executor;
     private final SessionManager sessionManager;
 
     @Inject
     public MainRepositoryBackend(BackendApi backendApi, SessionManager sessionManager) {
         this.backendApi = backendApi;
         this.sessionManager = sessionManager;
+        executor = Executors.newSingleThreadExecutor();
     }
 
     @Override
@@ -44,12 +48,14 @@ public class MainRepositoryBackend extends MainRepository {
 
     @Override
     public LiveData<Resource<List<TopicDomain>>> getTopics() {
-        Try.of(() -> backendApi.getTopics().execute())
-                .onFailure(e -> ResponseUtils.onFailure(topics, e))
-                .onSuccess(response -> topics
-                        .setValue(ResponseUtils.onResponse(response)
-                                .fold(Resource.Error::new, list -> new Resource.Success<>(TopicDomain.map(list)))
-                        ));
+        executor.execute(() -> {
+            Try.of(() -> backendApi.getTopics().execute())
+                    .onFailure(e -> ResponseUtils.onFailure(topics, e))
+                    .onSuccess(response -> topics
+                            .setValue(ResponseUtils.onResponse(response)
+                                    .fold(Resource.Error::new, list -> new Resource.Success<>(TopicDomain.map(list)))
+                            ));
+        });
         return topics;
     }
 

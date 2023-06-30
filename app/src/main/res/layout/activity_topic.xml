@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/topic_include"
+        layout="@layout/activity_topic_coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/topic_linear_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?actionBarSize"
+        android:background="?colorPrimary"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/common_container_spacing_h"
+        android:paddingBottom="@dimen/common_container_spacing_v"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/topic_tv_header_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/example_name"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common__text_h3"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/topic_tv_header_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/example_desc"
+            android:textAlignment="center"
+            android:textColor="@color/darker_grey" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/topic_coordinator_fab"
+        style="@style/Theme.JavaProApp.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/topic_fab_margin"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/label_add"
+        app:layout_constraintBottom_toTopOf="@id/topic_nav_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/main_menu_add_src" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/topic_nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/activity_topic_bottom" />
+
+    <fragment
+        android:id="@+id/topic_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="false"
+        app:layout_constraintBottom_toTopOf="@id/topic_nav_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topic_linear_header"
+        app:navGraph="@navigation/topic_navigation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

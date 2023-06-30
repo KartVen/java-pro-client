@@ -30,7 +30,7 @@ public class SectionLinksNestedListAdapter extends RecyclerView.Adapter<SectionL
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflate = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.topic_d_links_rv_rv_item, parent, false);
+                .inflate(R.layout.fragment_links_rv_rv_item, parent, false);
         return new ViewHolder(inflate);
     }
 

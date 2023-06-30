@@ -1,211 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-
-    <ScrollView
+    <include
+        android:id="@+id/main_include"
+        layout="@layout/activity_main_coordinator"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/main_nav_view"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/bottom_nav_height">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/dark_blue"
-                android:orientation="vertical">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/header_nav_padding">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/main_header_back_btn_iv"
-                        android:layout_width="@dimen/header_nav_btn_size"
-                        android:layout_height="@dimen/header_nav_btn_size"
-                        android:layout_marginStart="@dimen/header_nav_btn_margin_horizontal"
-                        android:layout_marginTop="@dimen/header_nav_btn_margin_top"
-                        android:clickable="true"
-                        android:contentDescription="@string/back"
-                        android:foreground="?selectableItemBackground"
-                        android:src="@drawable/computer"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/main_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/welcome_xx"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/header_nav_label_textSize"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@id/main_header_back_btn_iv"
-                        app:layout_constraintEnd_toStartOf="@id/main_header_edit_btn_iv"
-                        app:layout_constraintStart_toEndOf="@id/main_header_back_btn_iv"
-                        app:layout_constraintTop_toTopOf="@id/main_header_back_btn_iv" />
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/main_header_edit_btn_iv"
-                        android:layout_width="@dimen/header_nav_btn_size"
-                        android:layout_height="@dimen/header_nav_btn_size"
-                        android:layout_marginTop="@dimen/header_nav_btn_margin_top"
-                        android:layout_marginEnd="@dimen/header_nav_btn_margin_horizontal"
-                        android:visibility="invisible"
-                        android:clickable="true"
-                        android:contentDescription="@string/back"
-                        android:foreground="?selectableItemBackground"
-                        android:src="@drawable/common_edit_note_src"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/header_nav_padding"
-                    android:paddingHorizontal="@dimen/common__space_size"
-                    android:paddingBottom="@dimen/common__space_size">
-
-                    <TextView
-                        android:id="@+id/main_tv_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/find_specific_topic"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/header_content_specific_textSize"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <EditText
-                        android:id="@+id/main_et"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/main_search_height"
-                        android:layout_marginTop="@dimen/common__space_size"
-                        android:background="@drawable/main_search_bg"
-                        android:drawableStart="@drawable/baseline_search_24"
-                        android:drawablePadding="16dp"
-                        android:hint="@string/search_dot_dot_dot"
-                        android:inputType="text"
-                        android:padding="16dp"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/main_tv_2" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/common__space_size">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingBottom="@dimen/main__space_size">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/common_tv_section_margin_bottom"
-                        android:text="@string/topics"
-                        android:textColor="@color/dark_blue"
-                        android:textSize="@dimen/common__text_h2"
-                        android:textStyle="bold" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/main_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/main_new_topic_linear"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingBottom="@dimen/main__space_size">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/common_tv_section_margin_bottom"
-                        android:text="@string/last_added_by_you"
-                        android:textColor="@color/dark_blue"
-                        android:textSize="@dimen/common__text_h2"
-                        android:textStyle="bold" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/main_new_topic_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/bottom_nav_height"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottom_app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:backgroundTint="@color/white"
-            app:fabAlignmentMode="center"
-            app:fabCradleMargin="8dp"
-            app:fabCradleRoundedCornerRadius="16dp">
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_nav_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/background_transparent"
-                app:menu="@menu/main_menu" />
-
-        </com.google.android.material.bottomappbar.BottomAppBar>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/bottom_floating_button"
-            style="@style/Theme.JavaProApp.FloatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/add_topic"
-            app:layout_anchor="@id/bottom_app_bar"
-            app:srcCompat="@drawable/main_menu_add_src" />
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/activity_main_drawer_header"
+        app:menu="@menu/activity_main_drawer" />
+</androidx.drawerlayout.widget.DrawerLayout>

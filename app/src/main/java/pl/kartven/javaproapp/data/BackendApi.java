@@ -1,7 +1,6 @@
 package pl.kartven.javaproapp.data;
 
 import java.util.List;
-import java.util.concurrent.Executor;
 
 import pl.kartven.javaproapp.data.model.api.CodeApi;
 import pl.kartven.javaproapp.data.model.api.LinkApi;

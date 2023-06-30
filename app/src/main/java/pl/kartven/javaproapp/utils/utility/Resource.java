@@ -2,13 +2,6 @@ package pl.kartven.javaproapp.utils.utility;
 
 import androidx.annotation.Nullable;
 
-import java.util.Objects;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
 public abstract class Resource<T> {
     @Nullable
     private final T data;
@@ -58,10 +51,15 @@ public abstract class Resource<T> {
         }
     }
 
-    /*public static class Loading<T> extends Resource<T> {
+    public static class Loading<T> extends Resource<T> {
         public Loading(T data) {
             super(data, null);
         }
-    }*/
+
+        @Override
+        public boolean isSuccess() {
+            return true;
+        }
+    }
 }
 

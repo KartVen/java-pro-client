@@ -16,8 +16,4 @@ public class SettingsViewModel extends ViewModel {
     public SettingsViewModel(SessionManager sessionManager) {
         this.sessionManager = sessionManager;
     }
-
-    public void logout() {
-        sessionManager.clear();
-    }
 }

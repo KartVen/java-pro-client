@@ -1,22 +1,12 @@
 package pl.kartven.javaproapp.utils.utility;
 
-import android.content.Context;
-import android.text.Editable;
-import android.widget.EditText;
-import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.LiveData;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 import java.util.regex.Pattern;
 
 import pl.kartven.javaproapp.R;
-import pl.kartven.javaproapp.utils.adapter.TextWatcherAdapter;
 
 public class FieldUtils {
     private FieldUtils() {

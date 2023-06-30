@@ -1,56 +1,37 @@
 package pl.kartven.javaproapp.ui.main;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.StrictMode;
+import android.view.View;
 
-import com.google.android.material.bottomappbar.BottomAppBar;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.AppBarConfiguration.OnNavigateUpListener;
+import androidx.navigation.ui.NavigationUI;
 
-import java.util.List;
+import com.google.android.material.snackbar.Snackbar;
 
-import javax.inject.Inject;
+import java.util.Objects;
 
 import pl.kartven.javaproapp.R;
-import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.ActivityMainBinding;
 import pl.kartven.javaproapp.ui.auth.LoginActivity;
-import pl.kartven.javaproapp.ui.main.adapter.TopicListAdapter;
-import pl.kartven.javaproapp.ui.profile.ProfileActivity;
-import pl.kartven.javaproapp.ui.settings.SettingsActivity;
-import pl.kartven.javaproapp.ui.stats.StatsActivity;
-import pl.kartven.javaproapp.ui.topic.TopicDetailsActivity;
-import pl.kartven.javaproapp.utils.listener.RVItemClickListener;
-import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseActivity;
-import pl.kartven.javaproapp.utils.utility.Constant;
-import pl.kartven.javaproapp.utils.utility.ListUtils;
-import pl.kartven.javaproapp.utils.utility.SessionManager;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements OnNavigateUpListener {
 
     private ActivityMainBinding binding;
     private MainViewModel viewModel;
-
-    @Inject
-    public MainActivity() {
-    }
+    private AppBarConfiguration appBarConfiguration;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        StrictMode.setThreadPolicy(
-                new StrictMode.ThreadPolicy.Builder().permitAll().build()
-        );
-
         viewModel = initViewModel(MainViewModel.class);
 
         initActions();
@@ -58,68 +39,66 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initContent() {
-        super.initContent();
-        Resource<SessionManager.User> userResource = viewModel.getUser();
-        if (!userResource.isSuccess()) {
-            handleError(false, () -> ActivityUtils.goToActivity(this, LoginActivity.class));
-        }
-        SessionManager.User user = userResource.getData();
-        binding.mainLabel.setText(
-                String.format(binding.mainLabel.getText().toString(), user.getNickname())
-        );
-        initRecyclerView();
-    }
-
-    @SuppressLint("NonConstantResourceId")
-    @Override
     protected void initActions() {
         super.initActions();
-        BottomAppBar bottomAppBar = binding.bottomAppBar;
-        BottomNavigationView bottomNavView = binding.bottomNavView;
-        FloatingActionButton bottomFloatingButton = binding.bottomFloatingButton;
-
-        setSupportActionBar(bottomAppBar);
-
-        bottomNavView.getMenu().getItem(2).setEnabled(false);
-        bottomNavView.setBackground(null);
-        bottomNavView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.main_menu_profile:
-                    ActivityUtils.goToActivity(this, ProfileActivity.class);
-                    break;
-                case R.id.main_menu_stats:
-                    ActivityUtils.goToActivity(this, StatsActivity.class);
-                    break;
-                case R.id.main_menu_settings:
-                    ActivityUtils.goToActivity(this, SettingsActivity.class);
-                    break;
+        initNav();
+        binding.mainInclude.mainCoordinatorFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
-            return true;
         });
     }
 
-    private void initRecyclerView() {
-        RecyclerView recyclerViewTopic = binding.mainRv;
-        recyclerViewTopic.setLayoutManager(
-                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        );
-        setAdapter(recyclerViewTopic, viewModel.getTopics());
-
-        RecyclerView recyclerViewLastAddedByYou = binding.mainNewTopicRv;
-        recyclerViewLastAddedByYou.setLayoutManager(
-                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        );
-        setAdapter(recyclerViewLastAddedByYou, viewModel.getMyTopics());
+    @Override
+    protected void initContent() {
+        super.initContent();
     }
 
-    private void setAdapter(RecyclerView recyclerView, Resource<List<TopicDomain>> topics) {
-        TopicListAdapter adapter = new TopicListAdapter(ListUtils.extractList(topics, this));
-        adapter.setItemClicked((model, position) -> ActivityUtils.goToActivity(
-                MainActivity.this,
-                TopicDetailsActivity.class,
-                intent -> intent.putExtra(Constant.Extra.TOPIC_MODEL, model)
-        ));
-        recyclerView.setAdapter(adapter);
+    private void initNav() {
+        setSupportActionBar(binding.mainInclude.mainCoordinatorToolbar);
+
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.main_nav_home,
+                R.id.main_nav_profile,
+                R.id.main_nav_stats,
+                R.id.main_nav_settings,
+                R.id.main_nav_logout
+        )
+                .setOpenableLayout(binding.main)
+                .build();
+
+        navController = Navigation.findNavController(this, R.id.main_content_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.mainNavView, navController);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.main_nav_logout) {
+                viewModel.logout();
+                handleError(false, () -> ActivityUtils.goToActivity(this, LoginActivity.class));
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        navController = Navigation.findNavController(this, R.id.main_content_fragment);
+        if (Objects.requireNonNull(navController.getCurrentDestination()).getId() == R.id.main_nav_logout) {
+            viewModel.logout();
+            handleError(false, () -> ActivityUtils.goToActivity(this, LoginActivity.class));
+            return true;
+        }
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public boolean onNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

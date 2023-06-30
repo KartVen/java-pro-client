@@ -53,7 +53,7 @@ public class SlideListViewPagerAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
-        View itemView = mLayoutInflater.inflate(R.layout.topic_d_slides_vp_item, container, false);
+        View itemView = mLayoutInflater.inflate(R.layout.fragment_slides_vp_item, container, false);
         ImageView imageView = itemView.findViewById(R.id.topic_d_slides_rv_image_view);
         //imageView.setImageResource(data.get(position));
         SlideDomain slide = data.get(position);

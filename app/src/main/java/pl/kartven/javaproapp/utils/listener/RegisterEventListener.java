@@ -1,12 +1,8 @@
 package pl.kartven.javaproapp.utils.listener;
 
-import static pl.kartven.javaproapp.utils.utility.FieldUtils.*;
-import static pl.kartven.javaproapp.utils.utility.FieldUtils.EmailValidator;
-import static pl.kartven.javaproapp.utils.utility.FieldUtils.PasswordValidator;
+import static pl.kartven.javaproapp.utils.utility.FieldUtils.NicknameValidator;
 
 import androidx.lifecycle.LiveData;
-
-import pl.kartven.javaproapp.utils.utility.FieldUtils;
 
 public interface RegisterEventListener extends LoginEventListener {
     NicknameValidator nicknameValidator = new NicknameValidator();

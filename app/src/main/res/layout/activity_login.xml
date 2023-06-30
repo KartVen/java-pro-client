@@ -44,7 +44,7 @@
                 android:id="@+id/login_tv_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/email"
+                android:text="@string/label_email"
                 android:textColor="@color/white"
                 android:textSize="@dimen/common__text_h3"
                 android:textStyle="bold" />
@@ -59,7 +59,7 @@
                 android:drawableStart="@drawable/auth_alternate_email_src"
                 android:drawablePadding="@dimen/auth_et_drawable_padding"
                 android:ems="10"
-                android:hint="@string/email_example_com"
+                android:hint="@string/example_email"
                 android:inputType="textEmailAddress"
                 android:labelFor="@id/login_tv_email"
                 android:padding="@dimen/auth_input_padding"

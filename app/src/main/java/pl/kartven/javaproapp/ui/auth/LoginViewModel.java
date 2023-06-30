@@ -1,6 +1,7 @@
 package pl.kartven.javaproapp.ui.auth;
 
-import static pl.kartven.javaproapp.utils.utility.FieldUtils.*;
+import static pl.kartven.javaproapp.utils.utility.FieldUtils.EmailValidator;
+import static pl.kartven.javaproapp.utils.utility.FieldUtils.PasswordValidator;
 
 import androidx.lifecycle.ViewModel;
 
