@@ -16,9 +16,24 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.topic.quiz.question.QuestionActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.topic.quiz.QuizActivity" />
+        <activity
+            android:name=".ui.topic.quiz.QuizActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.topic.TopicActivity"
+            android:theme="@style/Theme.JavaProApp.NoActionBar" />
+        <activity
+            android:name=".ui.topic.link.LinkActivity"
+            android:exported="false"
+            android:label="@string/label_link"
+            android:parentActivityName=".ui.topic.TopicActivity"
+            android:theme="@style/Theme.JavaProApp.NoActionBar" />
+        <activity
             android:name=".ui.topic.TopicActivity"
             android:exported="false"
-            android:label="@string/topic_details"
+            android:label="@string/label_topic"
             android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/Theme.JavaProApp.NoActionBar" />
         <activity

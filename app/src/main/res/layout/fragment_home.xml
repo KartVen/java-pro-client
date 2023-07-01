@@ -10,7 +10,6 @@
         android:id="@+id/f_home_linear_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?colorPrimary"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/common_container_spacing_h"
         android:paddingVertical="@dimen/common_container_spacing_v"
@@ -23,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/find_specific_topic"
-            android:textColor="@color/white"
+            android:textColor="?colorPrimary"
             android:textSize="@dimen/header_content_specific_textSize"
             android:textStyle="bold" />
 
@@ -39,8 +38,8 @@
             android:hint="@string/search_dot_dot_dot"
             android:inputType="text"
             android:padding="16dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white" />
+            android:textColor="?colorPrimary"
+            android:textColorHint="?colorPrimary" />
 
     </LinearLayout>
 

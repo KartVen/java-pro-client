@@ -41,14 +41,10 @@ public class MainActivity extends BaseActivity implements OnNavigateUpListener {
     @Override
     protected void initActions() {
         super.initActions();
-        initNav();
-        binding.mainInclude.mainCoordinatorFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setSupportActionBar(binding.mainInclude.mainCoordinatorToolbar);
+        initDrawer();
+        binding.mainInclude.mainCoordinatorFab.setOnClickListener(view ->
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show());
     }
 
     @Override
@@ -56,9 +52,7 @@ public class MainActivity extends BaseActivity implements OnNavigateUpListener {
         super.initContent();
     }
 
-    private void initNav() {
-        setSupportActionBar(binding.mainInclude.mainCoordinatorToolbar);
-
+    private void initDrawer() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = new AppBarConfiguration.Builder(
@@ -96,9 +90,9 @@ public class MainActivity extends BaseActivity implements OnNavigateUpListener {
                 || super.onSupportNavigateUp();
     }
 
-    @Override
+/*    @Override
     public boolean onNavigateUp() {
         onBackPressed();
         return true;
-    }
+    }*/
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import io.vavr.control.Try;
 import pl.kartven.javaproapp.data.MainRepository;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.utils.utility.Resource;
@@ -25,11 +26,13 @@ public class HomeViewModel extends ViewModel {
     }
 
     public Resource<List<TopicDomain>> getTopics() {
-        return mainRepository.getTopics().getValue();
+        return Try.of(() -> mainRepository.getTopics().getValue())
+                .getOrElse(new Resource.Error<>(null));
     }
 
     public Resource<List<TopicDomain>> getMyTopics() {
-        return mainRepository.getMyTopics().getValue();
+        return Try.of(() -> mainRepository.getMyTopics().getValue())
+                .getOrElse(new Resource.Error<>(null));
     }
 
     public Resource<SessionManager.User> getUser() {

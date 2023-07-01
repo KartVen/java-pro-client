@@ -27,7 +27,7 @@
     <string name="add_topic">Dodaj temat</string>
     <string name="example_name">Przykładowa nazwa</string>
     <string name="example_desc">Przykładowy opis</string>
-    <string name="topic_details">Temat</string>
+    <string name="label_topic">Temat</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="back">Wróć</string>
     <string name="label_slides">Slajdy</string>
@@ -42,7 +42,7 @@
     <string name="sign_up">Zarejestruj się</string>
     <string name="label_nickname">Nazwa użytkownika</string>
     <string name="https_example_com">https://example.com</string>
-    <string name="link_preview">Link</string>
+    <string name="label_link">Link</string>
     <string name="app_name_short">JavaPro</string>
     <string name="username">Nazwa użytkownika</string>
     <string name="test_details">Test</string>
@@ -56,9 +56,9 @@
     <string name="bad_email_format">Zły format email</string>
     <string name="bad_password_format"><![CDATA[Użyj [az][AZ][0-9][@#$%^&+=]]]></string>
     <string name="account">Konto</string>
-    <string name="appearance">Wygląd</string>
+    <string name="label_appearance">Wygląd</string>
     <string name="dark_theme">Tryb ciemny</string>
-    <string name="dark_theme_no_work">Tryb ciemny (w implementacji)</string>
+    <string name="dark_mode_no_work">Tryb ciemny (w implementacji)</string>
     <string name="avatar">Avatar</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -91,4 +91,8 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_activity_topic">TopicActivity</string>
+    <string name="turn_on_dark_mode">Włącz tryb ciemny</string>
+    <string name="example_que">Przykladowe pytanie o przykładowej treści?</string>
+    <string name="example_ans">Przykładowa odpowiedź</string>
+    <string name="label_next">Następne</string>
 </resources>

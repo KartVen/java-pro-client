@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainActivity">
+    tools:context=".ui.topic.link.LinkActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -12,25 +12,12 @@
         android:theme="@style/Theme.JavaProApp.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/main_coordinator_toolbar"
+            android:id="@+id/link_coordinator_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/Theme.JavaProApp.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/activity_main_content" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/main_coordinator_fab"
-        style="@style/Theme.JavaProApp.FloatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/main_fab_margin"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/label_add"
-        app:srcCompat="@drawable/main_menu_add_src" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,8 +1,15 @@
 package pl.kartven.javaproapp.utils.utility;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
+
+import java.util.function.Consumer;
+
+import io.vavr.control.Option;
 
 public abstract class BaseFragment extends Fragment {
     /**
@@ -31,8 +38,16 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected final void handleError(boolean showToast, @NonNull Runnable action) {
-        if (showToast) ActivityUtils.showToast(requireActivity(), Constant.Expression.INTERNAL_ERROR);
+        if (showToast)
+            ActivityUtils.showToast(requireActivity(), Constant.Expression.INTERNAL_ERROR);
         action.run();
         requireActivity().finish();
+    }
+
+    protected final void updateSupportActionBar(@Nullable Consumer<ActionBar> actionBarConsumer) {
+        Option.of(getActivity())
+                .map(AppCompatActivity.class::cast)
+                .map(AppCompatActivity::getSupportActionBar)
+                .peek(actionBarConsumer);
     }
 }

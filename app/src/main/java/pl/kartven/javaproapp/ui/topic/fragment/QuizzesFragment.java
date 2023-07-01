@@ -19,6 +19,7 @@ import pl.kartven.javaproapp.data.model.domain.QuizDomain;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.FragmentQuizzesBinding;
 import pl.kartven.javaproapp.ui.topic.fragment.adapter.QuizListAdapter;
+import pl.kartven.javaproapp.ui.topic.quiz.QuizActivity;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseFragment;
 import pl.kartven.javaproapp.utils.utility.Constant;
@@ -31,6 +32,7 @@ public class QuizzesFragment extends BaseFragment {
 
     private FragmentQuizzesBinding binding;
     private QuizzesViewModel viewModel;
+    private Long topicId;
 
     @Inject
     public QuizzesFragment() {
@@ -46,11 +48,11 @@ public class QuizzesFragment extends BaseFragment {
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentQuizzesBinding.inflate(inflater, container, false);
         initRecyclerView();
+        topicId = State.<TopicDomain>getState().getData().getId();
         return binding.getRoot();
     }
 
     private void initRecyclerView() {
-        Long topicId = State.<TopicDomain>getState().getData().getId();
 
         RecyclerView rvBase = binding.fQuizzesRvBase;
         rvBase.setLayoutManager(
@@ -68,7 +70,7 @@ public class QuizzesFragment extends BaseFragment {
     private void setAdapter(RecyclerView recyclerView, Resource<List<QuizDomain>> data) {
         QuizListAdapter adapter = new QuizListAdapter(ListUtils.extractList(data, requireContext()));
         adapter.setItemClicked((model, position) ->
-                ActivityUtils.goToActivity(requireContext(), null, intent -> {
+                ActivityUtils.goToActivity(requireContext(), QuizActivity.class, intent -> {
                     //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra(Constant.Extra.QUIZ_MODEL, model);
                 }));

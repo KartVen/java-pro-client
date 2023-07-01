@@ -29,22 +29,17 @@ public class TopicActivity extends BaseActivity {
         binding = ActivityTopicBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        initBundle(savedInstanceState);
+        initBundleVariable(savedInstanceState);
         initActions();
         initContent();
     }
 
     @Override
-    protected void initBundle(@Nullable Bundle savedInstanceState) {
-        super.initBundle(savedInstanceState);
-        topicDomainState.setData(Option.of(savedInstanceState)
-                .map(bundle -> (TopicDomain) bundle.getSerializable(Constant.Extra.TOPIC_MODEL))
-                .getOrElse(
-                        Option.of(getIntent().getExtras())
-                                .map(bundle -> (TopicDomain) bundle.getSerializable(Constant.Extra.TOPIC_MODEL))
-                                .getOrNull()
-                )
-        );
+    protected void initBundleVariable(@Nullable Bundle savedInstanceState) {
+        super.initBundleVariable(savedInstanceState);
+        topicDomainState.setData(getVariableFromBundle(savedInstanceState, bundle ->
+                (TopicDomain) bundle.getSerializable(Constant.Extra.TOPIC_MODEL)
+        ));
 
         if (!topicDomainState.isExists()) {
             handleError(() -> ActivityUtils.goToActivity(this, MainActivity.class));
@@ -54,12 +49,12 @@ public class TopicActivity extends BaseActivity {
     @Override
     protected void initActions() {
         super.initActions();
-        initNav();
+        setSupportActionBar(binding.topicInclude.topicCoordinatorToolbar);
+        Option.of(getSupportActionBar()).peek(bar -> bar.setDisplayHomeAsUpEnabled(true));
+        initBottomBar();
     }
 
-    private void initNav() {
-        setSupportActionBar(binding.topicInclude.topicCoordinatorToolbar);
-
+    private void initBottomBar() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(

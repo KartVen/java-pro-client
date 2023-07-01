@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.topic.quiz.question.QuestionActivity">
+
+    <include
+        android:id="@+id/question_include"
+        layout="@layout/activity_question_coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/question_linear_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorPrimary"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/common_container_spacing_h"
+        android:paddingBottom="@dimen/common_container_spacing_v"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question_include">
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/question_linear_btn"
+        app:layout_constraintTop_toBottomOf="@id/question_linear_header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/question_linear_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/common_container_spacing_h"
+                android:paddingVertical="@dimen/common_container_spacing_v">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/common_tv_section_head_spacing_v"
+                    android:text="@string/example_que"
+                    android:textSize="@dimen/common_tv_section_head_text_size"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="300dp"
+                    android:src="@drawable/tests" />
+
+                <LinearLayout
+                    android:id="@+id/question_checkbox_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingVertical="@dimen/question_checkbox_spacing_v">
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/letter_a_src"
+                        android:drawablePadding="@dimen/question_checkbox_drawable_padding"
+                        android:ellipsize="marquee"
+                        android:foreground="?selectableItemBackground"
+                        android:maxLines="1"
+                        android:text="@string/example_ans" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/letter_b_src"
+                        android:drawablePadding="@dimen/question_checkbox_drawable_padding"
+                        android:ellipsize="marquee"
+                        android:foreground="?selectableItemBackground"
+                        android:maxLines="1"
+                        android:text="@string/example_ans" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/letter_c_src"
+                        android:drawablePadding="@dimen/question_checkbox_drawable_padding"
+                        android:ellipsize="marquee"
+                        android:foreground="?selectableItemBackground"
+                        android:maxLines="1"
+                        android:text="@string/example_ans" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/letter_d_src"
+                        android:drawablePadding="@dimen/question_checkbox_drawable_padding"
+                        android:ellipsize="marquee"
+                        android:foreground="?selectableItemBackground"
+                        android:maxLines="1"
+                        android:text="@string/example_ans" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/question_linear_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/common_container_spacing_h"
+        android:paddingBottom="@dimen/common_container_spacing_h"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/question_btn_next"
+            style="Widget.Button"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="?colorPrimary"
+            android:foreground="?selectableItemBackground"
+            android:text="@string/label_next"
+            android:textColor="?colorOnPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

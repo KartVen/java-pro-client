@@ -7,7 +7,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModel;
 
+import java.util.function.Function;
+
 import dagger.hilt.android.AndroidEntryPoint;
+import io.vavr.control.Option;
 
 @AndroidEntryPoint
 public abstract class BaseActivity extends AppCompatActivity {
@@ -21,15 +24,18 @@ public abstract class BaseActivity extends AppCompatActivity {
         return ViewModelUtils.initViewModel(this, modelClass);
     }
 
+    protected void initBundleVariable(@Nullable Bundle savedInstanceState) {
+    }
 
-    /**
-     * Initializes values from instance saved.
-     *
-     * @param savedInstanceState Data supplied in onSaveInstanceState. Can be null.
-     */
     @SuppressWarnings("deprecation")
-    protected void initBundle(@Nullable Bundle savedInstanceState){
-
+    protected <T> T getVariableFromBundle(@Nullable Bundle savedInstanceState, @NonNull Function<Bundle, T> bundleFunction) {
+        return Option.of(savedInstanceState)
+                .map(bundleFunction)
+                .getOrElse(
+                        Option.of(getIntent().getExtras())
+                                .map(bundleFunction)
+                                .getOrNull()
+                );
     }
 
     /**
@@ -43,7 +49,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void initContent() {
     }
-
 
 
     protected final void handleError(@NonNull Runnable action) {

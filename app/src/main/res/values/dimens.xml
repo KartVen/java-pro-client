@@ -55,5 +55,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="topic_fab_margin">16dp</dimen>
+    <dimen name="question_checkbox_spacing_v">4dp</dimen>
+    <dimen name="question_checkbox_drawable_padding">5dp</dimen>
 
 </resources>

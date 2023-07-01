@@ -101,7 +101,7 @@ public class MainRepositoryMock extends MainRepository {
         ArrayList<QuestionDomain.Answer> q1 = new ArrayList<>();
         q1.add(new QuestionDomain.Answer(1L, "Symboliczne oznaczenie miejsca w pamięci.", true));
         q1.add(new QuestionDomain.Answer(1L, "Instrukcja warunkowa w Javie.", false));
-        q1.add(new QuestionDomain.Answer(1L, "Zbiór danych przechowywanych w pamięci.", false));
+        q1.add(new QuestionDomain.Answer(1L, "Zbiór danych przechowywanych w pamięci.", true));
         q1.add(new QuestionDomain.Answer(1L, "Wyświetlanie tekstu na ekranie.", false));
 
         mock.add(new QuestionDomain(1L, "Co to jest zmienna?", q1));
@@ -109,7 +109,7 @@ public class MainRepositoryMock extends MainRepository {
         ArrayList<QuestionDomain.Answer> q2 = new ArrayList<>();
         q1.add(new QuestionDomain.Answer(1L, "start, stop, pause, reset.", false));
         q1.add(new QuestionDomain.Answer(1L, "int, double, boolean, char itd.", true));
-        q1.add(new QuestionDomain.Answer(1L, "if, else, for, while.", false));
+        q1.add(new QuestionDomain.Answer(1L, "if, else, for, while.", true));
         q1.add(new QuestionDomain.Answer(1L, "true, false, null.", false));
 
         mock.add(new QuestionDomain(1L, "Podstawowe typy danych?", q2));

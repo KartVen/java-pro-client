@@ -1,5 +1,6 @@
 package pl.kartven.javaproapp.ui.topic.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import pl.kartven.javaproapp.data.model.domain.SectionDomain;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.FragmentLinksBinding;
 import pl.kartven.javaproapp.ui.topic.fragment.adapter.SectionLinksListAdapter;
+import pl.kartven.javaproapp.ui.topic.link.LinkActivity;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseFragment;
 import pl.kartven.javaproapp.utils.utility.Constant;
@@ -60,9 +62,12 @@ public class LinksFragment extends BaseFragment {
 
         SectionLinksListAdapter adapter = new SectionLinksListAdapter(ListUtils.extractList(data, requireContext()));
         adapter.setItemExpandEvent((model, position) -> ListUtils.extractList(viewModel.getLinksOfSection(model.getId())));
-        adapter.setNestedItemClickEvent((model, position) -> ActivityUtils.goToActivity(requireContext(), null, intent -> {
-            intent.putExtra(Constant.Extra.LINK_MODEL, model);
-        }));
+        adapter.setNestedItemClickEvent((model, position) ->
+                ActivityUtils.goToActivity(requireActivity(), LinkActivity.class, intent -> {
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra(Constant.Extra.LINK_MODEL, model);
+                })
+        );
         rvBase.setAdapter(adapter);
     }
 
