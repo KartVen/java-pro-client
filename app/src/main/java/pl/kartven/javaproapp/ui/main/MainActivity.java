@@ -2,6 +2,7 @@ package pl.kartven.javaproapp.ui.main;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -9,18 +10,18 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.AppBarConfiguration.OnNavigateUpListener;
 import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import java.util.Objects;
+import java.util.Optional;
 
+import io.vavr.control.Option;
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.databinding.ActivityMainBinding;
 import pl.kartven.javaproapp.ui.auth.LoginActivity;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseActivity;
+import pl.kartven.javaproapp.utils.utility.SessionManager;
 
 public class MainActivity extends BaseActivity implements OnNavigateUpListener {
-
     private ActivityMainBinding binding;
     private MainViewModel viewModel;
     private AppBarConfiguration appBarConfiguration;
@@ -29,10 +30,9 @@ public class MainActivity extends BaseActivity implements OnNavigateUpListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        viewModel = initViewModel(MainViewModel.class);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        viewModel = initViewModel(MainViewModel.class);
 
         initActions();
         initContent();
@@ -42,25 +42,26 @@ public class MainActivity extends BaseActivity implements OnNavigateUpListener {
     protected void initActions() {
         super.initActions();
         setSupportActionBar(binding.mainInclude.mainCoordinatorToolbar);
-        initDrawer();
-        binding.mainInclude.mainCoordinatorFab.setOnClickListener(view ->
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show());
+        initNavDrawer();
     }
 
     @Override
     protected void initContent() {
         super.initContent();
+        SessionManager.User user = viewModel.getLoggedUser().getData();
+        View headerView = binding.mainNavView.getHeaderView(0);
+        ((TextView) headerView.findViewById(R.id.main_d_h_tv_nickname)).setText(user.getNickname());
+        ((TextView) headerView.findViewById(R.id.main_d_h_tv_email)).setText(user.getEmail());
     }
 
-    private void initDrawer() {
+    private void initNavDrawer() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.main_nav_home,
                 R.id.main_nav_profile,
                 R.id.main_nav_stats,
-                R.id.main_nav_settings,
-                R.id.main_nav_logout
+                R.id.main_nav_settings
         )
                 .setOpenableLayout(binding.main)
                 .build();
@@ -69,30 +70,21 @@ public class MainActivity extends BaseActivity implements OnNavigateUpListener {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.mainNavView, navController);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.main_nav_logout) {
-                viewModel.logout();
-                handleError(false, () -> ActivityUtils.goToActivity(this, LoginActivity.class));
-            }
-        });
 
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         navController = Navigation.findNavController(this, R.id.main_content_fragment);
-        if (Objects.requireNonNull(navController.getCurrentDestination()).getId() == R.id.main_nav_logout) {
-            viewModel.logout();
-            handleError(false, () -> ActivityUtils.goToActivity(this, LoginActivity.class));
-            return true;
-        }
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
 
-/*    @Override
+    @Override
     public boolean onNavigateUp() {
         onBackPressed();
         return true;
-    }*/
+    }
+
+
 }

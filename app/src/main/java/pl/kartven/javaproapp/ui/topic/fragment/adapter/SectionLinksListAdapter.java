@@ -2,11 +2,12 @@ package pl.kartven.javaproapp.ui.topic.fragment.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,14 +16,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.LinkDomain;
 import pl.kartven.javaproapp.data.model.domain.SectionDomain;
-import pl.kartven.javaproapp.utils.creator.UIElementCreator;
 import pl.kartven.javaproapp.utils.listener.RVItemClickListener;
 import pl.kartven.javaproapp.utils.listener.RVItemExpandListener;
 
@@ -30,13 +30,14 @@ public class SectionLinksListAdapter extends RecyclerView.Adapter<SectionLinksLi
 
     private List<SectionDomainExpandable> data;
     protected RVItemExpandListener<SectionDomain, List<LinkDomain>> rvItemExpandListener;
-    private Context context;
-    protected RVItemClickListener<LinkDomain> rvNestedItemClick;
-    protected SectionLinksNestedListAdapter nestedAdapter;
+    private final Executor executor;
+    private final Handler handler;
+    private RVItemClickListener<LinkDomain> nestedItemClickListener;
 
-    public SectionLinksListAdapter(List<SectionDomain> data) {
+    public SectionLinksListAdapter(List<SectionDomain> data, Executor executor) {
         this.data = map(data);
-        nestedAdapter = new SectionLinksNestedListAdapter(Collections.emptyList());
+        this.executor = executor;
+        this.handler = new Handler(Looper.getMainLooper());
     }
 
     @NonNull
@@ -51,7 +52,7 @@ public class SectionLinksListAdapter extends RecyclerView.Adapter<SectionLinksLi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
+        Context context = parent.getContext();
         View inflate = LayoutInflater
                 .from(context)
                 .inflate(R.layout.fragment_links_rv_item, parent, false);
@@ -71,24 +72,22 @@ public class SectionLinksListAdapter extends RecyclerView.Adapter<SectionLinksLi
                 holder.expandableArrowImageView.setImageResource(R.drawable.common_expand_more_src);
                 holder.expandableLayout.setVisibility(View.GONE);
             } else {
-                List<LinkDomain> linkDomains = rvItemExpandListener.onExpand(item, position);
-                if (item.linksList == null || item.linksList.size() != linkDomains.size()) {
-                    item.setLinksList(linkDomains);
-                    nestedAdapter.updateList(linkDomains);
-                    holder.nestedRecyclerView.setAdapter(nestedAdapter);
-                }
-                holder.expandableArrowImageView.setImageResource(R.drawable.common_expand_less_src);
-                holder.expandableLayout.setVisibility(View.VISIBLE);
+                SectionLinksNestedListAdapter nestedAdapter = item.getNestedAdapter();
+                holder.nestedRecyclerView.setAdapter(nestedAdapter);
+                nestedAdapter.setItemClicked(nestedItemClickListener);
+                executor.execute(() -> {
+                    List<LinkDomain> linkDomains = rvItemExpandListener.onExpand(item, position);
+                    handler.post(() -> {
+                        if (item.linksList == null || item.linksList.size() != linkDomains.size()) {
+                            item.setLinksList(linkDomains);
+                            nestedAdapter.updateList(linkDomains);
+                        }
+                        holder.expandableArrowImageView.setImageResource(R.drawable.common_expand_less_src);
+                        holder.expandableLayout.setVisibility(View.VISIBLE);
+                    });
+                });
             }
             item.isExpandable = !item.isExpandable;
-        });
-    }
-
-    private void createLinksElements(LinearLayout expandableParent, SectionDomainExpandable item) {
-        expandableParent.removeAllViews();
-        item.getLinksList().forEach(codeDomain -> {
-            expandableParent.addView(UIElementCreator.createTextView(context, codeDomain.getName()));
-            expandableParent.addView(UIElementCreator.createWebView(context, codeDomain.getContent()));
         });
     }
 
@@ -109,7 +108,7 @@ public class SectionLinksListAdapter extends RecyclerView.Adapter<SectionLinksLi
     }
 
     public void setNestedItemClickEvent(RVItemClickListener<LinkDomain> rvItemClickListener) {
-        nestedAdapter.setItemClicked(rvItemClickListener);
+        this.nestedItemClickListener = rvItemClickListener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -139,11 +138,13 @@ public class SectionLinksListAdapter extends RecyclerView.Adapter<SectionLinksLi
     private static class SectionDomainExpandable extends SectionDomain {
         private boolean isExpandable;
         private List<LinkDomain> linksList;
+        private SectionLinksNestedListAdapter nestedAdapter;
 
         public SectionDomainExpandable(Long id, String name, boolean isExpandable) {
             super(id, name);
             this.isExpandable = isExpandable;
             linksList = null;
+            nestedAdapter = new SectionLinksNestedListAdapter(new ArrayList<>());
         }
 
         public boolean isExpandable() {
@@ -160,6 +161,10 @@ public class SectionLinksListAdapter extends RecyclerView.Adapter<SectionLinksLi
 
         public void setLinksList(List<LinkDomain> linksList) {
             this.linksList = linksList;
+        }
+
+        public SectionLinksNestedListAdapter getNestedAdapter() {
+            return nestedAdapter;
         }
     }
 }

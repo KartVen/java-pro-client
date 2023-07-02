@@ -1,5 +1,7 @@
 package pl.kartven.javaproapp.utils.utility;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -22,6 +24,15 @@ public abstract class BaseFragment extends Fragment {
     }
 
     /**
+     * Get Activity ViewModel.
+     *
+     * @param modelClass The class of the ViewModel.
+     */
+    protected <T extends ViewModel> T getActivityViewModel(Class<T> modelClass) {
+        return ViewModelUtils.initViewModel(requireActivity(), modelClass);
+    }
+
+    /**
      * Initializes all actions in the Fragment.
      */
     protected void initActions() {
@@ -38,6 +49,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected final void handleError(boolean showToast, @NonNull Runnable action) {
+        Log.d("ErrorHandling", this.getClass().getSimpleName() + ".handleError");
         if (showToast)
             ActivityUtils.showToast(requireActivity(), Constant.Expression.INTERNAL_ERROR);
         action.run();

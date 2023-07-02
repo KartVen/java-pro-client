@@ -25,11 +25,15 @@ public interface LoginEventListener {
         return passwordValidator.validate().getErrorState();
     }
     
-    default boolean isEmailFieldActived(){
-        return emailValidator.isActived();
+    default boolean isEmailFieldActivated(){
+        return emailValidator.isActivated();
     }
 
-    default boolean isPasswordFieldActived(){
-        return emailValidator.isActived();
+    default boolean isPasswordFieldActivated(){
+        return emailValidator.isActivated();
+    }
+
+    default boolean isFieldValidated(){
+        return emailValidator.isValidated() && passwordValidator.isValidated();
     }
 }

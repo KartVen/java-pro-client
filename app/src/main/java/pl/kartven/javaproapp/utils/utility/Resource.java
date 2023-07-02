@@ -1,24 +1,21 @@
 package pl.kartven.javaproapp.utils.utility;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public abstract class Resource<T> {
-    @Nullable
     private final T data;
-    @Nullable
     private final String message;
 
-    private Resource(@Nullable T data, @Nullable String message) {
+    private Resource(T data, String message) {
         this.data = data;
         this.message = message;
     }
 
-    @Nullable
     public T getData() {
         return data;
     }
 
-    @Nullable
     public String getMessage() {
         return message;
     }
@@ -26,7 +23,7 @@ public abstract class Resource<T> {
     public abstract boolean isSuccess();
 
     public static class Success<T> extends Resource<T> {
-        public Success(T data) {
+        public Success(@NonNull T data) {
             super(data, null);
         }
 
@@ -34,10 +31,16 @@ public abstract class Resource<T> {
         public boolean isSuccess() {
             return true;
         }
+
+        @Override
+        @Nullable
+        public String getMessage() {
+            return super.getMessage();
+        }
     }
 
     public static class Error<T> extends Resource<T> {
-        public Error(String message, T data) {
+        public Error(String message, @Nullable T data) {
             super(data, message);
         }
 
@@ -49,16 +52,28 @@ public abstract class Resource<T> {
         public boolean isSuccess() {
             return false;
         }
+
+        @Override
+        @Nullable
+        public T getData() {
+            return super.getData();
+        }
     }
 
     public static class Loading<T> extends Resource<T> {
-        public Loading(T data) {
+        public Loading(@NonNull T data) {
             super(data, null);
         }
 
         @Override
         public boolean isSuccess() {
             return true;
+        }
+
+        @Override
+        @Nullable
+        public String getMessage() {
+            return super.getMessage();
         }
     }
 }

@@ -17,7 +17,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import pl.kartven.javaproapp.data.BackendApi;
 import pl.kartven.javaproapp.data.MainRepository;
-import pl.kartven.javaproapp.data.MainRepositoryMock;
+import pl.kartven.javaproapp.data.MainRepositoryBackend;
 import pl.kartven.javaproapp.utils.utility.SessionManager;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -48,9 +48,7 @@ public class JavaProApplication extends Application {
     @InstallIn(SingletonComponent.class)
     public static class Bean {
 
-        @Provides
-        @Singleton
-        public BackendApi backendApi(Context context) {
+        private Retrofit retrofit() {
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
             if (BuildConfig.DEBUG) {
@@ -68,8 +66,13 @@ public class JavaProApplication extends Application {
                     .baseUrl(API_URL_TYPE.url)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
-                    .build()
-                    .create(BackendApi.class);
+                    .build();
+        }
+
+        @Provides
+        @Singleton
+        public BackendApi backendApi(){
+            return retrofit().create(BackendApi.class);
         }
 
         @Provides
@@ -99,8 +102,8 @@ public class JavaProApplication extends Application {
         @Provides
         @Singleton
         public MainRepository mainRepository(BackendApi backendApi, SessionManager sessionManager) {
-            return new MainRepositoryMock();
-            //return new MainRepositoryBackend(backendApi, sessionManager);
+            //return new MainRepositoryMock();
+            return new MainRepositoryBackend(backendApi, sessionManager);
         }
     }
 }

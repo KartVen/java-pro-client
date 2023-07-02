@@ -2,6 +2,8 @@ package pl.kartven.javaproapp.ui.topic.fragment.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
 import pl.kartven.javaproapp.R;
@@ -25,12 +28,16 @@ import pl.kartven.javaproapp.utils.listener.RVItemExpandListener;
 
 public class SectionCodesListAdapter extends RecyclerView.Adapter<SectionCodesListAdapter.ViewHolder> {
 
+    private final Executor executor;
+    private final Handler handler;
     private List<SectionDomainExpandable> data;
     protected RVItemExpandListener<SectionDomain, List<CodeDomain>> rvItemExpandListener;
     private Context context;
 
-    public SectionCodesListAdapter(List<SectionDomain> data) {
+    public SectionCodesListAdapter(List<SectionDomain> data, Executor executor) {
         this.data = map(data);
+        this.executor = executor;
+        this.handler = new Handler(Looper.getMainLooper());
     }
 
     @NonNull
@@ -63,13 +70,17 @@ public class SectionCodesListAdapter extends RecyclerView.Adapter<SectionCodesLi
                 holder.expandableArrowImageView.setImageResource(R.drawable.common_expand_more_src);
                 holder.expandableLayout.setVisibility(View.GONE);
             } else {
-                List<CodeDomain> codeDomains = rvItemExpandListener.onExpand(item, position);
-                if (item.codesList == null || item.codesList.size() != codeDomains.size()) {
-                    item.setCodesList(codeDomains);
-                    createCodesElements(holder.expandableLinear, item);
-                }
-                holder.expandableArrowImageView.setImageResource(R.drawable.common_expand_less_src);
-                holder.expandableLayout.setVisibility(View.VISIBLE);
+                executor.execute(() -> {
+                    List<CodeDomain> codeDomains = rvItemExpandListener.onExpand(item, position);
+                    handler.post(() -> {
+                        if (item.codesList == null || item.codesList.size() != codeDomains.size()) {
+                            item.setCodesList(codeDomains);
+                            createCodesElements(holder.expandableLinear, item);
+                        }
+                        holder.expandableArrowImageView.setImageResource(R.drawable.common_expand_less_src);
+                        holder.expandableLayout.setVisibility(View.VISIBLE);
+                    });
+                });
             }
             item.isExpandable = !item.isExpandable;
         });

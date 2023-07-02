@@ -19,6 +19,8 @@ public final class Constant {
     public static class Expression {
         public static final String INTERNAL_ERROR = "Internal Error";
         public static final String SERVER_CONNECTION_ERROR = "Couldn't reach server";
+        public static final String INIT_ERROR = "Initialization Error";
+
 
         private Expression(){}
     }

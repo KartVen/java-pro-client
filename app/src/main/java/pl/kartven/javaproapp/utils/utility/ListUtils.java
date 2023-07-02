@@ -1,6 +1,7 @@
 package pl.kartven.javaproapp.utils.utility;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ public class ListUtils {
     public static <T> List<T> extractList(Resource<List<T>> data, @NonNull Context contextForErrorInfo) {
         if (data == null) return Collections.emptyList();
         if (data.isSuccess()) return data.getData();
+        Log.e("ErrorExtracting", data.getMessage());
         Toast.makeText(contextForErrorInfo, data.getMessage(), Toast.LENGTH_SHORT).show();
         return Collections.emptyList();
     }

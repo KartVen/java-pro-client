@@ -22,10 +22,10 @@
             android:title="@string/menu_settings" />
     </group>
 
-    <group>
+    <!--<group>
         <item
             android:id="@+id/main_nav_logout"
             android:icon="@drawable/main_drawer_logout_src"
             android:title="@string/menu_logout" />
-    </group>
+    </group>-->
 </menu>

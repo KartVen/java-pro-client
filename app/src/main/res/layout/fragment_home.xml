@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.fragment.home.HomeFragment">
+    tools:context=".ui.main.fragment.HomeFragment">
 
     <LinearLayout
         android:id="@+id/f_home_linear_header"
@@ -90,7 +90,7 @@
                     android:text="@string/label_last_added_by_you"
                     android:textColor="@color/dark_blue"
                     android:textSize="@dimen/common_tv_section_head_text_size"
-                    android:paddingTop="@dimen/common_tv_section_head_spacing_v"
+                    android:paddingTop="@dimen/common_tv_section_head_spacing_v_x4"
                     android:paddingBottom="@dimen/common_tv_section_head_spacing_v"
                     android:textStyle="bold" />
 

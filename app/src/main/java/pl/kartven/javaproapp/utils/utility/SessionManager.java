@@ -5,6 +5,10 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import javax.inject.Inject;
 
 public class SessionManager {
@@ -12,6 +16,10 @@ public class SessionManager {
     private static final String KEY_USER = "user";
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
     private static final String AUTH_BEARER_PREFIX = "Bearer ";
+    private static final String LOGGED_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+            LOGGED_DATE_FORMAT, Locale.getDefault()
+    );
 
     private final SharedPreferences sharedPreferences;
     private final Gson gson;
@@ -53,6 +61,7 @@ public class SessionManager {
         private final String email;
         private final String bearerToken;
         private final String refreshToken;
+        private final Date loggedDate = new Date();
 
         public User(String nickname, String email, String bearerToken, String refreshToken) {
             this.nickname = nickname;
@@ -75,6 +84,10 @@ public class SessionManager {
 
         public String getRefreshToken() {
             return refreshToken;
+        }
+
+        public Date getLoggedDate() {
+            return loggedDate;
         }
     }
 }

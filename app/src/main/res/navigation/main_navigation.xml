@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/main_nav_home"
-        android:name="pl.kartven.javaproapp.ui.main.fragment.home.HomeFragment"
+        android:name="pl.kartven.javaproapp.ui.main.fragment.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
@@ -27,11 +27,5 @@
         android:id="@+id/main_nav_settings"
         android:name="pl.kartven.javaproapp.ui.settings.SettingsActivity"
         android:label="@string/menu_settings" />
-
-    <fragment
-        android:id="@+id/main_nav_logout"
-        android:name="pl.kartven.javaproapp.ui.main.fragment.LogoutFragment"
-        android:label="@string/menu_logout"
-        tools:layout="@layout/fragment_logout" />
 
 </navigation>

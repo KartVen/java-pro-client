@@ -1,7 +1,9 @@
 package pl.kartven.javaproapp.data;
 
 import java.util.List;
+import java.util.concurrent.Executor;
 
+import pl.kartven.javaproapp.data.model.api.AuthDto;
 import pl.kartven.javaproapp.data.model.api.CodeApi;
 import pl.kartven.javaproapp.data.model.api.LinkApi;
 import pl.kartven.javaproapp.data.model.api.QuestionApi;
@@ -10,12 +12,26 @@ import pl.kartven.javaproapp.data.model.api.QuizDetailsApi;
 import pl.kartven.javaproapp.data.model.api.SectionApi;
 import pl.kartven.javaproapp.data.model.api.SlideApi;
 import pl.kartven.javaproapp.data.model.api.TopicApi;
+import pl.kartven.javaproapp.data.model.api.request.LoginDto;
+import pl.kartven.javaproapp.data.model.api.request.RegisterDto;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface BackendApi {
+    @POST("api/login")
+    Call<AuthDto> postLogin(
+            @Body LoginDto loginDto
+    );
+
+    @POST("api/register")
+    Call<AuthDto> postRegister(
+            @Body RegisterDto registerDto
+    );
+
     @GET("api/topics")
     Call<List<TopicApi>> getTopics();
 

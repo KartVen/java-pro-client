@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.SessionManager;
 
 @HiltViewModel
@@ -16,7 +17,7 @@ public class MainViewModel extends ViewModel {
         this.sessionManager = sessionManager;
     }
 
-    public void logout() {
-        sessionManager.clear();
+    public Resource<SessionManager.User> getLoggedUser() {
+        return sessionManager.getUser();
     }
 }

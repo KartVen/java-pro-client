@@ -11,16 +11,18 @@ import androidx.lifecycle.MutableLiveData;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Objects;
+
 import pl.kartven.javaproapp.R;
 
 public abstract class Validator {
     @Nullable
     protected String currentState = null;
     protected final MutableLiveData<Integer> errorState = new MutableLiveData<>();
-    private boolean isActived = false;
+    private boolean isActivated = false;
 
     public final Validator validate() {
-        errorState.postValue(checkRules());
+        errorState.setValue(checkRules());
         return this;
     }
 
@@ -29,13 +31,17 @@ public abstract class Validator {
         return currentState;
     }
 
-    public boolean isActived() {
-        return isActived;
+    public boolean isActivated() {
+        return isActivated;
+    }
+
+    public boolean isValidated(){
+        return Objects.isNull(errorState.getValue());
     }
 
     public final Validator setCurrentState(@NonNull String currentState) {
         this.currentState = currentState;
-        isActived = true;
+        isActivated = true;
         return this;
     }
 

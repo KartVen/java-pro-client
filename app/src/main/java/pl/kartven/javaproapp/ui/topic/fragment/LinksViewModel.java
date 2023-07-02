@@ -23,11 +23,11 @@ public class LinksViewModel extends ViewModel {
     }
 
     public Resource<List<SectionDomain>> getSectionsOfTopic(Long id) {
-        return mainRepository.getSectionsOfTopic(id).getValue();
+        return mainRepository.getSectionsOfTopic(id);
     }
 
     public Resource<List<LinkDomain>> getLinksOfSection(Long id) {
-        return mainRepository.getLinksOfSection(id).getValue();
+        return mainRepository.getLinksOfSection(id);
     }
 }
 

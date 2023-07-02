@@ -23,11 +23,11 @@ public class CodesViewModel extends ViewModel {
     }
 
     public Resource<List<SectionDomain>> getSectionsOfTopic(Long id) {
-        return mainRepository.getSectionsOfTopic(id).getValue();
+        return mainRepository.getSectionsOfTopic(id);
     }
 
     public Resource<List<CodeDomain>> getCodesOfSection(Long id) {
-        return mainRepository.getCodesOfSection(id).getValue();
+        return mainRepository.getCodesOfSection(id);
     }
 
 }

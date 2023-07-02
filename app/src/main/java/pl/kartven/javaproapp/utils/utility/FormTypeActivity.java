@@ -17,7 +17,7 @@ public abstract class FormTypeActivity extends BaseActivity {
             R fieldInfo,
             final Consumer<String> updateState,
             final Supplier<LiveData<Integer>> getError,
-            final Supplier<Boolean> isFieldActived
+            final Supplier<Boolean> isFieldActivated
     ) {
         field.addTextChangedListener(new TextWatcherAdapter() {
             @Override
@@ -27,7 +27,7 @@ public abstract class FormTypeActivity extends BaseActivity {
         });
 
         getError.get().observe(this, integer -> {
-            if (isFieldActived.get())
+            if (isFieldActivated.get())
                 Validator.showWarning(this, fieldInfo, integer);
         });
     }

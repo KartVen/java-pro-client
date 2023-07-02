@@ -30,7 +30,8 @@ public class SlideListViewPagerAdapter extends PagerAdapter {
         this.data = data;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-    public Integer getPage() {
+
+    public Integer getPageAndIncrement() {
         return ++page;
     }
 
@@ -78,15 +79,11 @@ public class SlideListViewPagerAdapter extends PagerAdapter {
 
         @Override
         public void onPageSelected(int position) {
-            System.out.println(position);
             SlideListViewPagerAdapter adapter = getAdapter();
             if (!isFull && adapter.getCount() >= 1 && position >= adapter.getCount() - 1) {
-                List<SlideDomain> moreItems = loadMoreItems();
-                if (moreItems.isEmpty()) {
-                    isFull = true;
-                    return;
-                }
-                adapter.addNewItems(moreItems);
+                int adapterCount = adapter.getCount();
+                loadMoreItems();
+                if (adapterCount == adapter.getCount()) isFull = true;
             }
         }
 
@@ -97,7 +94,6 @@ public class SlideListViewPagerAdapter extends PagerAdapter {
         @NonNull
         public abstract SlideListViewPagerAdapter getAdapter();
 
-        @NonNull
-        public abstract List<SlideDomain> loadMoreItems();
+        public abstract void loadMoreItems();
     }
 }

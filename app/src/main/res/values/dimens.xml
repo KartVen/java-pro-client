@@ -39,7 +39,7 @@
     <dimen name="header_nav_edit_size">16dp</dimen>
     <dimen name="header_nav_btn_margin_top">8dp</dimen>
     <dimen name="settings_layout_height">55dp</dimen>
-    <dimen name="settings_cv_padding">8dp</dimen>
+    <dimen name="profile_table_row_padding">8dp</dimen>
 
     <dimen name="common_container_spacing_h">24dp</dimen>
     <dimen name="common_container_spacing_v">16dp</dimen>
@@ -57,5 +57,7 @@
     <dimen name="topic_fab_margin">16dp</dimen>
     <dimen name="question_checkbox_spacing_v">4dp</dimen>
     <dimen name="question_checkbox_drawable_padding">5dp</dimen>
+    <dimen name="common_iv_max_height">250dp</dimen>
+    <dimen name="common_tv_section_head_spacing_v_x4">32dp</dimen>
 
 </resources>

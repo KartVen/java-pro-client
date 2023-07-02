@@ -8,6 +8,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.Objects;
+import java.util.Optional;
+
 import io.vavr.control.Option;
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
@@ -16,20 +19,18 @@ import pl.kartven.javaproapp.ui.main.MainActivity;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseActivity;
 import pl.kartven.javaproapp.utils.utility.Constant;
-import pl.kartven.javaproapp.utils.utility.State;
 
 public class TopicActivity extends BaseActivity {
-
     private ActivityTopicBinding binding;
-    private final State<TopicDomain> topicDomainState = State.getState();
+    private TopicViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewModel = initViewModel(TopicViewModel.class);
+        initBundleVariable(savedInstanceState);
         binding = ActivityTopicBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        initBundleVariable(savedInstanceState);
         initActions();
         initContent();
     }
@@ -37,11 +38,10 @@ public class TopicActivity extends BaseActivity {
     @Override
     protected void initBundleVariable(@Nullable Bundle savedInstanceState) {
         super.initBundleVariable(savedInstanceState);
-        topicDomainState.setData(getVariableFromBundle(savedInstanceState, bundle ->
-                (TopicDomain) bundle.getSerializable(Constant.Extra.TOPIC_MODEL)
+        viewModel.setTopicDomain((TopicDomain) getVariableFromBundle(savedInstanceState, bundle ->
+                bundle.getSerializable(Constant.Extra.TOPIC_MODEL)
         ));
-
-        if (!topicDomainState.isExists()) {
+        if (Objects.isNull(viewModel.getTopicDomain())) {
             handleError(() -> ActivityUtils.goToActivity(this, MainActivity.class));
         }
     }
@@ -49,8 +49,11 @@ public class TopicActivity extends BaseActivity {
     @Override
     protected void initActions() {
         super.initActions();
-        setSupportActionBar(binding.topicInclude.topicCoordinatorToolbar);
-        Option.of(getSupportActionBar()).peek(bar -> bar.setDisplayHomeAsUpEnabled(true));
+        setSupportActionBar(binding.topicToolbar);
+        Optional.ofNullable(getSupportActionBar()).ifPresent(bar -> {
+            bar.setElevation(0);
+            bar.setDisplayHomeAsUpEnabled(true);
+        });
         initBottomBar();
     }
 
@@ -72,15 +75,7 @@ public class TopicActivity extends BaseActivity {
     @Override
     protected void initContent() {
         super.initContent();
-        /*String name = topicDomainState.getData().getName();
-        binding.topicDetailsTvHeaderName.setText(name != null ? name : "");
-        String description = topicDomainState.getData().getDescription();
-        binding.topicDetailsTvHeaderDesc.setText(description != null ? description : "");*/
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        topicDomainState.clear();
+        binding.topicTvHeaderName.setText(viewModel.getTopicDomain().getName());
+        binding.topicTvHeaderDesc.setText(viewModel.getTopicDomain().getDescription());
     }
 }

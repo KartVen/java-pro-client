@@ -1,12 +1,14 @@
 package pl.kartven.javaproapp.utils.utility;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModel;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -25,10 +27,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void initBundleVariable(@Nullable Bundle savedInstanceState) {
+        if (Objects.nonNull(savedInstanceState)) onRestoreInstanceState(savedInstanceState);
     }
 
     @SuppressWarnings("deprecation")
+    @Nullable
     protected <T> T getVariableFromBundle(@Nullable Bundle savedInstanceState, @NonNull Function<Bundle, T> bundleFunction) {
+        Log.i(this.getClass().getSimpleName(), "getVariableFromBundle");
         return Option.of(savedInstanceState)
                 .map(bundleFunction)
                 .getOrElse(
@@ -56,6 +61,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected final void handleError(boolean showToast, @NonNull Runnable action) {
+        Log.d(this.getClass().getSimpleName(), "handleError");
         if (showToast) ActivityUtils.showToast(this, Constant.Expression.INTERNAL_ERROR);
         action.run();
         finish();

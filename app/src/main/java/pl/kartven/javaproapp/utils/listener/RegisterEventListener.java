@@ -15,7 +15,11 @@ public interface RegisterEventListener extends LoginEventListener {
         return nicknameValidator.validate().getErrorState();
     }
 
-    default boolean isNicknameFieldActived() {
-        return nicknameValidator.isActived();
+    default boolean isNicknameFieldActivated() {
+        return nicknameValidator.isActivated();
+    }
+
+    default boolean isFieldValidated(){
+        return LoginEventListener.super.isFieldValidated() && nicknameValidator.isValidated();
     }
 }

@@ -22,7 +22,7 @@ public class QuizzesViewModel extends ViewModel {
     }
 
     public Resource<List<QuizDomain>> getQuizzesOfTopic(Long id) {
-        return mainRepository.getQuizzesOfTopic(id).getValue();
+        return mainRepository.getQuizzesOfTopic(id);
     }
 }
 

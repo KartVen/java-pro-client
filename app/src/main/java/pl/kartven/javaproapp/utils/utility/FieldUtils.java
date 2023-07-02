@@ -27,13 +27,17 @@ public class FieldUtils {
     }
 
     public static class NicknameValidator extends Validator {
+        @Nullable
+        @Override
+        protected Integer checkRules() {
+            if (StringUtils.isEmpty(currentState)) return R.string.field_is_required;
+            if (currentState.length() < 5 || currentState.length() > 125) return R.string.bad_size_nickname;
+            return null;
+        }
     }
 
     public static class PasswordValidator extends Validator {
-        private static final String REGEX = "^(?=.*[0-9])"
-                + "(?=.*[a-z])(?=.*[A-Z])"
-                + "(?=.*[@#$%^&+=])"
-                + ".{8,20}$";
+        private static final String REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).{8,20}$";
         private final Pattern pattern = Pattern.compile(REGEX);
 
         @Nullable

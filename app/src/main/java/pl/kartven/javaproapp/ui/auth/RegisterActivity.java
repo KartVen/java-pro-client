@@ -2,10 +2,15 @@ package pl.kartven.javaproapp.ui.auth;
 
 import android.os.Bundle;
 
+import java.util.concurrent.Executors;
+
+import pl.kartven.javaproapp.R;
+import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.databinding.ActivityRegisterBinding;
 import pl.kartven.javaproapp.ui.main.MainActivity;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.FormTypeActivity;
+import pl.kartven.javaproapp.utils.utility.Resource;
 
 public class RegisterActivity extends FormTypeActivity {
 
@@ -15,10 +20,9 @@ public class RegisterActivity extends FormTypeActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewModel = initViewModel(RegisterViewModel.class);
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        viewModel = initViewModel(RegisterViewModel.class);
 
         initActions();
         initContent();
@@ -27,8 +31,8 @@ public class RegisterActivity extends FormTypeActivity {
     @Override
     protected void initActions() {
         super.initActions();
-        binding.confirmBtn.setOnClickListener(v -> ActivityUtils.goToActivity(this, MainActivity.class));
-        binding.registerTvBack.setOnClickListener(v -> ActivityUtils.goToActivity(this, LoginActivity.class));
+        binding.confirmBtn.setOnClickListener(v -> handleRegister());
+        binding.registerTvBack.setOnClickListener(v -> ActivityUtils.goToActivity(this, MainActivity.class));
     }
 
     @Override
@@ -39,7 +43,7 @@ public class RegisterActivity extends FormTypeActivity {
                 binding.registerTvNicknameInfo,
                 viewModel::updateNicknameState,
                 viewModel::getNicknameError,
-                viewModel::isNicknameFieldActived
+                viewModel::isNicknameFieldActivated
         );
 
         handleField(
@@ -47,7 +51,7 @@ public class RegisterActivity extends FormTypeActivity {
                 binding.registerTvEmailInfo,
                 viewModel::updateEmailState,
                 viewModel::getEmailError,
-                viewModel::isEmailFieldActived
+                viewModel::isEmailFieldActivated
         );
 
         handleField(
@@ -55,7 +59,25 @@ public class RegisterActivity extends FormTypeActivity {
                 binding.registerTvPasswordInfo,
                 viewModel::updatePasswordState,
                 viewModel::getPasswordError,
-                viewModel::isPasswordFieldActived
+                viewModel::isPasswordFieldActivated
         );
+    }
+
+    private void handleRegister() {
+        if (!viewModel.isFieldValidated()) return;
+        ActivityUtils.showToast(this, getString(R.string.label_please_wait));
+        Executors.newSingleThreadExecutor().execute(() -> {
+            Resource<AuthDomain> authDomainResource = viewModel.register(
+                    binding.registerEtNickname.getText().toString(),
+                    binding.registerEtEmail.getText().toString(),
+                    binding.registerEtPassword.getText().toString()
+            );
+            this.runOnUiThread(() -> {
+                if (authDomainResource.isSuccess())
+                    ActivityUtils.goToActivity(this, MainActivity.class);
+                else
+                    ActivityUtils.showToast(this, authDomainResource.getMessage());
+            });
+        });
     }
 }

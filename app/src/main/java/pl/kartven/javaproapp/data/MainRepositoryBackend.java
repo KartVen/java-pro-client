@@ -1,16 +1,17 @@
 package pl.kartven.javaproapp.data;
 
-import androidx.lifecycle.LiveData;
-
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.function.Function;
 
 import javax.inject.Inject;
 
 import io.vavr.control.Try;
 import pl.kartven.javaproapp.data.model.api.AuthDto;
 import pl.kartven.javaproapp.data.model.api.request.LoginDto;
+import pl.kartven.javaproapp.data.model.api.request.RegisterDto;
+import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.data.model.domain.CodeDomain;
 import pl.kartven.javaproapp.data.model.domain.LinkDomain;
 import pl.kartven.javaproapp.data.model.domain.QuestionDomain;
@@ -22,6 +23,7 @@ import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ResponseUtils;
 import pl.kartven.javaproapp.utils.utility.SessionManager;
+import retrofit2.Call;
 
 public class MainRepositoryBackend extends MainRepository {
     private final BackendApi backendApi;
@@ -36,103 +38,103 @@ public class MainRepositoryBackend extends MainRepository {
     }
 
     @Override
-    public LiveData<Resource<AuthDto>> getAuthData(LoginDto loginDto) {
-        authData.setValue(new Resource.Success<>(new AuthDto(
-                "kartven",
-                "krystian.kielbasa@hotmail.com",
-                "",
-                ""
-        )));
+    public Resource<AuthDomain> getAuthData(LoginDto loginDto) {
+        Try.of(() -> backendApi.postLogin(loginDto).execute())
+                .onFailure(e -> authData = ResponseUtils.onFailure(e))
+                .onSuccess(response -> authData = ResponseUtils.onResponse(response)
+                        .fold(Resource.Error::new, data -> new Resource.Success<>(AuthDomain.map(data)))
+                );
         return authData;
     }
 
     @Override
-    public LiveData<Resource<List<TopicDomain>>> getTopics() {
-        executor.execute(() -> {
-            Try.of(() -> backendApi.getTopics().execute())
-                    .onFailure(e -> ResponseUtils.onFailure(topics, e))
-                    .onSuccess(response -> topics
-                            .setValue(ResponseUtils.onResponse(response)
-                                    .fold(Resource.Error::new, list -> new Resource.Success<>(TopicDomain.map(list)))
-                            ));
-        });
+    public Resource<AuthDomain> getAuthData(RegisterDto registerDto) {
+        Try.of(() -> backendApi.postRegister(registerDto).execute())
+                .onFailure(e -> authData = ResponseUtils.onFailure(e))
+                .onSuccess(response -> authData = ResponseUtils.onResponse(response)
+                        .fold(Resource.Error::new, data -> new Resource.Success<>(AuthDomain.map(data)))
+                );
+        return authData;
+    }
+
+    @Override
+    public Resource<List<TopicDomain>> getTopics() {
+        Try.of(() -> backendApi.getTopics().execute())
+                .onFailure(e -> topics = ResponseUtils.onFailure(e))
+                .onSuccess(response -> topics = ResponseUtils.onResponse(response)
+                        .fold(Resource.Error::new, data -> new Resource.Success<>(TopicDomain.map(data)))
+                );
         return topics;
     }
 
     @Override
-    public LiveData<Resource<List<TopicDomain>>> getMyTopics() {
+    public Resource<List<TopicDomain>> getMyTopics() {
         Try.of(() -> backendApi.getTopics().execute())
-                .onFailure(e -> ResponseUtils.onFailure(myTopics, e))
-                .onSuccess(response -> myTopics
-                        .setValue(ResponseUtils.onResponse(response)
-                                .fold(Resource.Error::new, list -> new Resource.Success<>(TopicDomain.map(list)))
-                        ));
+                .onFailure(e -> myTopics = ResponseUtils.onFailure(e))
+                .onSuccess(response -> myTopics = ResponseUtils.onResponse(response)
+                        .fold(Resource.Error::new, data -> new Resource.Success<>(TopicDomain.map(data)))
+                );
         return myTopics;
     }
 
     @Override
-    public LiveData<Resource<List<SectionDomain>>> getSectionsOfTopic(Long id) {
+    public Resource<List<SectionDomain>> getSectionsOfTopic(Long id) {
         Try.of(() -> backendApi.getSectionsOfTopic(id).execute())
-                .onFailure(e -> ResponseUtils.onFailure(sectionsOfTopics, e))
-                .onSuccess(response -> sectionsOfTopics
-                        .setValue(ResponseUtils.onResponse(response)
-                                .fold(Resource.Error::new, list -> new Resource.Success<>(SectionDomain.map(list)))
-                        ));
+                .onFailure(e -> sectionsOfTopics = ResponseUtils.onFailure(e))
+                .onSuccess(response -> sectionsOfTopics = ResponseUtils.onResponse(response)
+                        .fold(Resource.Error::new, data -> new Resource.Success<>(SectionDomain.map(data)))
+                );
         return sectionsOfTopics;
     }
 
     @Override
-    public LiveData<Resource<List<QuizDomain>>> getQuizzesOfTopic(Long id) {
+    public Resource<List<QuizDomain>> getQuizzesOfTopic(Long id) {
         Try.of(() -> backendApi.getQuizzesOfTopic(id).execute())
-                .onFailure(e -> ResponseUtils.onFailure(quizzesOfTopic, e))
-                .onSuccess(response -> quizzesOfTopic
-                        .setValue(ResponseUtils.onResponse(response)
-                                .fold(Resource.Error::new, list -> new Resource.Success<>(QuizDomain.map(list)))
-                        ));
+                .onFailure(e -> quizzesOfTopic = ResponseUtils.onFailure(e))
+                .onSuccess(response -> quizzesOfTopic =
+                        ResponseUtils.onResponse(response)
+                                .fold(Resource.Error::new, data -> new Resource.Success<>(QuizDomain.map(data)))
+                );
         return quizzesOfTopic;
     }
 
     @Override
-    public LiveData<Resource<List<CodeDomain>>> getCodesOfSection(Long id) {
+    public Resource<List<CodeDomain>> getCodesOfSection(Long id) {
         Try.of(() -> backendApi.getCodesOfSection(id).execute())
-                .onFailure(e -> ResponseUtils.onFailure(codesOfSection, e))
-                .onSuccess(response -> codesOfSection
-                        .setValue(ResponseUtils.onResponse(response)
-                                .fold(Resource.Error::new, list -> new Resource.Success<>(CodeDomain.map(list)))
-                        ));
+                .onFailure(e -> codesOfSection = ResponseUtils.onFailure(e))
+                .onSuccess(response -> codesOfSection = ResponseUtils.onResponse(response)
+                        .fold(Resource.Error::new, data -> new Resource.Success<>(CodeDomain.map(data)))
+                );
         return codesOfSection;
     }
 
     @Override
-    public LiveData<Resource<List<QuestionDomain>>> getQuestionsOfQuiz(Long id) {
+    public Resource<List<QuestionDomain>> getQuestionsOfQuiz(Long id) {
         Try.of(() -> backendApi.getQuestionsOfQuiz(id).execute())
-                .onFailure(e -> ResponseUtils.onFailure(questionsOfQuiz, e))
-                .onSuccess(response -> questionsOfQuiz
-                        .setValue(ResponseUtils.onResponse(response)
-                                .fold(Resource.Error::new, list -> new Resource.Success<>(QuestionDomain.map(list)))
-                        ));
+                .onFailure(e -> questionsOfQuiz = ResponseUtils.onFailure(e))
+                .onSuccess(response -> questionsOfQuiz = ResponseUtils.onResponse(response)
+                        .fold(Resource.Error::new, data -> new Resource.Success<>(QuestionDomain.map(data)))
+                );
         return questionsOfQuiz;
     }
 
     @Override
-    public LiveData<Resource<QuizDetailsDomain>> getQuizDetails(Long id) {
+    public Resource<QuizDetailsDomain> getQuizDetails(Long id) {
         Try.of(() -> backendApi.getQuizDetails(id).execute())
-                .onFailure(e -> ResponseUtils.onFailure(quizDetails, e))
-                .onSuccess(response -> quizDetails
-                        .setValue(ResponseUtils.onResponse(response)
-                                .fold(Resource.Error::new, item -> new Resource.Success<>(QuizDetailsDomain.map(item)))
-                        ));
+                .onFailure(e -> quizDetails = ResponseUtils.onFailure(e))
+                .onSuccess(response -> quizDetails = ResponseUtils.onResponse(response)
+                        .fold(Resource.Error::new, data -> new Resource.Success<>(QuizDetailsDomain.map(data)))
+                );
         return quizDetails;
     }
 
     @Override
-    public LiveData<Resource<List<LinkDomain>>> getLinksOfSection(Long id) {
+    public Resource<List<LinkDomain>> getLinksOfSection(Long id) {
         Try.of(() -> backendApi.getLinksOfSection(id).execute())
-                .onFailure(e -> ResponseUtils.onFailure(linksOfSection, e))
-                .onSuccess(response -> linksOfSection
-                        .setValue(ResponseUtils.onResponse(response)
-                                .fold(Resource.Error::new, list -> new Resource.Success<>(LinkDomain.map(list)))
-                        ));
+                .onFailure(e -> linksOfSection = ResponseUtils.onFailure(e))
+                .onSuccess(response -> linksOfSection = ResponseUtils.onResponse(response)
+                        .fold(Resource.Error::new, data -> new Resource.Success<>(LinkDomain.map(data)))
+                );
         return linksOfSection;
     }
 
@@ -141,7 +143,7 @@ public class MainRepositoryBackend extends MainRepository {
         Try.of(() -> backendApi.getSlidesOfTopic(id, page, size).execute())
                 .onFailure(e -> slidesOfTopic = ResponseUtils.onFailure(e))
                 .onSuccess(response -> slidesOfTopic = ResponseUtils.onResponse(response)
-                        .fold(Resource.Error::new, list -> new Resource.Success<>(SlideDomain.map(list)))
+                        .fold(Resource.Error::new, data -> new Resource.Success<>(SlideDomain.map(data)))
                 );
         return slidesOfTopic;
     }

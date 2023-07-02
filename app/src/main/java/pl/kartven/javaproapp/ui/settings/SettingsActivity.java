@@ -4,26 +4,34 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
 import io.vavr.control.Option;
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.databinding.ActivitySettingsBinding;
+import pl.kartven.javaproapp.ui.auth.LoginActivity;
+import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseActivity;
+import pl.kartven.javaproapp.utils.utility.SessionManager;
 
 public class SettingsActivity extends BaseActivity {
+    private SettingsViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        pl.kartven.javaproapp.databinding.ActivitySettingsBinding binding = ActivitySettingsBinding.inflate(getLayoutInflater());
+        viewModel = initViewModel(SettingsViewModel.class);
+        ActivitySettingsBinding binding = ActivitySettingsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.settings, new SettingsFragment())
+                    .replace(R.id.settings, new SettingsFragment(viewModel.getSessionManager()))
                     .commit();
         }
 
@@ -45,10 +53,28 @@ public class SettingsActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static class SettingsFragment extends PreferenceFragmentCompat {
+    public static class SettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceClickListener {
+        private final SessionManager sessionManager;
+        public SettingsFragment(SessionManager sessionManager) {
+            this.sessionManager = sessionManager;
+        }
+
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
+            Option.of(findPreference("logout_button"))
+                    .map(Preference.class::cast)
+                    .peek(o -> o.setOnPreferenceClickListener(this));
+        }
+
+        @Override
+        public boolean onPreferenceClick(Preference preference) {
+            if (preference.getKey().equals("logout_button")) {
+                sessionManager.clear();
+                ActivityUtils.goToActivity(requireActivity(), LoginActivity.class);
+                return true;
+            }
+            return false;
         }
     }
 }

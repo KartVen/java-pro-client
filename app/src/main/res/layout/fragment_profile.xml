@@ -5,10 +5,72 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.fragment.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/common_container_spacing_h"
+        android:paddingVertical="@dimen/common_container_spacing_v">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="@dimen/common_iv_max_height"
+            android:src="@drawable/main_drawer_person_src" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/common_tv_section_head_spacing_v"
+            android:paddingBottom="@dimen/common_tv_section_head_spacing_v"
+            android:text="@string/label_profile"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/common_tv_section_head_text_size"
+            android:textStyle="bold" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow android:padding="@dimen/profile_table_row_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/label_nickname"
+                    android:textColor="?colorPrimary" />
+
+                <TextView
+                    android:id="@+id/profile_tv_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/example_name" />
+
+            </TableRow>
+
+            <TableRow android:padding="@dimen/profile_table_row_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/label_email"
+                    android:textColor="?colorPrimary" />
+
+                <TextView
+                    android:id="@+id/profile_tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/example_email" />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

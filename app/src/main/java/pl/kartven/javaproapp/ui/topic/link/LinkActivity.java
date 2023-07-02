@@ -1,10 +1,10 @@
 package pl.kartven.javaproapp.ui.topic.link;
 
-import androidx.annotation.Nullable;
-
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.annotation.Nullable;
 
 import java.util.Objects;
 
@@ -45,7 +45,7 @@ public class LinkActivity extends BaseActivity {
     @Override
     protected void initActions() {
         super.initActions();
-        setSupportActionBar(binding.linkInclude.linkCoordinatorToolbar);
+        setSupportActionBar(binding.linkToolbar);
         Option.of(getSupportActionBar()).peek(bar -> bar.setDisplayHomeAsUpEnabled(true));
     }
 
