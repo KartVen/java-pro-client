@@ -68,6 +68,7 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicListAdapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         Long id;
+
         TextView no, title, description;
 
         public ViewHolder(@NonNull View itemView) {

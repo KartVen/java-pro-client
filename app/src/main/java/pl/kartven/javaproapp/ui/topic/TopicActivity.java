@@ -11,10 +11,10 @@ import androidx.navigation.ui.NavigationUI;
 import java.util.Objects;
 import java.util.Optional;
 
-import io.vavr.control.Option;
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.ActivityTopicBinding;
+import pl.kartven.javaproapp.ui.creator.CreatorActivity;
 import pl.kartven.javaproapp.ui.main.MainActivity;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseActivity;
@@ -55,6 +55,9 @@ public class TopicActivity extends BaseActivity {
             bar.setDisplayHomeAsUpEnabled(true);
         });
         initBottomBar();
+        binding.topicCoordinatorFab.setOnClickListener(
+                v -> ActivityUtils.goToActivity(this, CreatorActivity.class)
+        );
     }
 
     private void initBottomBar() {
@@ -77,5 +80,10 @@ public class TopicActivity extends BaseActivity {
         super.initContent();
         binding.topicTvHeaderName.setText(viewModel.getTopicDomain().getName());
         binding.topicTvHeaderDesc.setText(viewModel.getTopicDomain().getDescription());
+    }
+
+    @Override
+    public void onBackPressed() {
+        ActivityUtils.goToActivity(this, MainActivity.class);
     }
 }

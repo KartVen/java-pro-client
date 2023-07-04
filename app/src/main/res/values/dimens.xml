@@ -32,7 +32,7 @@
     <dimen name="header_nav_back_arrow_size">@dimen/default_size</dimen>
     <dimen name="main_rv_item_ico_size">40dp</dimen>
     <dimen name="profile_avatar_size">144dp</dimen>
-    <dimen name="auth_tv_info_text">@dimen/common__text_h4</dimen>
+    <dimen name="auth_tv_info_text_size">@dimen/common__text_h4</dimen>
     <dimen name="main__space_size">16dp</dimen>
     <dimen name="common_tv_section_margin_bottom">16dp</dimen>
     <dimen name="fragment__space_size">16dp</dimen>
@@ -59,5 +59,11 @@
     <dimen name="question_checkbox_drawable_padding">5dp</dimen>
     <dimen name="common_iv_max_height">250dp</dimen>
     <dimen name="common_tv_section_head_spacing_v_x4">32dp</dimen>
+    <dimen name="wizard_input_margin_top">8dp</dimen>
+    <dimen name="wizard_input_padding">12dp</dimen>
+    <dimen name="wizard_tv_info_text_size">@dimen/common__text_h4</dimen>
+    <dimen name="wizard_linear_margin_top">16dp</dimen>
+    <dimen name="common_dialog_width">350dp</dimen>
+    <dimen name="common_dialog_max_height">550dp</dimen>
 
 </resources>

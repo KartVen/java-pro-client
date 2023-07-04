@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/creator_navigation"
+    app:startDestination="@+id/creator_nav_topic">
+
+    <fragment
+        android:id="@+id/creator_nav_topic"
+        android:name="pl.kartven.javaproapp.ui.creator.fragment.CreatorTopicFragment"
+        android:label="@string/add_slash_edit"
+        tools:layout="@layout/fragment_creator_topic" />
+
+    <fragment
+        android:id="@+id/creator_nav_slide"
+        android:name="pl.kartven.javaproapp.ui.creator.fragment.CreatorSlideFragment"
+        android:label="@string/add_slash_edit"
+        tools:layout="@layout/fragment_creator_slide" />
+
+    <fragment
+        android:id="@+id/creator_nav_code"
+        android:name="pl.kartven.javaproapp.ui.creator.fragment.CreatorCodeFragment"
+        android:label="@string/add_slash_edit"
+        tools:layout="@layout/fragment_creator_code" />
+
+    <fragment
+        android:id="@+id/creator_nav_link"
+        android:name="pl.kartven.javaproapp.ui.creator.fragment.CreatorLinkFragment"
+        android:label="@string/add_slash_edit"
+        tools:layout="@layout/fragment_creator_link" />
+
+    <!--  PAGE  -->
+
+    <action
+        android:id="@+id/creator_page_topic"
+        app:destination="@id/creator_nav_topic" />
+
+    <action
+        android:id="@+id/creator_page_slide"
+        app:destination="@id/creator_nav_slide" />
+
+    <action
+        android:id="@+id/creator_page_code"
+        app:destination="@id/creator_nav_code" />
+
+    <action
+        android:id="@+id/creator_page_link"
+        app:destination="@id/creator_nav_link" />
+
+</navigation>

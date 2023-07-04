@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorPrimary"
+    tools:context=".ui.creator.fragment.CreatorTopicFragment">
+
+    <ScrollView
+        android:id="@+id/creator_topic_scrollview_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:maxHeight="@dimen/common_dialog_max_height"
+        android:paddingHorizontal="@dimen/common_container_spacing_h"
+        android:paddingVertical="@dimen/common_container_spacing_v">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/creator_topic_linear_name_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/wizard_linear_margin_top"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/creator_topic_tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_name"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common__text_h3"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/creator_topic_et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/wizard_input_margin_top"
+                        android:autofillHints="name"
+                        android:background="@drawable/creator_input_bg"
+                        android:ems="10"
+                        android:hint="@string/example_name"
+                        android:inputType="textMultiLine"
+                        android:labelFor="@id/creator_topic_tv_name"
+                        android:padding="@dimen/auth_input_padding"
+                        android:textColor="?colorOnPrimary"
+                        android:textColorHint="@color/light_gray"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/creator_topic_tv_name_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/field_is_required"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/wizard_tv_info_text_size"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/creator_topic_linear_desc_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/auth_linear_margin_top"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/creator_topic_linear_name_wrapper">
+
+                    <TextView
+                        android:id="@+id/creator_topic_tv_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_desc"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common__text_h3"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/creator_topic_et_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/wizard_input_margin_top"
+                        android:autofillHints="name"
+                        android:background="@drawable/creator_input_bg"
+                        android:ems="10"
+                        android:hint="@string/example_desc"
+                        android:inputType="textMultiLine"
+                        android:labelFor="@id/creator_topic_tv_desc"
+                        android:padding="@dimen/wizard_input_padding"
+                        android:textColor="?colorOnPrimary"
+                        android:textColorHint="@color/light_gray"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/creator_topic_tv_desc_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/field_is_required"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/wizard_tv_info_text_size"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/creator_topic_linear_chb_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/auth_linear_margin_top"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/creator_topic_linear_desc_wrapper">
+
+                    <TextView
+                        android:id="@+id/creator_topic_tv_content_check"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_content_create_que"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common__text_h3"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/creator_topic_chb_content_check_wrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/wizard_input_margin_top"
+                        android:background="@drawable/creator_input_bg"
+                        android:gravity="start|center_vertical"
+                        android:clickable="true"
+                        android:foreground="?selectableItemBackground"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/creator_topic_chb_content_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="?colorOnPrimary"
+                            android:textColorHint="@color/light_gray"
+                            android:gravity="center"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/creator_topic_tv_content_check_label"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/label_extended_mode"
+                            android:textColor="?colorOnPrimary"
+                            android:textColorHint="@color/light_gray"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

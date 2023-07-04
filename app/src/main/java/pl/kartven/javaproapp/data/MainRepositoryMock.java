@@ -3,9 +3,9 @@ package pl.kartven.javaproapp.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.kartven.javaproapp.data.model.api.AuthDto;
 import pl.kartven.javaproapp.data.model.api.request.LoginDto;
 import pl.kartven.javaproapp.data.model.api.request.RegisterDto;
+import pl.kartven.javaproapp.data.model.api.request.TopicReqApi;
 import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.data.model.domain.CodeDomain;
 import pl.kartven.javaproapp.data.model.domain.LinkDomain;
@@ -40,7 +40,7 @@ public class MainRepositoryMock extends MainRepository {
     @Override
     public Resource<AuthDomain> getAuthData(LoginDto loginDto) {
         return authData = new Success<>(new AuthDomain(
-                "kartven",
+                1L, "kartven",
                 "krystian.kielbasa@hotmail.com",
                 "",
                 ""
@@ -140,5 +140,10 @@ public class MainRepositoryMock extends MainRepository {
     @Override
     public Resource<List<SlideDomain>> getSlidesOfTopic(Long topicId, Integer page, Integer size) {
         return slidesOfTopic;
+    }
+
+    @Override
+    public Resource<Void> postTopic(TopicReqApi topicReqApi) {
+        return new Success<>(null);
     }
 }

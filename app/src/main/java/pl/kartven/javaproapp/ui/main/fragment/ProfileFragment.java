@@ -15,6 +15,7 @@ import java.util.Optional;
 import io.vavr.control.Option;
 import io.vavr.control.Try;
 import pl.kartven.javaproapp.R;
+import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.databinding.FragmentProfileBinding;
 import pl.kartven.javaproapp.ui.main.MainViewModel;
 import pl.kartven.javaproapp.utils.utility.BaseFragment;
@@ -43,9 +44,10 @@ public class ProfileFragment extends BaseFragment {
     @Override
     protected void initContent() {
         super.initContent();
-        SessionManager.User loggedUser = mainViewModel.getLoggedUser().getData();
+        AuthDomain loggedUser = mainViewModel.getLoggedUser().getData();
         binding.profileTvEmail.setText(loggedUser.getEmail());
         binding.profileTvNickname.setText(loggedUser.getNickname());
+        binding.profileTvLoggedTime.setText(loggedUser.getLoggedDate().toString());
     }
 
     @Override

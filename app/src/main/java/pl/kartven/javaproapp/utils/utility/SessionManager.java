@@ -11,6 +11,8 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
+import pl.kartven.javaproapp.data.model.domain.AuthDomain;
+
 public class SessionManager {
     private static final String PREF_NAME = "auth_s_pref";
     private static final String KEY_USER = "user";
@@ -30,7 +32,7 @@ public class SessionManager {
         this.gson = gson;
     }
 
-    public void saveUser(User user) {
+    public void saveUser(AuthDomain user) {
         String json = gson.toJson(user);
         sharedPreferences.edit()
                 .putString(KEY_USER, json)
@@ -38,11 +40,15 @@ public class SessionManager {
                 .apply();
     }
 
-    public Resource<User> getUser() {
+    public Resource<AuthDomain> getUser() {
         String json = sharedPreferences.getString(KEY_USER, null);
         return isLoggedIn() ?
-                new Resource.Success<>(gson.fromJson(json, User.class)) :
+                new Resource.Success<>(gson.fromJson(json, AuthDomain.class)) :
                 new Resource.Error<>("");
+    }
+
+    public String getBearerToken(){
+        return AUTH_BEARER_PREFIX + this.getUser().getData().getBearerToken();
     }
 
     public void clear() {
@@ -56,39 +62,5 @@ public class SessionManager {
         return sharedPreferences.getBoolean(KEY_IS_LOGGED_IN, false);
     }
 
-    public static class User {
-        private final String nickname;
-        private final String email;
-        private final String bearerToken;
-        private final String refreshToken;
-        private final Date loggedDate = new Date();
-
-        public User(String nickname, String email, String bearerToken, String refreshToken) {
-            this.nickname = nickname;
-            this.email = email;
-            this.bearerToken = bearerToken;
-            this.refreshToken = refreshToken;
-        }
-
-        public String getNickname() {
-            return nickname;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public String getBearerToken() {
-            return bearerToken;
-        }
-
-        public String getRefreshToken() {
-            return refreshToken;
-        }
-
-        public Date getLoggedDate() {
-            return loggedDate;
-        }
-    }
 }
 

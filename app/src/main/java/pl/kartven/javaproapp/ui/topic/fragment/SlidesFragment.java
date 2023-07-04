@@ -17,12 +17,10 @@ import java.util.concurrent.Executors;
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.SlideDomain;
 import pl.kartven.javaproapp.databinding.FragmentSlidesBinding;
 import pl.kartven.javaproapp.ui.topic.TopicViewModel;
 import pl.kartven.javaproapp.ui.topic.fragment.adapter.SlideListViewPagerAdapter;
-import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseFragment;
 import pl.kartven.javaproapp.utils.utility.ListUtils;
 import pl.kartven.javaproapp.utils.utility.Resource;

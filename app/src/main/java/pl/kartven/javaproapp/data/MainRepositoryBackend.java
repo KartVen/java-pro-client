@@ -3,14 +3,13 @@ package pl.kartven.javaproapp.data;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.function.Function;
 
 import javax.inject.Inject;
 
 import io.vavr.control.Try;
-import pl.kartven.javaproapp.data.model.api.AuthDto;
 import pl.kartven.javaproapp.data.model.api.request.LoginDto;
 import pl.kartven.javaproapp.data.model.api.request.RegisterDto;
+import pl.kartven.javaproapp.data.model.api.request.TopicReqApi;
 import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.data.model.domain.CodeDomain;
 import pl.kartven.javaproapp.data.model.domain.LinkDomain;
@@ -23,7 +22,6 @@ import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.ResponseUtils;
 import pl.kartven.javaproapp.utils.utility.SessionManager;
-import retrofit2.Call;
 
 public class MainRepositoryBackend extends MainRepository {
     private final BackendApi backendApi;
@@ -69,7 +67,7 @@ public class MainRepositoryBackend extends MainRepository {
 
     @Override
     public Resource<List<TopicDomain>> getMyTopics() {
-        Try.of(() -> backendApi.getTopics().execute())
+        Try.of(() -> backendApi.getMyTopics(sessionManager.getUser().getData().getId()).execute())
                 .onFailure(e -> myTopics = ResponseUtils.onFailure(e))
                 .onSuccess(response -> myTopics = ResponseUtils.onResponse(response)
                         .fold(Resource.Error::new, data -> new Resource.Success<>(TopicDomain.map(data)))
@@ -146,5 +144,15 @@ public class MainRepositoryBackend extends MainRepository {
                         .fold(Resource.Error::new, data -> new Resource.Success<>(SlideDomain.map(data)))
                 );
         return slidesOfTopic;
+    }
+
+    @Override
+    public Resource<Void> postTopic(TopicReqApi topicReqApi) {
+        Try.of(() -> backendApi.postTopic(sessionManager.getBearerToken(), topicReqApi).execute())
+                .onFailure(e -> postTopic = ResponseUtils.onFailure(e))
+                .onSuccess(response -> postTopic = ResponseUtils.onResponse(response)
+                        .fold(Resource.Error::new, data -> new Resource.Success<>(null))
+                );
+        return postTopic;
     }
 }

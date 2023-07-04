@@ -1,15 +1,12 @@
 package pl.kartven.javaproapp.ui.main.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -25,8 +23,6 @@ import java.util.function.Supplier;
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
-import io.vavr.control.Option;
-import io.vavr.control.Try;
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.databinding.FragmentHomeBinding;
@@ -42,9 +38,13 @@ import pl.kartven.javaproapp.utils.utility.Resource;
 public class HomeFragment extends BaseFragment {
     private FragmentHomeBinding binding;
     private HomeFragmentViewModel viewModel;
+    private Executor executor;
+    private TopicListAdapter topicsAdapter;
+    private TopicListAdapter myTopicsAdapter;
 
     @Inject
     public HomeFragment() {
+        executor = Executors.newSingleThreadExecutor();
     }
 
     @Override
@@ -65,21 +65,16 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void initContent() {
         super.initContent();
-        initRecyclerView(binding.fHomeRvTopicBase, viewModel::getTopics);
-        initRecyclerView(binding.fHomeRvTopicByYou, viewModel::getMyTopics);
+        topicsAdapter = initRecyclerView(binding.fHomeRvTopicBase, viewModel::getTopics);
+        myTopicsAdapter = initRecyclerView(binding.fHomeRvTopicByYou, viewModel::getMyTopics);
     }
 
-    private void initRecyclerView(RecyclerView recyclerView, Supplier<Resource<List<TopicDomain>>> resourceSupplier) {
+    private TopicListAdapter initRecyclerView(RecyclerView recyclerView, Supplier<Resource<List<TopicDomain>>> resourceSupplier) {
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         );
         TopicListAdapter adapter = new TopicListAdapter(new ArrayList<>());
-        Executors.newSingleThreadExecutor().execute(() -> {
-            Resource<List<TopicDomain>> listResource = resourceSupplier.get();
-            requireActivity().runOnUiThread(() -> {
-                adapter.updateList(ListUtils.extractList(listResource, requireContext()));
-            });
-        });
+        executeBackend(adapter, resourceSupplier);
 
         adapter.setItemClicked((model, position) -> {
             ActivityUtils.goToActivity(
@@ -90,8 +85,17 @@ public class HomeFragment extends BaseFragment {
             requireActivity().finish();
         });
         recyclerView.setAdapter(adapter);
+        return adapter;
     }
 
+    private void executeBackend(TopicListAdapter adapter, Supplier<Resource<List<TopicDomain>>> resourceSupplier) {
+        executor.execute(() -> {
+            Resource<List<TopicDomain>> listResource = resourceSupplier.get();
+            requireActivity().runOnUiThread(() -> {
+                adapter.updateList(ListUtils.extractList(listResource, requireContext()));
+            });
+        });
+    }
 
     @Override
     public void onDestroyView() {

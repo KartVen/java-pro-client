@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorPrimary"
+    tools:context=".ui.creator.fragment.CreatorSlideFragment">
+
+    <ScrollView
+        android:id="@+id/creator_code_scrollview_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:maxHeight="@dimen/common_dialog_max_height"
+        android:paddingHorizontal="@dimen/common_container_spacing_h"
+        android:paddingVertical="@dimen/common_container_spacing_v">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/creator_code_linear_name_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/wizard_linear_margin_top"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/creator_code_tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_name"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common__text_h3"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/creator_code_et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/wizard_input_margin_top"
+                        android:background="@drawable/creator_input_bg"
+                        android:ems="10"
+                        android:hint="@string/example_name"
+                        android:autofillHints="name"
+                        android:inputType="text"
+                        android:labelFor="@id/creator_code_tv_name"
+                        android:padding="@dimen/auth_input_padding"
+                        android:textColor="?colorOnPrimary"
+                        android:textColorHint="@color/light_gray"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/creator_code_tv_name_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/field_is_required"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/wizard_tv_info_text_size"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/creator_code_linear_link_address_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/wizard_linear_margin_top"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/creator_code_tv_link_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_link_address"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common__text_h3"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/creator_code_et_link_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/wizard_input_margin_top"
+                        android:background="@drawable/creator_input_bg"
+                        android:ems="10"
+                        android:autofillHints="name"
+                        android:hint="@string/example_link_address"
+                        android:inputType="text"
+                        android:labelFor="@id/creator_code_tv_name"
+                        android:padding="@dimen/auth_input_padding"
+                        android:textColor="?colorOnPrimary"
+                        android:textColorHint="@color/light_gray"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/creator_code_tv_link_address_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/field_is_required"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/wizard_tv_info_text_size"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/wizard_linear_margin_top"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/creator_code_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_select_section"
+                        android:textAlignment="center"
+                        android:textColor="?colorOnPrimary"
+                        android:textSize="@dimen/common__text_h1"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/creator_code_linear_old_section_wrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/wizard_linear_margin_top"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toStartOf="@id/creator_code_tv"
+                        app:layout_constraintTop_toBottomOf="@id/creator_code_tv">
+
+                        <CheckBox
+                            android:id="@+id/creator_code_chb_old_section"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_import_section"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/common__text_h3"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/creator_code_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/creator_input_bg"
+                            android:labelFor="@id/creator_code_chb_old_section"
+                            android:padding="@dimen/auth_input_padding"
+                            android:contentDescription="@string/label_import_section"
+                            android:textColor="?colorOnPrimary"
+                            android:textColorHint="@color/light_gray"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/creator_code_linear_new_section_wrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/creator_code_chb_new_section"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_new_section"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/common__text_h3"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/creator_code_et_new_section"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/creator_input_bg"
+                            android:ems="10"
+                            android:autofillHints="name"
+                            android:hint="@string/example_name"
+                            android:inputType="text"
+                            android:labelFor="@id/creator_code_chb_new_section"
+                            android:padding="@dimen/auth_input_padding"
+                            android:textColor="?colorOnPrimary"
+                            android:textColorHint="@color/light_gray"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/creator_code_tv_new_section_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/field_is_required"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/wizard_tv_info_text_size"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

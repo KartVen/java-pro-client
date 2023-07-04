@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/field_is_required"
                 android:textColor="@color/red"
-                android:textSize="@dimen/auth_tv_info_text"
+                android:textSize="@dimen/auth_tv_info_text_size"
                 android:visibility="gone" />
 
         </LinearLayout>
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/field_is_required"
                 android:textColor="@color/red"
-                android:textSize="@dimen/auth_tv_info_text"
+                android:textSize="@dimen/auth_tv_info_text_size"
                 android:visibility="gone" />
 
         </LinearLayout>
@@ -169,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/field_is_required"
                 android:textColor="@color/red"
-                android:textSize="@dimen/auth_tv_info_text"
+                android:textSize="@dimen/auth_tv_info_text_size"
                 android:visibility="gone" />
 
         </LinearLayout>

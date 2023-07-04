@@ -69,6 +69,23 @@
 
             </TableRow>
 
+            <TableRow android:padding="@dimen/profile_table_row_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/label_logged_time"
+                    android:textColor="?colorPrimary" />
+
+                <TextView
+                    android:id="@+id/profile_tv_logged_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </TableRow>
+
         </TableLayout>
 
     </LinearLayout>

@@ -1,27 +1,33 @@
 package pl.kartven.javaproapp.ui.main;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.AppBarConfiguration.OnNavigateUpListener;
 import androidx.navigation.ui.NavigationUI;
 
-import java.util.Objects;
-import java.util.Optional;
+import org.apache.commons.lang3.StringUtils;
 
-import io.vavr.control.Option;
+import java.util.Objects;
+
 import pl.kartven.javaproapp.R;
+import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.databinding.ActivityMainBinding;
-import pl.kartven.javaproapp.ui.auth.LoginActivity;
+import pl.kartven.javaproapp.ui.creator.CreatorActivity;
+import pl.kartven.javaproapp.ui.main.fragment.HomeFragment;
+import pl.kartven.javaproapp.utils.listener.NavActiveFragmentListener;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseActivity;
-import pl.kartven.javaproapp.utils.utility.SessionManager;
+import pl.kartven.javaproapp.utils.utility.Constant;
 
-public class MainActivity extends BaseActivity implements OnNavigateUpListener {
+public class MainActivity extends BaseActivity implements NavActiveFragmentListener, OnNavigateUpListener {
     private ActivityMainBinding binding;
     private MainViewModel viewModel;
     private AppBarConfiguration appBarConfiguration;
@@ -43,12 +49,15 @@ public class MainActivity extends BaseActivity implements OnNavigateUpListener {
         super.initActions();
         setSupportActionBar(binding.mainInclude.mainCoordinatorToolbar);
         initNavDrawer();
+        binding.mainInclude.mainCoordinatorFab.setOnClickListener(
+                v -> ActivityUtils.goToActivity(this, CreatorActivity.class)
+        );
     }
 
     @Override
     protected void initContent() {
         super.initContent();
-        SessionManager.User user = viewModel.getLoggedUser().getData();
+        AuthDomain user = viewModel.getLoggedUser().getData();
         View headerView = binding.mainNavView.getHeaderView(0);
         ((TextView) headerView.findViewById(R.id.main_d_h_tv_nickname)).setText(user.getNickname());
         ((TextView) headerView.findViewById(R.id.main_d_h_tv_email)).setText(user.getEmail());
@@ -86,5 +95,6 @@ public class MainActivity extends BaseActivity implements OnNavigateUpListener {
         return true;
     }
 
-
+    @Override
+    public void onBackPressed() {}
 }

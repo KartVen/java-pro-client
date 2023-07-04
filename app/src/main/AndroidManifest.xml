@@ -16,10 +16,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.topic.quiz.question.QuestionActivity"
+            android:name=".ui.creator.CreatorActivity"
+            android:label="@string/add_slash_edit"
             android:theme="@style/Theme.JavaProApp.NoActionBar"
-            android:label="@string/label_test"
             android:exported="false" />
+        <activity
+            android:name=".ui.topic.quiz.question.QuestionActivity"
+            android:exported="false"
+            android:label="@string/label_test"
+            android:theme="@style/Theme.JavaProApp.NoActionBar" />
         <activity
             android:name=".ui.topic.quiz.QuizActivity"
             android:exported="false"

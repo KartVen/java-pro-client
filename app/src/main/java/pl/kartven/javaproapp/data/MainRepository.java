@@ -4,6 +4,7 @@ import java.util.List;
 
 import pl.kartven.javaproapp.data.model.api.request.LoginDto;
 import pl.kartven.javaproapp.data.model.api.request.RegisterDto;
+import pl.kartven.javaproapp.data.model.api.request.TopicReqApi;
 import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.data.model.domain.CodeDomain;
 import pl.kartven.javaproapp.data.model.domain.LinkDomain;
@@ -28,6 +29,8 @@ public abstract class MainRepository {
     protected Resource<QuizDetailsDomain> quizDetails = new Resource.Error<>(INIT_ERROR);
     protected Resource<List<LinkDomain>> linksOfSection = new Resource.Error<>(INIT_ERROR);
     protected Resource<List<SlideDomain>> slidesOfTopic = new Resource.Error<>(INIT_ERROR);
+    protected Resource<Void> postTopic = new Resource.Error<>(INIT_ERROR);
+
 
     public abstract Resource<AuthDomain> getAuthData(LoginDto loginDto);
     public abstract Resource<AuthDomain> getAuthData(RegisterDto registerDto);
@@ -49,4 +52,6 @@ public abstract class MainRepository {
     public abstract Resource<List<LinkDomain>> getLinksOfSection(Long id);
 
     public abstract Resource<List<SlideDomain>> getSlidesOfTopic(Long topicId, Integer page, Integer size);
+
+    public abstract Resource<Void> postTopic(TopicReqApi topicReqApi);
 }

@@ -41,7 +41,7 @@
     <string name="slide">Slajd</string>
     <string name="sign_up">Zarejestruj się</string>
     <string name="label_nickname">Nazwa użytkownika</string>
-    <string name="https_example_com">https://example.com</string>
+    <string name="example_link_address">https://example.com</string>
     <string name="label_link">Link</string>
     <string name="app_name_short">JavaPro</string>
     <string name="username">Nazwa użytkownika</string>
@@ -49,12 +49,12 @@
     <string name="que_amount">Ilość pytań</string>
     <string name="start_quiz">Rozpocznij quiz</string>
     <string name="menu_logout">Wyloguj się</string>
-    <string name="wizard">Kreator</string>
+    <string name="label_wizard">Kreator</string>
     <string name="save">Zapisz</string>
     <string name="lecture_no">Numer wykładu</string>
     <string name="field_is_required">Pole jest wymagane</string>
     <string name="bad_email_format">Zły format email</string>
-    <string name="bad_password_format"><![CDATA[Użyj [az][AZ][0-9][@#$%^&+=]]]></string>
+    <string name="bad_password_format"><![CDATA[Użyj [az][AZ][0–9][@#$%^&+=]]]></string>
     <string name="account">Konto</string>
     <string name="label_appearance">Wygląd</string>
     <string name="dark_theme">Tryb ciemny</string>
@@ -100,10 +100,10 @@
     <string name="label_congratulation">Gratulacje!</string>
     <string name="label_im_sorry">Przykro mi!</string>
     <string name="label_correct_que">Poprawne: </string>
-    <string name="label_fail_que" >Niepoprawne: </string>
+    <string name="label_fail_que">Niepoprawne: </string>
     <string name="label_all_que">Wszystkich: </string>
     <string name="label_profile">Profil</string>
-    <string name="label_please_wait">Proszę czekać...</string>
+    <string name="label_please_wait">Proszę czekać…</string>
     <string name="label_stats">Testy</string>
     <string name="label_open">Otwarte</string>
     <string name="label_added">Dodane</string>
@@ -112,4 +112,21 @@
     <string name="label_closed_fail">Zakończone porażką</string>
     <string name="label_efficiency">Skuteczność</string>
     <string name="bad_size_nickname">Użyj od 5 do 125 znaków</string>
+    <string name="label_save">Zapisz</string>
+    <string name="label_cancel">Anuluj</string>
+    <string name="label_name">Nazwa</string>
+    <string name="label_desc">Opis</string>
+    <string name="label_logged_time">Zalogowany</string>
+    <string name="fields_are_required">Wszystkie pola są wymagane</string>
+    <string name="example_code">/* kod */</string>
+    <string name="example_filename_xxx">filename.xxx</string>
+    <string name="label_section">Sekcja</string>
+    <string name="label_code">Kod</string>
+    <string name="label_import_section">Importuj sekcje</string>
+    <string name="label_new_section">Nowa sekcja</string>
+    <string name="label_select_section">Wybierz sekcje</string>
+    <string name="add_slash_edit">Utwórz/edytuj</string>
+    <string name="label_content_create_que">Tworzenie zawartości?</string>
+    <string name="label_extended_mode">Tryb rozszerzony</string>
+    <string name="label_link_address">Link</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.utils.utility.Resource;
 import pl.kartven.javaproapp.utils.utility.SessionManager;
 
@@ -17,7 +18,7 @@ public class MainViewModel extends ViewModel {
         this.sessionManager = sessionManager;
     }
 
-    public Resource<SessionManager.User> getLoggedUser() {
+    public Resource<AuthDomain> getLoggedUser() {
         return sessionManager.getUser();
     }
 }

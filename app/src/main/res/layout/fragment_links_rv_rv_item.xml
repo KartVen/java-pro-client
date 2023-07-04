@@ -56,7 +56,7 @@
                 android:layout_marginTop="2sp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="@string/https_example_com"
+                android:text="@string/example_link_address"
                 android:textColor="@color/dark_blue"
                 android:textSize="14sp" />
 

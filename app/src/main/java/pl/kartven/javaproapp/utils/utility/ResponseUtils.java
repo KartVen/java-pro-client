@@ -36,12 +36,12 @@ public class ResponseUtils {
 
     public static <T> Either<String, T> onResponse(Response<T> response) {
         if (response.isSuccessful()) {
-            if (response.body() != null && response.body() instanceof List) {
-                Log.i("ApiRequest", "onResponse: List<?> size: " + ((List<?>) response.body()).size());
-            }
+            Log.i("ApiRequest", "onResponse: SUCCESS");
             return Either.right(response.body());
         } else {
-            return Either.left(parseError(response).getMessage());
+            String message = parseError(response).getMessage();
+            Log.i("ApiRequest", "onResponse: ERROR: " + message);
+            return Either.left(message);
         }
     }
 

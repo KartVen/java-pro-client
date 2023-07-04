@@ -1,53 +1,50 @@
 package pl.kartven.javaproapp.data.model.domain;
 
+import java.util.Date;
+
 import pl.kartven.javaproapp.data.model.api.AuthDto;
 
 public class AuthDomain {
-    private String nickname;
-    private String email;
-    private String bearerToken;
-    private String refreshToken;
+    private final Long id;
+    private final String nickname;
+    private final String email;
+    private final String bearerToken;
+    private final String refreshToken;
+    private final Date loggedDate = new Date();
 
-    public AuthDomain(String nickname, String email, String bearerToken, String refreshToken) {
+    public AuthDomain(Long id, String nickname, String email, String bearerToken, String refreshToken) {
+        this.id = id;
         this.nickname = nickname;
         this.email = email;
         this.bearerToken = bearerToken;
         this.refreshToken = refreshToken;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNickname() {
         return nickname;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getBearerToken() {
         return bearerToken;
     }
 
-    public void setBearerToken(String bearerToken) {
-        this.bearerToken = bearerToken;
-    }
-
     public String getRefreshToken() {
         return refreshToken;
     }
 
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
+    public static AuthDomain map(AuthDto authDto){
+        return new AuthDomain(authDto.getId(), authDto.getNickname(), authDto.getEmail(), authDto.getBearerToken(), authDto.getRefreshToken());
     }
 
-    public static AuthDomain map(AuthDto authDto){
-        return new AuthDomain(authDto.getNickname(), authDto.getEmail(), authDto.getBearerToken(), authDto.getRefreshToken());
+    public Date getLoggedDate() {
+        return loggedDate;
     }
 }

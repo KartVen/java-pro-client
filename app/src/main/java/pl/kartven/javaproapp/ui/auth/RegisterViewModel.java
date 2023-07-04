@@ -25,18 +25,16 @@ public class RegisterViewModel extends ViewModel implements RegisterEventListene
         this.sessionManager = sessionManager;
     }
 
+    public boolean isUserLogged() {
+        return sessionManager.isLoggedIn();
+    }
+
     public Resource<AuthDomain> register(String nickname, String email, String password) {
         Resource<AuthDomain> authDtoResource = mainRepository.getAuthData(
                 new RegisterDto(nickname, email, password)
         );
         if (authDtoResource.isSuccess()) {
-            AuthDomain authDto = authDtoResource.getData();
-            sessionManager.saveUser(new SessionManager.User(
-                    authDto.getNickname(),
-                    authDto.getEmail(),
-                    authDto.getBearerToken(),
-                    authDto.getRefreshToken()
-            ));
+            sessionManager.saveUser(authDtoResource.getData());
         }
         return authDtoResource;
     }

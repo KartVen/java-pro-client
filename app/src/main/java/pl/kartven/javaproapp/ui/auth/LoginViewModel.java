@@ -33,13 +33,7 @@ public class LoginViewModel extends ViewModel implements LoginEventListener {
                 new LoginDto(email, password)
         );
         if (authDtoResource.isSuccess()) {
-            AuthDomain authDto = authDtoResource.getData();
-            sessionManager.saveUser(new SessionManager.User(
-                    authDto.getNickname(),
-                    authDto.getEmail(),
-                    authDto.getBearerToken(),
-                    authDto.getRefreshToken()
-            ));
+            sessionManager.saveUser(authDtoResource.getData());
         }
         return authDtoResource;
     }

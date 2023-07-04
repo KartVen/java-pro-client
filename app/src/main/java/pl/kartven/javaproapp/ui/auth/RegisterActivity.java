@@ -21,6 +21,11 @@ public class RegisterActivity extends FormTypeActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = initViewModel(RegisterViewModel.class);
+
+        if (viewModel.isUserLogged()) handleError(false,
+                () -> ActivityUtils.goToActivity(this, MainActivity.class)
+        );
+
         binding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
