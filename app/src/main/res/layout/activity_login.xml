@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_email"
                 android:textColor="@color/white"
-                android:textSize="@dimen/common__text_h3"
+                android:textSize="@dimen/common__text_h7"
                 android:textStyle="bold" />
 
             <EditText
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/password"
                 android:textColor="@color/white"
-                android:textSize="@dimen/common__text_h3"
+                android:textSize="@dimen/common__text_h7"
                 android:textStyle="bold" />
 
             <EditText
@@ -133,7 +133,7 @@
             android:layout_marginTop="@dimen/auth_linear_margin_top"
             android:text="@string/forget_your_pass_que"
             android:textColor="@color/light_gray"
-            android:textSize="@dimen/common__text_h4"
+            android:textSize="@dimen/common__text_h8"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@id/login_linear_password_wrapper"
             app:layout_constraintStart_toStartOf="@id/login_linear_password_wrapper"
@@ -151,7 +151,7 @@
             android:padding="@dimen/auth_input_padding"
             android:text="@string/sign_in"
             android:textColor="@color/dark_blue"
-            android:textSize="@dimen/common__text_h3"
+            android:textSize="@dimen/common__text_h7"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -164,7 +164,7 @@
             android:layout_marginTop="32dp"
             android:text="@string/dont_have_account_que"
             android:textColor="@color/light_gray"
-            android:textSize="@dimen/common__text_h4"
+            android:textSize="@dimen/common__text_h8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/confirm_btn" />
@@ -177,7 +177,7 @@
             android:foreground="?selectableItemBackground"
             android:text="@string/registration"
             android:textColor="@color/white"
-            android:textSize="@dimen/common__text_h4"
+            android:textSize="@dimen/common__text_h8"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

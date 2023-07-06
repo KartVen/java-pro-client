@@ -44,6 +44,7 @@ public class QuizDomain implements Serializable {
     public static QuizDomain map(QuizApi quizApi) {
         return new QuizDomain(quizApi.getId(), quizApi.getName(), quizApi.getDescription());
     }
+
     public static List<QuizDomain> map(List<QuizApi> quizApis) {
         return quizApis.stream().map(QuizDomain::map).collect(Collectors.toList());
     }

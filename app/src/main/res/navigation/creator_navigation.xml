@@ -24,6 +24,12 @@
         tools:layout="@layout/fragment_creator_code" />
 
     <fragment
+        android:id="@+id/creator_nav_quiz"
+        android:name="pl.kartven.javaproapp.ui.creator.fragment.CreatorQuizFragment"
+        android:label="@string/add_slash_edit"
+        tools:layout="@layout/fragment_creator_quiz" />
+
+    <fragment
         android:id="@+id/creator_nav_link"
         android:name="pl.kartven.javaproapp.ui.creator.fragment.CreatorLinkFragment"
         android:label="@string/add_slash_edit"
@@ -42,6 +48,11 @@
     <action
         android:id="@+id/creator_page_code"
         app:destination="@id/creator_nav_code" />
+
+    <action
+        android:id="@+id/creator_page_quiz"
+        app:destination="@id/creator_nav_quiz" />
+
 
     <action
         android:id="@+id/creator_page_link"

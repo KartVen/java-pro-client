@@ -1,31 +1,22 @@
 package pl.kartven.javaproapp.ui.main;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.AppBarConfiguration.OnNavigateUpListener;
 import androidx.navigation.ui.NavigationUI;
 
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.Objects;
-
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.databinding.ActivityMainBinding;
 import pl.kartven.javaproapp.ui.creator.CreatorActivity;
-import pl.kartven.javaproapp.ui.main.fragment.HomeFragment;
 import pl.kartven.javaproapp.utils.listener.NavActiveFragmentListener;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseActivity;
-import pl.kartven.javaproapp.utils.utility.Constant;
 
 public class MainActivity extends BaseActivity implements NavActiveFragmentListener, OnNavigateUpListener {
     private ActivityMainBinding binding;
@@ -96,5 +87,6 @@ public class MainActivity extends BaseActivity implements NavActiveFragmentListe
     }
 
     @Override
-    public void onBackPressed() {}
+    public void onBackPressed() {
+    }
 }

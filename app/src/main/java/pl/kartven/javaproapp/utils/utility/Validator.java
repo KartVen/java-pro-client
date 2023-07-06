@@ -35,7 +35,7 @@ public abstract class Validator {
         return isActivated;
     }
 
-    public boolean isValidated(){
+    public boolean isValidated() {
         return Objects.isNull(errorState.getValue());
     }
 

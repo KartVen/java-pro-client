@@ -2,8 +2,12 @@ package pl.kartven.javaproapp.data;
 
 import java.util.List;
 
-import pl.kartven.javaproapp.data.model.api.request.LoginDto;
-import pl.kartven.javaproapp.data.model.api.request.RegisterDto;
+import okhttp3.MultipartBody;
+import pl.kartven.javaproapp.data.model.api.request.CodeReqApi;
+import pl.kartven.javaproapp.data.model.api.request.LinkReqApi;
+import pl.kartven.javaproapp.data.model.api.request.LoginApi;
+import pl.kartven.javaproapp.data.model.api.request.QuizReqApi;
+import pl.kartven.javaproapp.data.model.api.request.RegisterApi;
 import pl.kartven.javaproapp.data.model.api.request.TopicReqApi;
 import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.data.model.domain.CodeDomain;
@@ -29,11 +33,16 @@ public abstract class MainRepository {
     protected Resource<QuizDetailsDomain> quizDetails = new Resource.Error<>(INIT_ERROR);
     protected Resource<List<LinkDomain>> linksOfSection = new Resource.Error<>(INIT_ERROR);
     protected Resource<List<SlideDomain>> slidesOfTopic = new Resource.Error<>(INIT_ERROR);
-    protected Resource<Void> postTopic = new Resource.Error<>(INIT_ERROR);
+    protected Resource<TopicDomain> postTopic = new Resource.Error<>(INIT_ERROR);
+    protected Resource<Void> postSlidesOfTopic = new Resource.Error<>(INIT_ERROR);
+    protected Resource<Void> postCodeOfTopic = new Resource.Error<>(INIT_ERROR);
+    protected Resource<Void> postLinkOfTopic = new Resource.Error<>(INIT_ERROR);
+    protected Resource<Void> postQuizOfTopic = new Resource.Error<>(INIT_ERROR);
 
 
-    public abstract Resource<AuthDomain> getAuthData(LoginDto loginDto);
-    public abstract Resource<AuthDomain> getAuthData(RegisterDto registerDto);
+    public abstract Resource<AuthDomain> getAuthData(LoginApi loginApi);
+
+    public abstract Resource<AuthDomain> getAuthData(RegisterApi registerDto);
 
     public abstract Resource<List<TopicDomain>> getTopics();
 
@@ -41,7 +50,7 @@ public abstract class MainRepository {
 
     public abstract Resource<List<SectionDomain>> getSectionsOfTopic(Long id);
 
-    public abstract Resource<List<QuizDomain>> getQuizzesOfTopic(Long id);
+    public abstract Resource<List<QuizDomain>> getQuizzesOfTopic(Long id, Long userId);
 
     public abstract Resource<List<CodeDomain>> getCodesOfSection(Long id);
 
@@ -53,5 +62,13 @@ public abstract class MainRepository {
 
     public abstract Resource<List<SlideDomain>> getSlidesOfTopic(Long topicId, Integer page, Integer size);
 
-    public abstract Resource<Void> postTopic(TopicReqApi topicReqApi);
+    public abstract Resource<TopicDomain> postTopic(TopicReqApi topicReqApi);
+
+    public abstract Resource<Void> postSlidesOfTopic(Long id, List<MultipartBody.Part> slides);
+
+    public abstract Resource<Void> postCodeOfTopic(Long id, CodeReqApi codeReqApi);
+
+    public abstract Resource<Void> postLinkOfTopic(Long id, LinkReqApi linkReqApi);
+
+    public abstract Resource<Void> postQuizOfTopic(Long id, QuizReqApi quizReqApi);
 }

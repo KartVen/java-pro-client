@@ -31,7 +31,8 @@ public class FieldUtils {
         @Override
         protected Integer checkRules() {
             if (StringUtils.isEmpty(currentState)) return R.string.field_is_required;
-            if (currentState.length() < 5 || currentState.length() > 125) return R.string.bad_size_nickname;
+            if (currentState.length() < 5 || currentState.length() > 125)
+                return R.string.bad_size_nickname;
             return null;
         }
     }

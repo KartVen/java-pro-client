@@ -86,6 +86,6 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
 
-//tasks.withType(JavaCompile) {
-//    options.compilerArgs += ['-Xlint:deprecation']
-//}
+tasks.withType(JavaCompile) {
+    /*options.compilerArgs += ['-Xlint:deprecation']*/
+}

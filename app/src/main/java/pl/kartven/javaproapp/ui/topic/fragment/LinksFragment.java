@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
@@ -35,7 +35,7 @@ public class LinksFragment extends BaseFragment {
     private TopicViewModel topicViewModel;
     private FragmentLinksBinding binding;
     private LinksViewModel viewModel;
-    private final Executor executor;
+    private final ExecutorService executor;
 
     @Inject
     public LinksFragment() {
@@ -86,5 +86,11 @@ public class LinksFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        executor.shutdown();
     }
 }

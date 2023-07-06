@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.stream.Collectors;
 
 import pl.kartven.javaproapp.R;
@@ -28,13 +28,13 @@ import pl.kartven.javaproapp.utils.listener.RVItemExpandListener;
 
 public class SectionCodesListAdapter extends RecyclerView.Adapter<SectionCodesListAdapter.ViewHolder> {
 
-    private final Executor executor;
+    private final ExecutorService executor;
     private final Handler handler;
     private List<SectionDomainExpandable> data;
     protected RVItemExpandListener<SectionDomain, List<CodeDomain>> rvItemExpandListener;
     private Context context;
 
-    public SectionCodesListAdapter(List<SectionDomain> data, Executor executor) {
+    public SectionCodesListAdapter(List<SectionDomain> data, ExecutorService executor) {
         this.data = map(data);
         this.executor = executor;
         this.handler = new Handler(Looper.getMainLooper());

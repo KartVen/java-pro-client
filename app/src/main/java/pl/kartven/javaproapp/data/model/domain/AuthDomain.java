@@ -2,7 +2,7 @@ package pl.kartven.javaproapp.data.model.domain;
 
 import java.util.Date;
 
-import pl.kartven.javaproapp.data.model.api.AuthDto;
+import pl.kartven.javaproapp.data.model.api.AuthApi;
 
 public class AuthDomain {
     private final Long id;
@@ -40,8 +40,8 @@ public class AuthDomain {
         return refreshToken;
     }
 
-    public static AuthDomain map(AuthDto authDto){
-        return new AuthDomain(authDto.getId(), authDto.getNickname(), authDto.getEmail(), authDto.getBearerToken(), authDto.getRefreshToken());
+    public static AuthDomain map(AuthApi authApi) {
+        return new AuthDomain(authApi.getId(), authApi.getNickname(), authApi.getEmail(), authApi.getBearerToken(), authApi.getRefreshToken());
     }
 
     public Date getLoggedDate() {

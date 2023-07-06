@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import pl.kartven.javaproapp.data.MainRepository;
-import pl.kartven.javaproapp.data.model.api.request.LoginDto;
+import pl.kartven.javaproapp.data.model.api.request.LoginApi;
 import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.utils.listener.LoginEventListener;
 import pl.kartven.javaproapp.utils.utility.Resource;
@@ -30,7 +30,7 @@ public class LoginViewModel extends ViewModel implements LoginEventListener {
 
     public Resource<AuthDomain> login(String email, String password) {
         Resource<AuthDomain> authDtoResource = mainRepository.getAuthData(
-                new LoginDto(email, password)
+                new LoginApi(email, password)
         );
         if (authDtoResource.isSuccess()) {
             sessionManager.saveUser(authDtoResource.getData());

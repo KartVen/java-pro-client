@@ -12,7 +12,8 @@ public final class Constant {
         public static final String VIEW_STATE_MODEL = "view_state_model";
         public static final String LINK_MODEL = "link_model";
 
-        private Extra(){}
+        private Extra() {
+        }
 
     }
 
@@ -22,8 +23,10 @@ public final class Constant {
         public static final String INIT_ERROR = "Initialization Error";
 
 
-        private Expression(){}
+        private Expression() {
+        }
     }
 
-    private Constant(){}
+    private Constant() {
+    }
 }

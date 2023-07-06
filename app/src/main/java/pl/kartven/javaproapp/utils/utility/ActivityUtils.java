@@ -14,11 +14,11 @@ public class ActivityUtils {
     private ActivityUtils() {
     }
 
-    public static void goToActivity(@NonNull Context context, @NonNull Class<? extends AppCompatActivity> activityClass){
+    public static void goToActivity(@NonNull Context context, @NonNull Class<? extends AppCompatActivity> activityClass) {
         context.startActivity(new Intent(context, activityClass));
     }
 
-    public static void goToActivity(@NonNull Context context, @NonNull Class<? extends Activity> activityClass, Consumer<Intent> intentSettings){
+    public static void goToActivity(@NonNull Context context, @NonNull Class<? extends Activity> activityClass, Consumer<Intent> intentSettings) {
         Intent intent = new Intent(context, activityClass);
         intentSettings.accept(intent);
         context.startActivity(intent);

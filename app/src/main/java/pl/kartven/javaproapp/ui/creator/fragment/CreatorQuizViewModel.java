@@ -2,24 +2,25 @@ package pl.kartven.javaproapp.ui.creator.fragment;
 
 import androidx.lifecycle.ViewModel;
 
+import java.util.Collections;
+
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import pl.kartven.javaproapp.data.MainRepository;
-import pl.kartven.javaproapp.data.model.api.request.TopicReqApi;
-import pl.kartven.javaproapp.data.model.domain.TopicDomain;
+import pl.kartven.javaproapp.data.model.api.request.QuizReqApi;
 import pl.kartven.javaproapp.utils.utility.Resource;
 
 @HiltViewModel
-public class CreatorTopicViewModel extends ViewModel {
+public class CreatorQuizViewModel extends ViewModel {
     private final MainRepository mainRepository;
 
     @Inject
-    public CreatorTopicViewModel(MainRepository mainRepository) {
+    public CreatorQuizViewModel(MainRepository mainRepository) {
         this.mainRepository = mainRepository;
     }
 
-    public Resource<TopicDomain> postTopic(String name, String desc) {
-        return mainRepository.postTopic(new TopicReqApi(name, desc));
+    public Resource<Void> postQuizOfTopic(Long id, String name, String desc) {
+        return mainRepository.postQuizOfTopic(id, new QuizReqApi(name, desc, Collections.emptyList()));
     }
 }

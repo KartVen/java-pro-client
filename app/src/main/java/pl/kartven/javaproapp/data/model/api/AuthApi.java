@@ -1,13 +1,13 @@
 package pl.kartven.javaproapp.data.model.api;
 
-public class AuthDto {
+public class AuthApi {
     private Long id;
     private String nickname;
     private String email;
     private String bearerToken;
     private String refreshToken;
 
-    public AuthDto(Long id, String nickname, String email, String bearerToken, String refreshToken) {
+    public AuthApi(Long id, String nickname, String email, String bearerToken, String refreshToken) {
         this.id = id;
         this.nickname = nickname;
         this.email = email;

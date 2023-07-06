@@ -88,6 +88,12 @@ public class CodesFragment extends BaseFragment {
         binding = null;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        executor.shutdown();
+    }
+
     private class DialogData {
         private String name;
         private String code;

@@ -7,9 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import javax.inject.Inject;
-
-import dagger.hilt.android.AndroidEntryPoint;
 import io.vavr.control.Option;
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.databinding.ActivitySettingsBinding;
@@ -55,6 +52,7 @@ public class SettingsActivity extends BaseActivity {
 
     public static class SettingsFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceClickListener {
         private final SessionManager sessionManager;
+
         public SettingsFragment(SessionManager sessionManager) {
             this.sessionManager = sessionManager;
         }

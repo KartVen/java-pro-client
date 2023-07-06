@@ -8,7 +8,6 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import pl.kartven.javaproapp.data.MainRepository;
-import pl.kartven.javaproapp.data.model.api.request.TopicReqApi;
 import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.data.model.domain.TopicDomain;
 import pl.kartven.javaproapp.utils.utility.Resource;

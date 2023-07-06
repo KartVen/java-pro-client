@@ -12,11 +12,11 @@ public interface LoginEventListener {
     default void updateEmailState(String value) {
         emailValidator.setCurrentState(value).validate();
     }
-    
+
     default void updatePasswordState(String value) {
         passwordValidator.setCurrentState(value).validate();
     }
-    
+
     default LiveData<Integer> getEmailError() {
         return emailValidator.validate().getErrorState();
     }
@@ -24,16 +24,16 @@ public interface LoginEventListener {
     default LiveData<Integer> getPasswordError() {
         return passwordValidator.validate().getErrorState();
     }
-    
-    default boolean isEmailFieldActivated(){
+
+    default boolean isEmailFieldActivated() {
         return emailValidator.isActivated();
     }
 
-    default boolean isPasswordFieldActivated(){
+    default boolean isPasswordFieldActivated() {
         return emailValidator.isActivated();
     }
 
-    default boolean isFieldValidated(){
+    default boolean isFieldValidated() {
         return emailValidator.isValidated() && passwordValidator.isValidated();
     }
 }

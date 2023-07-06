@@ -11,7 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
@@ -30,7 +30,7 @@ public class SlidesFragment extends BaseFragment {
     private TopicViewModel topicViewModel;
     private FragmentSlidesBinding binding;
     private SlidesViewModel viewModel;
-    private final Executor executor;
+    private final ExecutorService executor;
 
     @Inject
     public SlidesFragment() {
@@ -92,5 +92,11 @@ public class SlidesFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        executor.shutdown();
     }
 }

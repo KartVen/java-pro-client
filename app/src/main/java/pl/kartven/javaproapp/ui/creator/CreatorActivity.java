@@ -3,7 +3,6 @@ package pl.kartven.javaproapp.ui.creator;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -15,6 +14,7 @@ import java.util.Optional;
 
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.databinding.ActivityCreatorBinding;
+import pl.kartven.javaproapp.ui.main.MainActivity;
 import pl.kartven.javaproapp.utils.listener.NavActiveFragmentListener;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseActivity;
@@ -47,22 +47,32 @@ public class CreatorActivity extends BaseActivity implements NavActiveFragmentLi
     protected void initContent() {
         super.initContent();
         binding.creatorAppcbtnSave.setOnClickListener(v -> {
-            if (viewModel.isExtendedCreating()) {
-                NavDestination currentDestination = navController.getCurrentDestination();
-                if (currentDestination != null) {
-                    navigate(currentDestination.getId());
-                }
-            } else {
-                getActiveFragment(this, R.id.creator_fragment)
-                        .filter(f -> f instanceof CreatorEventListener)
-                        .map(CreatorEventListener.class::cast)
-                        .peek(f -> f.handleSave(CreatorEventListener.Mode.NEW))
-                        .onEmpty(() ->
-                                ActivityUtils.showToast(this, Constant.Expression.INTERNAL_ERROR)
-                        );
-            }
+
+            getActiveFragment(this, R.id.creator_fragment)
+                    .filter(f -> f instanceof CreatorEventListener)
+                    .map(CreatorEventListener.class::cast)
+                    .peek(f -> f.handleSave(CreatorEventListener.Mode.NEW))
+                    .onEmpty(() ->
+                            ActivityUtils.showToast(this, Constant.Expression.INTERNAL_ERROR)
+                    );
+
+            handleSave();
         });
         binding.creatorAppcbtnCancel.setOnClickListener(v -> super.onBackPressed());
+    }
+
+    public void handleSave() {
+        if (viewModel.isSaveStepCorrect() && !viewModel.isExtendedCreating()) {
+            ActivityUtils.goToActivity(this, MainActivity.class);
+            return;
+        }
+
+        if (viewModel.isSaveStepCorrect() && viewModel.isExtendedCreating()) {
+            NavDestination currentDestination = navController.getCurrentDestination();
+            if (currentDestination != null) {
+                navigate(currentDestination.getId());
+            }
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -75,6 +85,9 @@ public class CreatorActivity extends BaseActivity implements NavActiveFragmentLi
                 navController.navigate(R.id.creator_page_code);
                 break;
             case R.id.creator_nav_code:
+                navController.navigate(R.id.creator_page_quiz);
+                break;
+            case R.id.creator_nav_quiz:
                 navController.navigate(R.id.creator_page_link);
                 break;
             case R.id.creator_nav_link:

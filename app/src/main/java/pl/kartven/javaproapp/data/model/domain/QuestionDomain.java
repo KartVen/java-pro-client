@@ -76,21 +76,21 @@ public class QuestionDomain implements Serializable {
             isCorrect = correct;
         }
 
-        public static Answer map(QuestionApi.Answer answer){
+        public static Answer map(QuestionApi.Answer answer) {
             return new Answer(answer.getId(), answer.getText(), answer.isCorrect());
         }
 
-        public static List<Answer> map(List<QuestionApi.Answer> answers){
+        public static List<Answer> map(List<QuestionApi.Answer> answers) {
             return answers.stream().map(Answer::map).collect(Collectors.toList());
         }
     }
 
-    public static QuestionDomain map(QuestionApi questionApi){
+    public static QuestionDomain map(QuestionApi questionApi) {
         return new QuestionDomain(questionApi.getId(),
                 questionApi.getText(), Answer.map(questionApi.getAnswers()));
     }
 
-    public static List<QuestionDomain> map(List<QuestionApi> questionApis){
+    public static List<QuestionDomain> map(List<QuestionApi> questionApis) {
         return questionApis.stream().map(QuestionDomain::map).collect(Collectors.toList());
     }
 

@@ -12,6 +12,7 @@ import pl.kartven.javaproapp.data.model.api.SlideApi;
 import pl.kartven.javaproapp.data.model.api.TopicApi;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -31,7 +32,8 @@ public interface BackendApi extends BackendApiPost {
 
     @GET("api/topics/{id}/quizzes")
     Call<List<QuizApi>> getQuizzesOfTopic(
-            @Path("id") Long id
+            @Path("id") Long id,
+            @Query("user_id") Long userId
     );
 
     @GET("api/sections/{id}/codes")
@@ -41,6 +43,7 @@ public interface BackendApi extends BackendApiPost {
 
     @GET("api/quizzes/{id}/questions")
     Call<List<QuestionApi>> getQuestionsOfQuiz(
+            @Header("Authorization") String bearer,
             @Path("id") Long id
     );
 

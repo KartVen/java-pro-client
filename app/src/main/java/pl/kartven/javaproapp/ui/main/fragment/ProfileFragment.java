@@ -12,14 +12,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Optional;
 
-import io.vavr.control.Option;
-import io.vavr.control.Try;
 import pl.kartven.javaproapp.R;
 import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.databinding.FragmentProfileBinding;
 import pl.kartven.javaproapp.ui.main.MainViewModel;
 import pl.kartven.javaproapp.utils.utility.BaseFragment;
-import pl.kartven.javaproapp.utils.utility.SessionManager;
 
 public class ProfileFragment extends BaseFragment {
     private MainViewModel mainViewModel;

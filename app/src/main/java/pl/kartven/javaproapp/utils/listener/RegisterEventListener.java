@@ -19,7 +19,7 @@ public interface RegisterEventListener extends LoginEventListener {
         return nicknameValidator.isActivated();
     }
 
-    default boolean isFieldValidated(){
+    default boolean isFieldValidated() {
         return LoginEventListener.super.isFieldValidated() && nicknameValidator.isValidated();
     }
 }

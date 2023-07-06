@@ -1,11 +1,9 @@
 package pl.kartven.javaproapp.ui.creator.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,24 +17,22 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import pl.kartven.javaproapp.R;
-import pl.kartven.javaproapp.data.model.domain.TopicDomain;
-import pl.kartven.javaproapp.databinding.FragmentCreatorTopicBinding;
+import pl.kartven.javaproapp.databinding.FragmentCreatorQuizBinding;
 import pl.kartven.javaproapp.ui.creator.CreatorActivity;
 import pl.kartven.javaproapp.ui.creator.CreatorViewModel;
-import pl.kartven.javaproapp.ui.main.MainActivity;
 import pl.kartven.javaproapp.utils.utility.ActivityUtils;
 import pl.kartven.javaproapp.utils.utility.BaseFragment;
 import pl.kartven.javaproapp.utils.utility.Resource;
 
 @AndroidEntryPoint
-public class CreatorTopicFragment extends BaseFragment implements CreatorActivity.CreatorEventListener {
+public class CreatorQuizFragment extends BaseFragment implements CreatorActivity.CreatorEventListener {
     private CreatorViewModel creatorViewModel;
-    private FragmentCreatorTopicBinding binding;
-    private CreatorTopicViewModel viewModel;
+    private FragmentCreatorQuizBinding binding;
+    private CreatorQuizViewModel viewModel;
     private final ExecutorService executor;
 
     @Inject
-    public CreatorTopicFragment() {
+    public CreatorQuizFragment() {
         executor = Executors.newSingleThreadExecutor();
     }
 
@@ -44,12 +40,12 @@ public class CreatorTopicFragment extends BaseFragment implements CreatorActivit
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         creatorViewModel = getActivityViewModel(CreatorViewModel.class);
-        viewModel = initViewModel(CreatorTopicViewModel.class);
+        viewModel = initViewModel(CreatorQuizViewModel.class);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentCreatorTopicBinding.inflate(inflater, container, false);
+        binding = FragmentCreatorQuizBinding.inflate(inflater, container, false);
         initActions();
         initContent();
         return binding.getRoot();
@@ -58,16 +54,6 @@ public class CreatorTopicFragment extends BaseFragment implements CreatorActivit
     @Override
     protected void initActions() {
         super.initActions();
-        CheckBox creatorTopicChbContentCheck = binding.creatorTopicChbContentCheck;
-        binding.creatorTopicChbContentCheckWrapper.setOnClickListener(v -> {
-            boolean checkChecked = creatorTopicChbContentCheck.isChecked();
-            creatorTopicChbContentCheck.setChecked(!checkChecked);
-            creatorViewModel.setExtendedCreating(!checkChecked);
-        });
-
-        creatorTopicChbContentCheck.setOnCheckedChangeListener((compoundButton, isChecked) -> {
-            creatorViewModel.setExtendedCreating(isChecked);
-        });
     }
 
     @Override
@@ -76,15 +62,9 @@ public class CreatorTopicFragment extends BaseFragment implements CreatorActivit
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
-    @Override
     public void handleSave(Mode saveMode) {
-        String name = binding.creatorTopicEtName.getText().toString();
-        String desc = binding.creatorTopicEtDesc.getText().toString();
+        String name = binding.creatorQuizEtName.getText().toString();
+        String desc = binding.creatorQuizEtDesc.getText().toString();
 
         if (StringUtils.isEmpty(name) || StringUtils.isEmpty(desc)) {
             ActivityUtils.showToast(requireActivity(), getString(R.string.fields_are_required));
@@ -92,22 +72,18 @@ public class CreatorTopicFragment extends BaseFragment implements CreatorActivit
             return;
         }
 
+        creatorViewModel.setSaveStepCorrect(true);
+
         switch (saveMode) {
             case NEW:
                 executor.execute(() -> {
-                    Resource<TopicDomain> domainResource = viewModel.postTopic(name, desc);
+                    Resource<Void> voidResource = viewModel.postQuizOfTopic(creatorViewModel.getTopicDomain().getId(), name, desc);
                     requireActivity().runOnUiThread(() -> {
-                        if (domainResource.isSuccess()) {
+                        if (voidResource.isSuccess()) {
                             ActivityUtils.showToast(requireActivity(), getString(R.string.resource_added_successfully));
                             creatorViewModel.setSaveStepCorrect(true);
-                            creatorViewModel.setTopicDomain(domainResource.getData());
-                            if (!creatorViewModel.isExtendedCreating() && !binding.creatorTopicChbContentCheck.isChecked()) {
-                                Log.d(getClass().getSimpleName(), "isExtendedCreating exit: " + true);
-                                ActivityUtils.goToActivity(requireActivity(), MainActivity.class);
-                                requireActivity().finish();
-                            }
                         } else {
-                            ActivityUtils.showToast(requireActivity(), domainResource.getMessage());
+                            ActivityUtils.showToast(requireActivity(), voidResource.getMessage());
                             creatorViewModel.setSaveStepCorrect(false);
                         }
                     });
@@ -116,6 +92,12 @@ public class CreatorTopicFragment extends BaseFragment implements CreatorActivit
             case EDIT:
                 break;
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     @Override

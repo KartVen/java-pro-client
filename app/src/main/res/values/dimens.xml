@@ -13,15 +13,19 @@
     <dimen name="header_nav_btn_size">64dp</dimen>
     <dimen name="header_nav_btn_margin_horizontal">16dp</dimen>
     <dimen name="header_nav_padding">16dp</dimen>
-    <dimen name="header_nav_label_textSize">@dimen/common__text_h2</dimen>
+    <dimen name="header_nav_label_textSize">@dimen/common__text_h6</dimen>
     <dimen name="header_content_padding_bottom">16dp</dimen>
     <dimen name="header_content_specific_textSize">25sp</dimen>
     <dimen name="main_search_height">55dp</dimen>
     <dimen name="main_search_loupe_size">32dp</dimen>
-    <dimen name="common__text_h1">22sp</dimen>
-    <dimen name="common__text_h2">20sp</dimen>
-    <dimen name="common__text_h3">18sp</dimen>
-    <dimen name="common__text_h4">16sp</dimen>
+    <dimen name="common__text_h1">30sp</dimen>
+    <dimen name="common__text_h2">28sp</dimen>
+    <dimen name="common__text_h3">26sp</dimen>
+    <dimen name="common__text_h4">24sp</dimen>
+    <dimen name="common__text_h5">22sp</dimen>
+    <dimen name="common__text_h6">20sp</dimen>
+    <dimen name="common__text_h7">18sp</dimen>
+    <dimen name="common__text_h8">16sp</dimen>
     <dimen name="auth_et_drawable_padding">5dp</dimen>
     <dimen name="auth_input_padding">12dp</dimen>
     <dimen name="auth_input_margin_top">8dp</dimen>
@@ -32,7 +36,7 @@
     <dimen name="header_nav_back_arrow_size">@dimen/default_size</dimen>
     <dimen name="main_rv_item_ico_size">40dp</dimen>
     <dimen name="profile_avatar_size">144dp</dimen>
-    <dimen name="auth_tv_info_text_size">@dimen/common__text_h4</dimen>
+    <dimen name="auth_tv_info_text_size">@dimen/common__text_h8</dimen>
     <dimen name="main__space_size">16dp</dimen>
     <dimen name="common_tv_section_margin_bottom">16dp</dimen>
     <dimen name="fragment__space_size">16dp</dimen>
@@ -40,18 +44,14 @@
     <dimen name="header_nav_btn_margin_top">8dp</dimen>
     <dimen name="settings_layout_height">55dp</dimen>
     <dimen name="profile_table_row_padding">8dp</dimen>
-
     <dimen name="common_container_spacing_h">24dp</dimen>
     <dimen name="common_container_spacing_v">16dp</dimen>
     <dimen name="common_tv_section_head_text_size">20sp</dimen>
     <dimen name="common_tv_section_head_spacing_v">8dp</dimen>
-
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
-
     <dimen name="main_fab_margin">16dp</dimen>
     <dimen name="main_drawer_header_height">176dp</dimen>
     <dimen name="f_home_et_search_spacing_h">0dp</dimen>
-    <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="topic_fab_margin">16dp</dimen>
@@ -61,8 +61,8 @@
     <dimen name="common_tv_section_head_spacing_v_x4">32dp</dimen>
     <dimen name="wizard_input_margin_top">8dp</dimen>
     <dimen name="wizard_input_padding">12dp</dimen>
-    <dimen name="wizard_tv_info_text_size">@dimen/common__text_h4</dimen>
-    <dimen name="wizard_linear_margin_top">16dp</dimen>
+    <dimen name="wizard_tv_info_text_size">@dimen/common__text_h8</dimen>
+    <dimen name="creator_linear_margin_top">16dp</dimen>
     <dimen name="common_dialog_width">350dp</dimen>
     <dimen name="common_dialog_max_height">550dp</dimen>
 

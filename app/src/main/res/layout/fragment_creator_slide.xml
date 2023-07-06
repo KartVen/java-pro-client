@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,8 +8,126 @@
     tools:context=".ui.creator.fragment.CreatorSlideFragment">
 
     <TextView
+        android:id="@+id/creator_link_tv_page_headline"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_container_spacing_v"
+        android:text="@string/label_slides"
+        android:textAlignment="center"
+        android:textColor="?colorOnPrimary"
+        android:textSize="@dimen/common__text_h2"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <ScrollView
+        android:id="@+id/creator_code_scrollview_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:maxHeight="@dimen/common_dialog_max_height"
+        android:paddingHorizontal="@dimen/common_container_spacing_h"
+        android:paddingVertical="@dimen/common_container_spacing_v"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/creator_link_tv_page_headline">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageSwitcher
+                    android:id="@+id/creator_slide_imageswitcher_slide"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/label_slides"
+                    android:maxHeight="@dimen/common_iv_max_height"
+                    android:minHeight="@dimen/common_iv_max_height" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/creator_slide_linear_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/common_container_spacing_h"
+                android:paddingTop="@dimen/common_container_spacing_v"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/creator_slide_appcbtn_select_img"
+                    style="Widget.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:foreground="?selectableItemBackground"
+                    android:padding="@dimen/auth_input_padding"
+                    android:text="@string/label_select_images"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/common__text_h7"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/creator_slide_linear_btns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/common_container_spacing_h"
+                android:paddingVertical="@dimen/common_container_spacing_v"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/creator_slide_appcbtn_prev"
+                    style="Widget.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:foreground="?selectableItemBackground"
+                    android:padding="@dimen/auth_input_padding"
+                    android:text="@string/label_prev"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/common__text_h7"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/creator_slide_appcbtn_next"
+                    style="Widget.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:foreground="?selectableItemBackground"
+                    android:padding="@dimen/auth_input_padding"
+                    android:text="@string/label_next"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/common__text_h7"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,7 +31,7 @@ public class UIElementCreator {
         textView.setLayoutParams(layoutParams);
         textView.setText(text);
         textView.setTextColor(resources.getColor(R.color.dark_blue, context.getTheme()));
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, convertSpToPixels(resources.getDimension(R.dimen.common__text_h3)));
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, convertSpToPixels(resources.getDimension(R.dimen.common__text_h7)));
         textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
         return textView;
     }

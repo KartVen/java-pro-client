@@ -71,7 +71,7 @@ public class JavaProApplication extends Application {
 
         @Provides
         @Singleton
-        public BackendApi backendApi(){
+        public BackendApi backendApi() {
             return retrofit().create(BackendApi.class);
         }
 

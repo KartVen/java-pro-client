@@ -88,7 +88,11 @@ public class QuestionActivity extends BaseActivity {
         Executors.newSingleThreadExecutor().execute(() -> {
             Resource<List<QuestionDomain>> listResource = viewModel.getQuestionsOfTopic(viewModel.getQuizDomain().getId());
             this.runOnUiThread(() -> {
-                if (!listResource.isSuccess()) handleError(true, this::onBackPressed);
+                if (!listResource.isSuccess()) {
+                    handleError(true, this::onBackPressed);
+                    return;
+                }
+                System.out.println(listResource.getData().toString());
                 viewModel.setQuestionsList(listResource.getData());
                 handleQuestion();
                 binding.questionLinearAnswer.setVisibility(View.VISIBLE);

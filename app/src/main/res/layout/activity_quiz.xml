@@ -67,7 +67,7 @@
                     android:text="@string/title"
                     android:textAlignment="center"
                     android:textColor="@color/darker_grey"
-                    android:textSize="@dimen/common__text_h3" />
+                    android:textSize="@dimen/common__text_h7" />
 
                 <TextView
                     android:id="@+id/quiz_tv_title"
@@ -79,7 +79,7 @@
                     android:text="@string/example_name"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/common__text_h2"
+                    android:textSize="@dimen/common__text_h6"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -100,7 +100,7 @@
                     android:text="@string/description"
                     android:textAlignment="center"
                     android:textColor="@color/darker_grey"
-                    android:textSize="@dimen/common__text_h3" />
+                    android:textSize="@dimen/common__text_h7" />
 
                 <TextView
                     android:id="@+id/quiz_tv_desc"
@@ -112,7 +112,7 @@
                     android:text="@string/example_desc"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/common__text_h2"
+                    android:textSize="@dimen/common__text_h6"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -133,7 +133,7 @@
                     android:text="@string/que_amount"
                     android:textAlignment="center"
                     android:textColor="@color/darker_grey"
-                    android:textSize="@dimen/common__text_h3" />
+                    android:textSize="@dimen/common__text_h7" />
 
                 <TextView
                     android:id="@+id/quiz_tv_que"
@@ -145,7 +145,7 @@
                     android:text="@string/XX"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/common__text_h2"
+                    android:textSize="@dimen/common__text_h6"
                     android:textStyle="bold" />
 
             </LinearLayout>

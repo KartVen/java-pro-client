@@ -1,5 +1,7 @@
 package pl.kartven.javaproapp.data.model.domain;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,5 +40,10 @@ public class SectionDomain implements Serializable {
     public static List<SectionDomain> map(List<SectionApi> sectionApis) {
         return sectionApis.stream().map(SectionDomain::map).collect(Collectors.toList());
     }
-    
+
+    @NonNull
+    @Override
+    public String toString() {
+        return String.valueOf(name);
+    }
 }

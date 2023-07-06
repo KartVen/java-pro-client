@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -47,7 +46,7 @@ public class SessionManager {
                 new Resource.Error<>("");
     }
 
-    public String getBearerToken(){
+    public String getBearerToken() {
         return AUTH_BEARER_PREFIX + this.getUser().getData().getBearerToken();
     }
 

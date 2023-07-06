@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 import pl.kartven.javaproapp.utils.adapter.TextWatcherAdapter;
 
 public abstract class FormTypeActivity extends BaseActivity {
-    public final  <T extends EditText, R extends TextView> void handleField(
+    public final <T extends EditText, R extends TextView> void handleField(
             T field,
             R fieldInfo,
             final Consumer<String> updateState,

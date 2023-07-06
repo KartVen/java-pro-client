@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.stream.Collectors;
 
 import pl.kartven.javaproapp.R;
@@ -30,11 +30,11 @@ public class SectionLinksListAdapter extends RecyclerView.Adapter<SectionLinksLi
 
     private List<SectionDomainExpandable> data;
     protected RVItemExpandListener<SectionDomain, List<LinkDomain>> rvItemExpandListener;
-    private final Executor executor;
+    private final ExecutorService executor;
     private final Handler handler;
     private RVItemClickListener<LinkDomain> nestedItemClickListener;
 
-    public SectionLinksListAdapter(List<SectionDomain> data, Executor executor) {
+    public SectionLinksListAdapter(List<SectionDomain> data, ExecutorService executor) {
         this.data = map(data);
         this.executor = executor;
         this.handler = new Handler(Looper.getMainLooper());

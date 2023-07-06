@@ -12,7 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
@@ -30,7 +30,7 @@ public class StatsFragment extends BaseFragment {
     private MainViewModel mainViewModel;
     private FragmentStatsBinding binding;
     private StatsFragmentViewModel viewModel;
-    private final Executor executor;
+    private final ExecutorService executor;
 
     @Inject
     public StatsFragment() {
@@ -68,5 +68,11 @@ public class StatsFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        executor.shutdown();
     }
 }

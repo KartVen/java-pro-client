@@ -49,8 +49,9 @@ public class QuizzesFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentQuizzesBinding.inflate(inflater, container, false);
-        initRecyclerView(binding.fQuizzesRvBase, () -> viewModel.getQuizzesOfTopic(topicViewModel.getTopicDomain().getId()));
-        initRecyclerView(binding.fQuizzesRvByYou, () -> viewModel.getQuizzesOfTopic(topicViewModel.getTopicDomain().getId()));
+        Long topicId = topicViewModel.getTopicDomain().getId();
+        initRecyclerView(binding.fQuizzesRvBase, () -> viewModel.getQuizzesOfTopic(topicId));
+        initRecyclerView(binding.fQuizzesRvByYou, () -> viewModel.getMyQuizzesOfTopic(topicId));
         return binding.getRoot();
     }
 

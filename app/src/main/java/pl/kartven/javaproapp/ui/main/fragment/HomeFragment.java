@@ -14,9 +14,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Supplier;
 
@@ -38,7 +37,7 @@ import pl.kartven.javaproapp.utils.utility.Resource;
 public class HomeFragment extends BaseFragment {
     private FragmentHomeBinding binding;
     private HomeFragmentViewModel viewModel;
-    private Executor executor;
+    private final ExecutorService executor;
     private TopicListAdapter topicsAdapter;
     private TopicListAdapter myTopicsAdapter;
 
@@ -101,5 +100,11 @@ public class HomeFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        executor.shutdown();
     }
 }

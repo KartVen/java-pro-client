@@ -3,8 +3,12 @@ package pl.kartven.javaproapp.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.kartven.javaproapp.data.model.api.request.LoginDto;
-import pl.kartven.javaproapp.data.model.api.request.RegisterDto;
+import okhttp3.MultipartBody;
+import pl.kartven.javaproapp.data.model.api.request.CodeReqApi;
+import pl.kartven.javaproapp.data.model.api.request.LinkReqApi;
+import pl.kartven.javaproapp.data.model.api.request.LoginApi;
+import pl.kartven.javaproapp.data.model.api.request.QuizReqApi;
+import pl.kartven.javaproapp.data.model.api.request.RegisterApi;
 import pl.kartven.javaproapp.data.model.api.request.TopicReqApi;
 import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.data.model.domain.CodeDomain;
@@ -38,7 +42,7 @@ public class MainRepositoryMock extends MainRepository {
     }
 
     @Override
-    public Resource<AuthDomain> getAuthData(LoginDto loginDto) {
+    public Resource<AuthDomain> getAuthData(LoginApi loginApi) {
         return authData = new Success<>(new AuthDomain(
                 1L, "kartven",
                 "krystian.kielbasa@hotmail.com",
@@ -48,8 +52,8 @@ public class MainRepositoryMock extends MainRepository {
     }
 
     @Override
-    public Resource<AuthDomain> getAuthData(RegisterDto registerDto) {
-        return getAuthData((LoginDto) registerDto);
+    public Resource<AuthDomain> getAuthData(RegisterApi registerDto) {
+        return getAuthData((LoginApi) registerDto);
     }
 
     @Override
@@ -74,7 +78,7 @@ public class MainRepositoryMock extends MainRepository {
     }
 
     @Override
-    public Resource<List<QuizDomain>> getQuizzesOfTopic(Long id) {
+    public Resource<List<QuizDomain>> getQuizzesOfTopic(Long id, Long userId) {
         ArrayList<QuizDomain> mock = new ArrayList<>();
 
         mock.add(new QuizDomain(1L, "Quiz wprowadzający", "Quiz z podstaw programowania"));
@@ -143,7 +147,27 @@ public class MainRepositoryMock extends MainRepository {
     }
 
     @Override
-    public Resource<Void> postTopic(TopicReqApi topicReqApi) {
-        return new Success<>(null);
+    public Resource<TopicDomain> postTopic(TopicReqApi topicReqApi) {
+        return postTopic;
+    }
+
+    @Override
+    public Resource<Void> postSlidesOfTopic(Long id, List<MultipartBody.Part> slides) {
+        return postSlidesOfTopic;
+    }
+
+    @Override
+    public Resource<Void> postCodeOfTopic(Long id, CodeReqApi codeReqApi) {
+        return postCodeOfTopic;
+    }
+
+    @Override
+    public Resource<Void> postLinkOfTopic(Long id, LinkReqApi linkReqApi) {
+        return postLinkOfTopic;
+    }
+
+    @Override
+    public Resource<Void> postQuizOfTopic(Long id, QuizReqApi quizReqApi) {
+        return postQuizOfTopic;
     }
 }

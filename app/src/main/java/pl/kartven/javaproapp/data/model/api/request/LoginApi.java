@@ -1,10 +1,10 @@
 package pl.kartven.javaproapp.data.model.api.request;
 
-public class LoginDto {
+public class LoginApi {
     private String email;
     private String password;
 
-    public LoginDto(String email, String password) {
+    public LoginApi(String email, String password) {
         this.email = email;
         this.password = password;
     }

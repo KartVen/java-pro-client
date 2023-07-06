@@ -39,10 +39,11 @@ public class CodeDomain {
     public void setContent(String content) {
         this.content = content;
     }
-    
+
     public static CodeDomain map(CodeApi codeApi) {
         return new CodeDomain(codeApi.getId(), codeApi.getName(), codeApi.getContent());
     }
+
     public static List<CodeDomain> map(List<CodeApi> codeApis) {
         return codeApis.stream().map(CodeDomain::map).collect(Collectors.toList());
     }

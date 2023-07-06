@@ -2,13 +2,11 @@ package pl.kartven.javaproapp.ui.auth;
 
 import androidx.lifecycle.ViewModel;
 
-import java.util.concurrent.Executors;
-
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import pl.kartven.javaproapp.data.MainRepository;
-import pl.kartven.javaproapp.data.model.api.request.RegisterDto;
+import pl.kartven.javaproapp.data.model.api.request.RegisterApi;
 import pl.kartven.javaproapp.data.model.domain.AuthDomain;
 import pl.kartven.javaproapp.utils.listener.RegisterEventListener;
 import pl.kartven.javaproapp.utils.utility.Resource;
@@ -31,7 +29,7 @@ public class RegisterViewModel extends ViewModel implements RegisterEventListene
 
     public Resource<AuthDomain> register(String nickname, String email, String password) {
         Resource<AuthDomain> authDtoResource = mainRepository.getAuthData(
-                new RegisterDto(nickname, email, password)
+                new RegisterApi(nickname, email, password)
         );
         if (authDtoResource.isSuccess()) {
             sessionManager.saveUser(authDtoResource.getData());

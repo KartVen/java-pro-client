@@ -129,4 +129,9 @@
     <string name="label_content_create_que">Tworzenie zawartości?</string>
     <string name="label_extended_mode">Tryb rozszerzony</string>
     <string name="label_link_address">Link</string>
+    <string name="label_prev">Poprzednie</string>
+    <string name="label_select_images">Wybierz obrazy</string>
+    <string name="resource_added_successfully">Pomyślnie dodano zasób</string>
+    <string name="slides_are_required">Przynajmniej jeden slajd jest wymagany</string>
+    <string name="label_quiz">Test</string>
 </resources>

@@ -32,7 +32,7 @@ public class QuestionViewModel extends ViewModel {
         this.quizDomain = quizDomain;
     }
 
-    public Resource<List<QuestionDomain>> getQuestionsOfTopic(Long id){
+    public Resource<List<QuestionDomain>> getQuestionsOfTopic(Long id) {
         return mainRepository.getQuestionsOfQuiz(id);
     }
 

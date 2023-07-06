@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import java.util.Objects;
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import io.vavr.control.Option;
@@ -72,7 +71,8 @@ public class QuizActivity extends BaseActivity {
                 if (quizDetailsDomain.getQuestions() < 1) {
                     binding.quizBtnStartQuiz.setClickable(false);
                     binding.quizBtnStartQuiz.setBackgroundColor(getColor(R.color.darker_grey));
-                };
+                }
+                ;
             });
         });
     }

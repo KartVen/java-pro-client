@@ -185,7 +185,7 @@
                         android:paddingVertical="8dp"
                         android:textStyle="bold"
                         android:textColor="@color/teal_green"
-                        android:textSize="@dimen/common__text_h2"
+                        android:textSize="@dimen/common__text_h6"
                         android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
                         android:text="@string/label_correct_que" />
 
@@ -197,7 +197,7 @@
                         android:paddingVertical="8dp"
                         android:textStyle="bold"
                         android:textColor="@color/red"
-                        android:textSize="@dimen/common__text_h2"
+                        android:textSize="@dimen/common__text_h6"
                         android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
                         android:text="@string/label_fail_que" />
 
@@ -208,7 +208,7 @@
                         android:paddingHorizontal="4dp"
                         android:paddingVertical="8dp"
                         android:textStyle="bold"
-                        android:textSize="@dimen/common__text_h2"
+                        android:textSize="@dimen/common__text_h6"
                         android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
                         android:text="@string/label_all_que" />
 

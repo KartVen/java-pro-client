@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_nickname"
                 android:textColor="@color/white"
-                android:textSize="@dimen/common__text_h3"
+                android:textSize="@dimen/common__text_h7"
                 android:textStyle="bold" />
 
             <EditText
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_email"
                 android:textColor="@color/white"
-                android:textSize="@dimen/common__text_h3"
+                android:textSize="@dimen/common__text_h7"
                 android:textStyle="bold" />
 
             <EditText
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/password"
                 android:textColor="@color/white"
-                android:textSize="@dimen/common__text_h3"
+                android:textSize="@dimen/common__text_h7"
                 android:textStyle="bold" />
 
             <EditText
@@ -186,7 +186,7 @@
             android:padding="@dimen/auth_input_padding"
             android:text="@string/sign_up"
             android:textColor="@color/dark_blue"
-            android:textSize="@dimen/common__text_h3"
+            android:textSize="@dimen/common__text_h7"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -201,7 +201,7 @@
             android:foreground="?selectableItemBackground"
             android:text="@string/back"
             android:textColor="@color/white"
-            android:textSize="@dimen/common__text_h4"
+            android:textSize="@dimen/common__text_h8"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -7,7 +7,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import io.vavr.control.Option;
 
 public interface NavActiveFragmentListener {
-    default Option<Fragment> getActiveFragment(AppCompatActivity parent, int navFragmentElementId){
+    default Option<Fragment> getActiveFragment(AppCompatActivity parent, int navFragmentElementId) {
         return Option.of(parent.getSupportFragmentManager().findFragmentById(navFragmentElementId))
                 .filter(f -> f instanceof NavHostFragment)
                 .map(f -> f.getChildFragmentManager().getFragments())

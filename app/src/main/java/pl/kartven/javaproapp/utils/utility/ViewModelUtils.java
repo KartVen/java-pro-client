@@ -8,7 +8,7 @@ public class ViewModelUtils {
     /**
      * Initializes ViewModel class.
      *
-     * @param owner ViewModel Owner
+     * @param owner      ViewModel Owner
      * @param modelClass The class of the ViewModel.
      */
     public static <T extends ViewModel> T initViewModel(ViewModelStoreOwner owner, Class<T> modelClass) {

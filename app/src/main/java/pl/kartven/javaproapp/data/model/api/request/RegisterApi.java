@@ -1,9 +1,9 @@
 package pl.kartven.javaproapp.data.model.api.request;
 
-public class RegisterDto extends LoginDto {
+public class RegisterApi extends LoginApi {
     private String nickname;
 
-    public RegisterDto(String nickname, String email, String password) {
+    public RegisterApi(String nickname, String email, String password) {
         super(email, password);
         this.nickname = nickname;
     }

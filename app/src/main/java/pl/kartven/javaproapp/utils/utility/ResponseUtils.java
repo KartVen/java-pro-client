@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import java.util.Date;
-import java.util.List;
 
 import io.vavr.control.Either;
 import okhttp3.ResponseBody;
@@ -48,7 +47,7 @@ public class ResponseUtils {
     private static ErrorApi parseError(final Response<?> response) {
         JSONObject bodyObj;
         ErrorApi errorApi = null;
-        try (ResponseBody errorBody = response.errorBody()){
+        try (ResponseBody errorBody = response.errorBody()) {
             String errorBodyString = errorBody.string();
             if (errorBodyString != null) {
                 bodyObj = new JSONObject(errorBodyString);
