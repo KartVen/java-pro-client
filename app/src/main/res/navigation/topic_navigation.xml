@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/topic_navigation"
+    app:startDestination="@+id/topic_nav_slides">
+
+    <fragment
+        android:id="@+id/topic_nav_slides"
+        android:name="pl.kartven.javaproapp.ui.topic.fragment.SlidesFragment"
+        android:label="@string/label_slides"
+        tools:layout="@layout/fragment_slides" />
+
+    <fragment
+        android:id="@+id/topic_nav_codes"
+        android:name="pl.kartven.javaproapp.ui.topic.fragment.CodesFragment"
+        android:label="@string/label_codes"
+        tools:layout="@layout/fragment_codes" />
+
+    <fragment
+        android:id="@+id/topic_nav_quizzes"
+        android:name="pl.kartven.javaproapp.ui.topic.fragment.QuizzesFragment"
+        android:label="@string/label_tests"
+        tools:layout="@layout/fragment_quizzes" />
+
+    <fragment
+        android:id="@+id/topic_nav_links"
+        android:name="pl.kartven.javaproapp.ui.topic.fragment.LinksFragment"
+        android:label="@string/label_links"
+        tools:layout="@layout/fragment_links" />
+</navigation>

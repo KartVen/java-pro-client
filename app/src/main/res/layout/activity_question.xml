@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.topic.quiz.question.QuestionActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/question_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.JavaProApp.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/question_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.JavaProApp.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/question_linear_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorPrimary"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/common_container_spacing_h"
+        android:paddingBottom="@dimen/common_container_spacing_v"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question_app_bar">
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/question_linear_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question_linear_header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/question_linear_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                android:paddingHorizontal="@dimen/common_container_spacing_h"
+                android:paddingVertical="@dimen/common_container_spacing_v">
+
+                <TextView
+                    android:id="@+id/question_tv_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/common_tv_section_head_spacing_v"
+                    android:text="@string/example_que"
+                    android:textSize="@dimen/common_tv_section_head_text_size"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:minHeight="@dimen/common_iv_max_height"
+                    android:maxHeight="@dimen/common_iv_max_height"
+                    android:src="@drawable/tests" />
+
+                <LinearLayout
+                    android:id="@+id/question_checkbox_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingVertical="@dimen/question_checkbox_spacing_v">
+
+                    <CheckBox
+                        android:id="@+id/question_chb_a"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/letter_a_src"
+                        android:drawablePadding="@dimen/question_checkbox_drawable_padding"
+                        android:ellipsize="marquee"
+                        android:foreground="?selectableItemBackground"
+                        android:maxLines="1"
+                        android:text="@string/example_ans" />
+
+                    <CheckBox
+                        android:id="@+id/question_chb_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/letter_b_src"
+                        android:drawablePadding="@dimen/question_checkbox_drawable_padding"
+                        android:ellipsize="marquee"
+                        android:foreground="?selectableItemBackground"
+                        android:maxLines="1"
+                        android:text="@string/example_ans" />
+
+                    <CheckBox
+                        android:id="@+id/question_chb_c"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/letter_c_src"
+                        android:drawablePadding="@dimen/question_checkbox_drawable_padding"
+                        android:ellipsize="marquee"
+                        android:foreground="?selectableItemBackground"
+                        android:maxLines="1"
+                        android:text="@string/example_ans" />
+
+                    <CheckBox
+                        android:id="@+id/question_chb_d"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/letter_d_src"
+                        android:drawablePadding="@dimen/question_checkbox_drawable_padding"
+                        android:ellipsize="marquee"
+                        android:foreground="?selectableItemBackground"
+                        android:maxLines="1"
+                        android:text="@string/example_ans" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/question_linear_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/common_container_spacing_h"
+                android:paddingVertical="@dimen/common_container_spacing_v"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/question_tv_end_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/common_tv_section_head_spacing_v"
+                    android:text="@string/label_congratulation"
+                    android:textAlignment="center"
+                    android:textSize="40sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/question_iv_trophy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:minHeight="@dimen/common_iv_max_height"
+                    android:maxHeight="@dimen/common_iv_max_height"
+                    android:src="@drawable/trophy" />
+
+                <LinearLayout
+                    android:id="@+id/question_linear_counters_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:id="@+id/question_tv_end_correct_que"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="4dp"
+                        android:paddingVertical="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/teal_green"
+                        android:textSize="@dimen/common__text_h6"
+                        android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
+                        android:text="@string/label_correct_que" />
+
+                    <TextView
+                        android:id="@+id/question_tv_end_fail_que"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="4dp"
+                        android:paddingVertical="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/common__text_h6"
+                        android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
+                        android:text="@string/label_fail_que" />
+
+                    <TextView
+                        android:id="@+id/question_tv_end_all_que"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="4dp"
+                        android:paddingVertical="8dp"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/common__text_h6"
+                        android:layout_marginVertical="@dimen/question_checkbox_spacing_v"
+                        android:text="@string/label_all_que" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/question_linear_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/common_container_spacing_h"
+        android:paddingBottom="@dimen/common_container_spacing_h"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/question_btn_next"
+            style="Widget.Button"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="?colorPrimary"
+            android:foreground="?selectableItemBackground"
+            android:text="@string/label_next"
+            android:textColor="?colorOnPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

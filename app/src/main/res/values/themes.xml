@@ -2,34 +2,32 @@
     <!-- Base application theme. -->
     <style name="Theme.JavaProApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/dark_blue</item>
+        <item name="colorPrimaryVariant">@color/dark_blue</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryTransition">@color/light_dark_blue</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/dark_blue</item>
+        <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:forceDarkAllowed" tools:targetApi="Q">false</item>
-        <item name="background">@color/dark_blue</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="Theme.JavaProApp.NoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.JavaProApp.FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/dark_blue</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="Theme.JavaProApp.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:forceDarkAllowed" tools:targetApi="Q">false</item>
-        <item name="colorSecondary">@color/dark_blue</item>
     </style>
 
-    <style name="Theme.JavaProClientApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.JavaProApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.JavaProClientApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
-    </style>
-
-    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@android:style/TextAppearance">
-        <item name="android:textStyle">italic</item>
-    </style>
-
+    <style name="Theme.JavaProApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

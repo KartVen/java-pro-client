@@ -1,39 +1,137 @@
 <resources>
     <string name="app_name">JavaProApp</string>
-    <string name="app_name_short">JavaPro</string>
-    <string name="next">Następne</string>
-    <string name="previous">Poprzednie</string>
-    <!--  AUTH ACTIVITY  -->
-    <string name="form_email_field">Email</string>
-    <string name="form_password_field">Hasło</string>
-    <string name="form_login">Logowanie</string>
-    <string name="form_registration">Rejestracja</string>
-    <string name="log_in_btn">Zaloguj się</string>
-    <string name="dont_have_an_account">Nie masz konta?</string>
-    <string name="register_btn">Zarejestruj się</string>
-    <string name="form_nickname_field">Nazwa użytkownika</string>
-    <!--   MAIN ACTIVITY -->
-    <string name="section_lectures">Wykład</string>
-    <string name="section_laboratories">Laboratorium</string>
-    <string name="section_tests">Test</string>
-    <string name="section_help_links">Linki</string>
-    <string name="select_section">Wybierz pozycje</string>
-    <string name="last_added">Ostatnio dodane</string>
-    <string name="menu_settings_label">Ustawienia</string>
-    <string name="example_text_1">Przykładowy tekst</string>
-    <string name="example_text_2">Przykładowy tekst 2</string>
-    <string name="java_logo_content_description">Java</string>
-    <!-- Error Messages -->
-    <string name="login_succesfully">Zalogowano pomyślnie</string>
-    <string name="register_succesfully">Zarejstrowano pomyślnie</string>
-    <string name="required">Wymagane</string>
-    <string name="must_contain">Pole musi zawierać %s</string>
-    <string name="error_bad_format">Niewłaściwy format</string>
-    <string name="error_minimum_size">Minimum %d znaków</string>
-    <string name="add_range">Add</string>
-    <string name="select_range">Wybierz zakres</string>
-    <string name="error_field_empty">Pole wymagane</string>
-    <string name="error_form">Błąd formularza</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="sign_in">Zaloguj się</string>
+    <string name="label_email">Email</string>
+    <string name="example_email">email@example.com</string>
+    <string name="password_signs">********</string>
+    <string name="password">Hasło</string>
+    <string name="forget_your_pass_que">Zapomniałeś hasła?</string>
+    <string name="dont_have_account_que">Nie masz konta?</string>
+    <string name="registration">Rejestracja</string>
+    <string name="next">Dalej</string>
+    <string name="welcome_xx">Witaj, %s</string>
+    <string name="find_specific_topic">Szukaj konkretny temat!</string>
+    <string name="topic">temat</string>
+    <string name="search_dot_dot_dot">Szukaj…</string>
+    <string name="label_topics">Tematy</string>
+    <string name="label_last_added_by_you">Dodane przez Ciebie</string>
+    <string name="XX">XX</string>
+    <string name="title">Tytuł</string>
+    <string name="description">Opis</string>
+    <string name="lec_XX">Wyk XX</string>
+    <string name="lecture">Wykład</string>
+    <string name="menu_home">Dom</string>
+    <string name="menu_profile">Profil</string>
+    <string name="menu_settings">Ustawienia</string>
+    <string name="menu_stats">Statystyki</string>
+    <string name="add_topic">Dodaj temat</string>
+    <string name="example_name">Przykładowa nazwa</string>
+    <string name="example_desc">Przykładowy opis</string>
+    <string name="label_topic">Temat</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back">Wróć</string>
+    <string name="label_slides">Slajdy</string>
+    <string name="laboratories">Laboratoria</string>
+    <string name="label_tests">Testy</string>
+    <string name="label_links">Linki zew.</string>
+    <string name="process_error">Bład przetwarzania</string>
+    <string name="label_codes">Kody</string>
+    <string name="quiz">Test</string>
+    <string name="code">Kod</string>
+    <string name="slide">Slajd</string>
+    <string name="sign_up">Zarejestruj się</string>
+    <string name="label_nickname">Nazwa użytkownika</string>
+    <string name="example_link_address">https://example.com</string>
+    <string name="label_link">Link</string>
+    <string name="app_name_short">JavaPro</string>
+    <string name="username">Nazwa użytkownika</string>
+    <string name="label_test">Test</string>
+    <string name="que_amount">Ilość pytań</string>
+    <string name="start_quiz">Rozpocznij quiz</string>
+    <string name="menu_logout">Wyloguj się</string>
+    <string name="label_wizard">Kreator</string>
+    <string name="save">Zapisz</string>
+    <string name="lecture_no">Numer wykładu</string>
+    <string name="field_is_required">Pole jest wymagane</string>
+    <string name="bad_email_format">Zły format email</string>
+    <string name="bad_password_format"><![CDATA[Użyj [az][AZ][0–9][@#$%^&+=]]]></string>
+    <string name="account">Konto</string>
+    <string name="label_appearance">Wygląd</string>
+    <string name="dark_theme">Tryb ciemny</string>
+    <string name="dark_mode_no_work">Tryb ciemny (w implementacji)</string>
+    <string name="avatar">Avatar</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="label_nav_header">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="title_activity_bottom">BottomActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="label_add">Dodawanie</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_topic">TopicActivity</string>
+    <string name="turn_on_dark_mode">Włącz tryb ciemny</string>
+    <string name="example_que">Przykladowe pytanie o przykładowej treści?</string>
+    <string name="example_ans">Przykładowa odpowiedź</string>
+    <string name="label_next">Następne</string>
+    <string name="label_finish">Zakończ</string>
+    <string name="load_new_slides">Załadowano więcej slidów</string>
+    <string name="label_congratulation">Gratulacje!</string>
+    <string name="label_im_sorry">Przykro mi!</string>
+    <string name="label_correct_que">Poprawne: </string>
+    <string name="label_fail_que">Niepoprawne: </string>
+    <string name="label_all_que">Wszystkich: </string>
+    <string name="label_profile">Profil</string>
+    <string name="label_please_wait">Proszę czekać…</string>
+    <string name="label_stats">Testy</string>
+    <string name="label_open">Otwarte</string>
+    <string name="label_added">Dodane</string>
+    <string name="label_closed_general">Zakończone</string>
+    <string name="label_closed_success">Zakończone sukcesem</string>
+    <string name="label_closed_fail">Zakończone porażką</string>
+    <string name="label_efficiency">Skuteczność</string>
+    <string name="bad_size_nickname">Użyj od 5 do 125 znaków</string>
+    <string name="label_save">Zapisz</string>
+    <string name="label_cancel">Anuluj</string>
+    <string name="label_name">Nazwa</string>
+    <string name="label_desc">Opis</string>
+    <string name="label_logged_time">Zalogowany</string>
+    <string name="fields_are_required">Wszystkie pola są wymagane</string>
+    <string name="example_code">/* kod */</string>
+    <string name="example_filename_xxx">filename.xxx</string>
+    <string name="label_section">Sekcja</string>
+    <string name="label_code">Kod</string>
+    <string name="label_import_section">Importuj sekcje</string>
+    <string name="label_new_section">Nowa sekcja</string>
+    <string name="label_select_section">Wybierz sekcje</string>
+    <string name="add_slash_edit">Utwórz/edytuj</string>
+    <string name="label_content_create_que">Tworzenie zawartości?</string>
+    <string name="label_extended_mode">Tryb rozszerzony</string>
+    <string name="label_link_address">Link</string>
+    <string name="label_prev">Poprzednie</string>
+    <string name="label_select_images">Wybierz obrazy</string>
+    <string name="resource_added_successfully">Pomyślnie dodano zasób</string>
+    <string name="slides_are_required">Przynajmniej jeden slajd jest wymagany</string>
+    <string name="label_quiz">Test</string>
 </resources>
